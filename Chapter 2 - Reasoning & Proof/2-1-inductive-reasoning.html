@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Lesson 2.1: Inductive Reasoning</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .card.red{background:#fdeeee;border-left:5px solid var(--red);}
+
+  /* ---- 2.1 visual signature: pattern-spotting / "what comes next" ---- */
+  .pattern-strip{
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;
+  }
+  .pattern-item{
+    width:52px;height:52px;border-radius:10px;background:var(--navy);color:var(--gold);
+    display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex:none;
+  }
+  .pattern-arrow{color:var(--line);font-size:20px;flex:none;}
+  .pattern-item.mystery{background:#fff;border:2px dashed var(--gold);color:var(--gold);}
+  .magnify-tag{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:5px 12px;border-radius:20px;margin-bottom:12px;}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 2: Reasoning &amp; Proof</div></div>
+      </div>
+      <div class="lesson-tag">Lesson 2.1 &middot; Inductive Reasoning</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+  </div>
+
+  <div class="stage">
+
+    <!-- 1 -->
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin &mdash; Welcome to Chapter 2!</p>
+      <h1 class="slide-title">You've been spotting patterns your whole life. Today we name it.</h1>
+      <div class="card warm">
+        <p style="margin-bottom:0;">If every red light you've ever seen has turned green eventually, you expect the next one will too. That's not a guess out of nowhere &mdash; it's a real kind of reasoning, and geometry uses it constantly.</p>
+      </div>
+      <p>Chapter 1 was about the objects of geometry &mdash; points, lines, shapes. Chapter 2 is about the <strong>thinking</strong> behind geometry: how we notice patterns, make guesses, and eventually prove things for certain.</p>
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Use inductive reasoning to spot a pattern and predict what's next</span></li>
+        <li><span class="num">2</span><span>Turn a pattern into a conjecture</span></li>
+        <li><span class="num">3</span><span>Find a counterexample that breaks a conjecture</span></li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Three words for "noticing a pattern"</h1>
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Inductive Reasoning</div>
+          Making a conclusion based on a <strong>pattern</strong> you've observed in specific examples. It's reasoning from examples toward a general rule.
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Conjecture</div>
+          An educated guess made using inductive reasoning. A conjecture is not proven yet &mdash; it's a strong hypothesis based on the pattern so far.
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">3</div>
+        <div class="content">
+          <div class="label">Counterexample</div>
+          A single example that <strong>breaks</strong> a conjecture. Finding just one is enough to prove a conjecture false &mdash; no matter how many examples supported it before.
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">Seeing It in Action</p>
+      <h1 class="slide-title">What comes next?</h1>
+      <div class="magnify-tag">&#128269; SPOT THE PATTERN</div>
+      <div class="pattern-strip">
+        <div class="pattern-item">2</div><div class="pattern-arrow">&rarr;</div>
+        <div class="pattern-item">4</div><div class="pattern-arrow">&rarr;</div>
+        <div class="pattern-item">6</div><div class="pattern-arrow">&rarr;</div>
+        <div class="pattern-item">8</div><div class="pattern-arrow">&rarr;</div>
+        <div class="pattern-item mystery">?</div>
+      </div>
+      <p style="margin-top:16px;">Each number is 2 more than the one before it. Using inductive reasoning, our conjecture is: <strong>the next number is 10.</strong></p>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Important:</strong> we haven't <em>proven</em> the next number is 10 &mdash; we've made a well-supported guess based on the pattern. That's exactly what a conjecture is.</p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">When Patterns Break</p>
+      <h1 class="slide-title">One counterexample is all it takes</h1>
+      <p>Suppose someone makes this conjecture: <strong>"Every shape with 4 sides is a square."</strong> It might look true if you only ever draw squares. But geometry demands more than "looks true so far."</p>
+      <div class="card red">
+        <p style="margin-bottom:0;"><strong>Counterexample:</strong> a rectangle that is 3 units wide and 6 units tall has 4 sides, but it is not a square. One shape is enough to prove the conjecture false.</p>
+      </div>
+      <p style="font-size:14px;color:#555;"><strong>&#128161;</strong> This is a big deal in math: a hundred supporting examples don't prove a conjecture true, but a single counterexample proves it false. That asymmetry is exactly why Chapter 2 exists &mdash; "looks true" and "is proven true" are very different things.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Building and testing a conjecture, step by step</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Look at the sums: 1+3=4, 3+5=8, 5+7=12, 7+9=16. Make a conjecture about the sum of two consecutive odd numbers, then test it.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Find the pattern</div>Each sum (4, 8, 12, 16) is a multiple of 4.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">State the conjecture</div>The sum of two consecutive odd numbers is always a multiple of 4.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Test it with a new example</div>Try 9+11 = 20. Is 20 a multiple of 4? Yes &mdash; 20 &divide; 4 = 5. The conjecture holds up again.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Remember the limit</div>Testing more examples makes us more confident &mdash; but it still isn't a proof. That comes later in this chapter.</div></div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">A student notices: 3&times;3=9, 5&times;5=25, 7&times;7=49 &mdash; and makes this conjecture: "The square of an odd number is always odd."</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Does 9&times;9=81 support or break the conjecture?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">Supports it &mdash; 81 is odd</button>
+          <button class="choice-btn" data-correct="false">Breaks it &mdash; 81 is even</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Could this conjecture ever be proven false by a counterexample?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="false">No, it's already been tested enough</button>
+          <button class="choice-btn" data-correct="true">Yes &mdash; unless it's formally proven, one bad example could still break it</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Inductive reasoning is where every discovery starts</h1>
+      <p>Scientists, doctors, and mathematicians all start with inductive reasoning &mdash; noticing a pattern across many observations, then forming a conjecture. The difference between a hunch and real knowledge is what happens next: testing it, hunting for counterexamples, and eventually proving it.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> a doctor who notices that a medication has helped 50 patients in a row is using inductive reasoning to form a conjecture &mdash; but a single patient it doesn't help (a counterexample) means the conjecture "this always works" has to be revised.</p>
+      </div>
+      <div class="next-box">
+        <strong>Next week &mdash; Lesson 2.2: Statements &amp; Truth Values.</strong> We'll learn how to write precise mathematical statements &mdash; the raw material every proof is built from.
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">Reasoning from a pattern in specific examples toward a general rule is called...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Inductive reasoning</button>
+          <button class="quiz-opt" data-correct="false">A counterexample</button>
+          <button class="quiz-opt" data-correct="false">A postulate</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">An educated guess based on a pattern is called a...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Theorem</button>
+          <button class="quiz-opt" data-correct="true">Conjecture</button>
+          <button class="quiz-opt" data-correct="false">Proof</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3</div>
+        <div class="qtext">How many counterexamples does it take to prove a conjecture false?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Just one</button>
+          <button class="quiz-opt" data-correct="false">At least ten</button>
+          <button class="quiz-opt" data-correct="false">It can never be proven false</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4 &mdash; True or False</div>
+        <div class="qtext">100 examples that support a conjecture count as a proof that it's always true.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">True</button>
+          <button class="quiz-opt" data-correct="true">False &mdash; examples build confidence, but only a proof guarantees it</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Conjecture: "All 4-sided shapes are squares." What breaks it?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">A rectangle that isn't a square</button>
+          <button class="quiz-opt" data-correct="false">Another square</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can use inductive reasoning to spot a pattern and predict what's next.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can turn a pattern into a conjecture.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a counterexample that breaks a conjecture.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Inductive Reasoning</span>
+        <span class="term-pill">Conjecture</span>
+        <span class="term-pill">Counterexample</span>
+      </div>
+
+      <div class="next-box">
+        <strong>Next week &mdash; Lesson 2.2: Statements &amp; Truth Values.</strong> Precise mathematical statements &mdash; the building blocks of every proof.
+      </div>
+
+      <div class="end-actions">
+        <a class="end-btn primary next-lesson-link" href="2-2-statements-truth-values.html">Next Lesson: 2.2 &rarr;</a>
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          if (fb) { fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+</script>
+</body>
+</html>

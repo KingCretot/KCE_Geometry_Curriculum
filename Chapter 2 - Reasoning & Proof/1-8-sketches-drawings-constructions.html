@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Lesson 1.8: Sketches, Drawings &amp; Constructions</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+
+  /* ---- 1.8 visual signature: compass & straightedge technical drawing ---- */
+  .draft-panel{
+    background:#fff;
+    background-image:radial-gradient(circle, transparent 0, transparent 60%), 
+      repeating-radial-gradient(circle at 50% 50%, transparent 0 30px, rgba(0,71,186,.05) 30px 31px);
+    border:1.5px solid var(--navy);
+    border-radius:2px;
+    padding:22px 20px;
+    text-align:center;
+    position:relative;
+  }
+  .precision-badge{display:inline-block;font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:10px;}
+  .precision-badge.sketch{background:#fdf8ec;color:var(--gold);border:1.5px solid var(--gold);}
+  .precision-badge.drawing{background:#eef2fb;color:var(--blue);border:1.5px solid var(--blue);}
+  .precision-badge.construction{background:#0A1F3D;color:#fff;border:1.5px solid var(--navy);}
+  .three-level{display:flex;flex-direction:column;gap:14px;}
+  @media(min-width:640px){.three-level{flex-direction:row;}}
+  .three-level .lvl{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center;}
+  .three-level .lvl h3{margin:8px 0 4px;color:var(--navy);font-size:15.5px;}
+  .three-level .lvl p{font-size:12.5px;color:#666;margin-bottom:0;}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .milestone-box{background:var(--navy);color:#fff;border-radius:14px;padding:24px 26px;margin-top:18px;text-align:center;}
+  .milestone-box .big{color:var(--gold);font-size:20px;font-weight:700;margin-bottom:6px;}
+  .milestone-box p{color:#e9e3d3;margin-bottom:0;font-size:14.5px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;justify-content:center;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 1: Foundations</div></div>
+      </div>
+      <div class="lesson-tag">Lesson 1.8 &middot; Sketches, Drawings &amp; Constructions</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
+  </div>
+
+  <div class="stage">
+
+    <!-- 1 -->
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 1!</p>
+      <h1 class="slide-title">Not every drawing needs to be exact &mdash; but some absolutely must be.</h1>
+      <div class="card warm">
+        <p style="margin-bottom:0;">All chapter you've drawn points, lines, shapes, and solids by hand. Today we name the three different levels of care that go into a geometric drawing &mdash; and learn the ancient method for drawing something <strong>perfectly exact</strong>, using nothing but a compass and a straightedge.</p>
+      </div>
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Tell a sketch, a drawing, and a construction apart</span></li>
+        <li><span class="num">2</span><span>Explain what tools a construction allows &mdash; and doesn't</span></li>
+        <li><span class="num">3</span><span>Copy a segment using compass-and-straightedge construction</span></li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Three levels of precision</h1>
+      <div class="three-level">
+        <div class="lvl">
+          <div class="precision-badge sketch">SKETCH</div>
+          <h3>Freehand</h3>
+          <p>Quick, rough, no tools. Meant to capture the idea, not the exact measurements.</p>
+        </div>
+        <div class="lvl">
+          <div class="precision-badge drawing">DRAWING</div>
+          <h3>With Basic Tools</h3>
+          <p>Ruler and protractor used for care and proportion &mdash; close, but still not mathematically perfect.</p>
+        </div>
+        <div class="lvl">
+          <div class="precision-badge construction">CONSTRUCTION</div>
+          <h3>Compass &amp; Straightedge Only</h3>
+          <p>No rulers, no measuring, no numbers. Mathematically exact, every time.</p>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-size:14px;color:#555;"><strong>&#128161;</strong> A construction's rule is strict on purpose: a straightedge draws lines but has <strong>no markings</strong>, and a compass only copies distances &mdash; it can't measure in inches or centimeters.</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">Why Such a Strict Rule?</p>
+      <h1 class="slide-title">Constructions come from a 2,000-year-old tradition</h1>
+      <div class="draft-panel">
+        <p style="text-align:left;">Around 300 BCE, the Greek mathematician <strong>Euclid</strong> wrote down geometry using only what a compass and straightedge could build. No rulers with inch marks existed yet in the way we use them &mdash; so "exact" had to mean "provably exact," not "measured closely enough."</p>
+        <svg width="200" height="140" viewBox="0 0 200 140">
+          <circle cx="100" cy="70" r="55" fill="none" stroke="#0047BA" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <line x1="30" y1="100" x2="170" y2="40" stroke="#0A1F3D" stroke-width="2"/>
+          <circle cx="60" cy="87" r="3" fill="#DB2F30"/>
+          <circle cx="140" cy="53" r="3" fill="#DB2F30"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Constructing a copy of a segment</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Goal:</strong> Given segment AB, construct a new segment, CD, that is exactly the same length &mdash; using only compass and straightedge.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Draw a starting ray</div>Use the straightedge to draw a long ray starting at a new point, C.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Open the compass to match AB</div>Place the compass point on A and stretch it exactly to B &mdash; the compass now "remembers" that exact distance.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Transfer the distance</div>Without changing the compass width, place the point on C and swing an arc that crosses the ray.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Mark the new point</div>Where the arc crosses the ray is point D. Segment CD is now exactly as long as segment AB &mdash; guaranteed, with no measuring at all.</div></div>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Seeing It Happen</p>
+      <h1 class="slide-title">The construction, drawn out</h1>
+      <div class="draft-panel">
+        <svg width="280" height="140" viewBox="0 0 280 140">
+          <line x1="20" y1="30" x2="90" y2="30" stroke="#0A1F3D" stroke-width="2.5"/>
+          <circle cx="20" cy="30" r="3.5" fill="#0A1F3D"/><text x="14" y="20" font-size="14" font-family="Georgia,serif" font-style="italic">A</text>
+          <circle cx="90" cy="30" r="3.5" fill="#0A1F3D"/><text x="95" y="20" font-size="14" font-family="Georgia,serif" font-style="italic">B</text>
+
+          <line x1="20" y1="100" x2="240" y2="100" stroke="#999" stroke-width="1.5"/>
+          <circle cx="20" cy="100" r="3.5" fill="#0047BA"/><text x="14" y="120" font-size="14" fill="#0047BA" font-family="Georgia,serif" font-style="italic">C</text>
+          <path d="M90 100 A70 70 0 0 1 20 30" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.7" transform="translate(0,0)"/>
+          <path d="M20 100 m -70,0 a70,70 0 1,0 140,0 a70,70 0 1,0 -140,0" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 3" opacity="0" />
+          <circle cx="20" cy="100" r="70" fill="none" stroke="#C9A84C" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <circle cx="90" cy="100" r="3.5" fill="#DB2F30"/><text x="95" y="120" font-size="14" fill="#DB2F30" font-family="Georgia,serif" font-style="italic">D</text>
+        </svg>
+        <p style="font-size:13px;color:#666;margin-top:6px;">The gold dashed arc is the compass, still opened to the width of AB, swung from C. Where it crosses the ray gives point D.</p>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Checking Understanding</p>
+      <h1 class="slide-title">Which tool goes with which level?</h1>
+      <div class="step"><div class="badge">?</div><div class="content"><div class="label">A student quickly draws a rough triangle to plan a proof, no tools</div>That's a <strong>sketch</strong>.</div></div>
+      <div class="step"><div class="badge">?</div><div class="content"><div class="label">An architect uses a ruler and protractor to draft a floor plan to scale</div>That's a <strong>drawing</strong>.</div></div>
+      <div class="step"><div class="badge">?</div><div class="content"><div class="label">A student uses only a compass and straightedge to bisect a segment exactly in half</div>That's a <strong>construction</strong>.</div></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">You need to build a segment that's exactly twice as long as a given segment XY &mdash; using only compass and straightedge.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Which tool "remembers" the length of XY for you to reuse?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">The compass</button>
+          <button class="choice-btn" data-correct="false">The straightedge</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Is measuring XY with an inch ruler and doubling the number allowed in a construction?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="false">Yes, that's the fastest way</button>
+          <button class="choice-btn" data-correct="true">No &mdash; constructions never use numbers or measuring</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Constructions are proof you can hold in your hand</h1>
+      <p>When you build something with only compass-and-straightedge rules, you're not just drawing &mdash; you're demonstrating that the result is <em>logically guaranteed</em> to be exact, not just "close enough by eye." That's the exact same standard proofs will hold you to starting in Chapter 2.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Historical note:</strong> for over 2,000 years, mathematicians tried to solve three famous "impossible" construction problems (like trisecting any angle) using only compass and straightedge. It was eventually <em>proven</em> impossible &mdash; a rare case of mathematicians proving something can't be done, not just that no one has done it yet.</p>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">A rough, freehand drawing with no tools is called a...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Sketch</button>
+          <button class="quiz-opt" data-correct="false">Drawing</button>
+          <button class="quiz-opt" data-correct="false">Construction</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">Which two tools are allowed in a construction?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Ruler and protractor</button>
+          <button class="quiz-opt" data-correct="true">Compass and straightedge</button>
+          <button class="quiz-opt" data-correct="false">Calculator and ruler</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3 &mdash; True or False</div>
+        <div class="qtext">A straightedge used in constructions has inch or centimeter markings on it.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">True</button>
+          <button class="quiz-opt" data-correct="true">False &mdash; it has no markings at all</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4</div>
+        <div class="qtext">In copying a segment, what does the compass do?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Holds and transfers an exact distance</button>
+          <button class="quiz-opt" data-correct="false">Measures the distance in inches</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Which ancient mathematician's name is most associated with compass-and-straightedge geometry?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Pythagoras</button>
+          <button class="quiz-opt" data-correct="true">Euclid</button>
+          <button class="quiz-opt" data-correct="false">Euler</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can tell a sketch, a drawing, and a construction apart.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You know exactly which tools a construction allows.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can copy a segment using compass-and-straightedge construction.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Sketch</span>
+        <span class="term-pill">Drawing</span>
+        <span class="term-pill">Construction</span>
+        <span class="term-pill">Compass</span>
+        <span class="term-pill">Straightedge</span>
+      </div>
+
+      <div class="milestone-box">
+        <div class="big">&#127881; Chapter 1 Complete!</div>
+        <p>Sets &middot; undefined terms &middot; postulates &middot; segments &amp; rays &middot; measurement &middot; 2-D and 3-D figures &middot; constructions. Every idea in Chapter 2 (Reasoning &amp; Proof) builds directly on what you've covered this chapter.</p>
+      </div>
+
+      <div class="end-actions">
+        <a class="end-btn primary next-lesson-link" href="2-1-inductive-reasoning.html">Next Lesson: 2.1 &rarr;</a>
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Chapter 1 complete \u2014 excellent work!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          if (fb) { fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+</script>
+</body>
+</html>
