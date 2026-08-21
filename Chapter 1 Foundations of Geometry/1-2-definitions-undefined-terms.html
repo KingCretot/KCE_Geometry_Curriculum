@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Lesson 1.2: Definitions &amp; Undefined Terms</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+
+  /* ---- 1.2 visual signature: dimension-ladder motif on dotted "graph paper" ---- */
+  .dotpaper{
+    background-color:#fff;
+    background-image:radial-gradient(circle, #d8d2c2 1px, transparent 1px);
+    background-size:18px 18px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 22px;
+  }
+  .dim-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+  .dim-chip{flex:1 1 auto;text-align:center;background:var(--navy);color:#fff;border-radius:8px;padding:8px 6px;font-size:12px;font-weight:700;letter-spacing:.5px;opacity:.35;}
+  .dim-chip.on{opacity:1;background:var(--gold);color:var(--navy);}
+  .term-head{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+  .term-head .badge-lg{width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;flex:none;}
+  .term-head h2{margin:0;color:var(--navy);font-size:21px;}
+  .notation-tag{display:inline-block;background:#fdf8ec;border:1px solid var(--gold);border-radius:6px;padding:3px 10px;font-size:13.5px;font-weight:700;color:var(--navy);margin-top:8px;}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  svg.icon{display:block;}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 1: Foundations</div></div>
+      </div>
+      <div class="lesson-tag">Lesson 1.2 &middot; Definitions &amp; Undefined Terms</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
+  </div>
+
+  <div class="stage">
+
+    <!-- 1 -->
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">Some things in math are too basic to define.</h1>
+      <div class="card warm">
+        <p style="margin-bottom:0;">Last week you learned that every set has elements. Here's the twist: geometry's very first building blocks &mdash; <strong>point, line,</strong> and <strong>plane</strong> &mdash; are things we <em>never fully define</em>. We just agree what they mean and build everything else on top of them.</p>
+      </div>
+      <p>Think of it like the rules of a board game: someone has to say "this square is where you start" without explaining what a square <em>is</em> &mdash; everyone already knows. Point, line, and plane work the same way.</p>
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Describe a point, a line, and a plane, and draw each one</span></li>
+        <li><span class="num">2</span><span>Name them correctly using geometry notation</span></li>
+        <li><span class="num">3</span><span>Tell whether points are collinear or coplanar</span></li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Undefined Term 1 of 3</p>
+      <h1 class="slide-title">Point &mdash; an exact location, nothing more</h1>
+      <div class="dotpaper">
+        <div class="dim-bar">
+          <div class="dim-chip on">POINT &middot; 0-D</div>
+          <div class="dim-chip">LINE &middot; 1-D</div>
+          <div class="dim-chip">PLANE &middot; 2-D</div>
+        </div>
+        <div class="term-head"><div class="badge-lg">&bull;</div><h2>Point</h2></div>
+        <p>A <strong>point</strong> is an exact location. It has <strong>no size</strong> &mdash; no length, no width, no thickness. We just mark it with a dot so we have something to look at.</p>
+        <svg width="180" height="120" viewBox="0 0 180 120">
+          <circle cx="90" cy="60" r="4" fill="#0A1F3D"/>
+          <text x="100" y="55" font-size="18" fill="#0A1F3D" font-family="Georgia,serif" font-style="italic">P</text>
+        </svg>
+        <div class="notation-tag">Written as: point P &mdash; always a capital letter</div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:#555;"><strong>&#128161;</strong> The dot you draw isn't really the point &mdash; it's too big! A true point has zero size. The dot is just how we point at it (no pun intended).</p>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">Undefined Term 2 of 3</p>
+      <h1 class="slide-title">Line &mdash; a point stretched forever, in a straight path</h1>
+      <div class="dotpaper">
+        <div class="dim-bar">
+          <div class="dim-chip">POINT &middot; 0-D</div>
+          <div class="dim-chip on">LINE &middot; 1-D</div>
+          <div class="dim-chip">PLANE &middot; 2-D</div>
+        </div>
+        <div class="term-head"><div class="badge-lg">&#8596;</div><h2>Line</h2></div>
+        <p>A <strong>line</strong> is a straight path of points that goes on <strong>forever in both directions</strong>. It has length, but no width or thickness. Any <strong>two points</strong> determine exactly one line &mdash; there's only one straight path through both of them.</p>
+        <svg width="240" height="90" viewBox="0 0 240 90">
+          <line x1="20" y1="45" x2="220" y2="45" stroke="#0A1F3D" stroke-width="2.5"/>
+          <path d="M14 38 L22 45 L14 52" fill="none" stroke="#0A1F3D" stroke-width="2"/>
+          <path d="M226 38 L218 45 L226 52" fill="none" stroke="#0A1F3D" stroke-width="2"/>
+          <circle cx="80" cy="45" r="3.5" fill="#DB2F30"/>
+          <text x="76" y="32" font-size="16" fill="#DB2F30" font-family="Georgia,serif" font-style="italic">A</text>
+          <circle cx="160" cy="45" r="3.5" fill="#DB2F30"/>
+          <text x="156" y="32" font-size="16" fill="#DB2F30" font-family="Georgia,serif" font-style="italic">B</text>
+        </svg>
+        <div class="notation-tag">Written as: line AB, or with a double arrow over "AB", or a lowercase script letter like &#8467;</div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:#555;"><strong>&#128161;</strong> Those arrows on both ends aren't decoration &mdash; they're the notation telling you the line never stops. Compare that to 1.1: a line is really an <em>infinite set of points</em>.</p>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Undefined Term 3 of 3</p>
+      <h1 class="slide-title">Plane &mdash; a flat surface with no edges</h1>
+      <div class="dotpaper">
+        <div class="dim-bar">
+          <div class="dim-chip">POINT &middot; 0-D</div>
+          <div class="dim-chip">LINE &middot; 1-D</div>
+          <div class="dim-chip on">PLANE &middot; 2-D</div>
+        </div>
+        <div class="term-head"><div class="badge-lg">&#9647;</div><h2>Plane</h2></div>
+        <p>A <strong>plane</strong> is a flat surface that goes on forever in every direction &mdash; think of an endless tabletop with no edges. It has length and width, but no thickness. <strong>Three points</strong> that aren't all on the same line determine exactly one plane.</p>
+        <svg width="220" height="140" viewBox="0 0 220 140">
+          <polygon points="20,90 130,50 200,70 90,110" fill="#eef2fb" stroke="#0047BA" stroke-width="2"/>
+          <circle cx="60" cy="82" r="3.5" fill="#0A1F3D"/>
+          <text x="45" y="75" font-size="15" fill="#0A1F3D" font-family="Georgia,serif" font-style="italic">M</text>
+          <circle cx="140" cy="68" r="3.5" fill="#0A1F3D"/>
+          <text x="148" y="62" font-size="15" fill="#0A1F3D" font-family="Georgia,serif" font-style="italic">N</text>
+          <circle cx="110" cy="98" r="3.5" fill="#0A1F3D"/>
+          <text x="118" y="112" font-size="15" fill="#0A1F3D" font-family="Georgia,serif" font-style="italic">Q</text>
+        </svg>
+        <div class="notation-tag">Written as: plane MNQ, or a single script capital letter like plane &#119964;</div>
+      </div>
+      <p style="margin-top:14px;font-size:14px;color:#555;"><strong>&#128161;</strong> Why three points and not two? Two points only pin down a line &mdash; you could tilt a flat surface around that line in endless ways. A third point (off that line) locks the tilt in place.</p>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Two New Words</p>
+      <h1 class="slide-title">Collinear &amp; coplanar &mdash; things that share a home</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;">The prefix <strong>"co-"</strong> means "together." Keep that in mind and both words explain themselves.</p>
+      </div>
+      <div class="step">
+        <div class="badge">1</div>
+        <div class="content">
+          <div class="label">Collinear</div>
+          Points that lie on the <strong>same line</strong>. ("Co" + "linear" = together on a line.)
+        </div>
+      </div>
+      <div class="step">
+        <div class="badge">2</div>
+        <div class="content">
+          <div class="label">Coplanar</div>
+          Points that lie on the <strong>same plane</strong>. ("Co" + "planar" = together on a plane.)
+        </div>
+      </div>
+      <div class="card" style="text-align:center;padding:22px;">
+        <svg width="260" height="140" viewBox="0 0 260 140">
+          <line x1="20" y1="40" x2="240" y2="40" stroke="#0A1F3D" stroke-width="2"/>
+          <circle cx="60" cy="40" r="3.5" fill="#DB2F30"/><text x="55" y="28" font-size="14" font-family="Georgia,serif" font-style="italic">A</text>
+          <circle cx="140" cy="40" r="3.5" fill="#DB2F30"/><text x="135" y="28" font-size="14" font-family="Georgia,serif" font-style="italic">B</text>
+          <circle cx="200" cy="40" r="3.5" fill="#DB2F30"/><text x="195" y="28" font-size="14" font-family="Georgia,serif" font-style="italic">C</text>
+          <circle cx="110" cy="100" r="3.5" fill="#0047BA"/><text x="118" y="106" font-size="14" fill="#0047BA" font-family="Georgia,serif" font-style="italic">D</text>
+        </svg>
+        <p style="font-size:13.5px;color:#555;margin:4px 0 0;">A, B, and C are collinear (all on the line). D is not &mdash; it's off the line entirely.</p>
+      </div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Reading a diagram, step by step</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Points X, Y, and Z sit on line m. Point W sits above the line, off to the side.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Are X, Y, Z collinear?</div>Yes &mdash; the problem says they're on line m together.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Is W collinear with X, Y, Z?</div>No &mdash; W is off the line, not on it.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Could X, Y, Z, and W still be coplanar?</div>Yes! A flat surface could hold the whole line <em>and</em> point W at the same time &mdash; being off the line doesn't mean being off the plane.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">How would we name the line?</div>Line m, or line XY, or line YZ, or line XZ &mdash; any two of the three points work.</div></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">Four friends stand for a photo: three in a straight row, one who stepped forward out of the line to pose.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Are the three friends in the row collinear?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">Yes &mdash; they're all on the same straight line</button>
+          <button class="choice-btn" data-correct="false">No &mdash; they're different people</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Is the friend who stepped forward collinear with the other three?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="false">Yes, everyone in the photo is collinear</button>
+          <button class="choice-btn" data-correct="true">No, stepping out of line breaks collinearity</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Undefined terms are the foundation everything else stands on</h1>
+      <p>Every shape, every proof, every formula in this course eventually traces back to <strong>point, line,</strong> and <strong>plane</strong>. That's exactly why geometry doesn't try to define them further &mdash; they're the starting alphabet, not something built from smaller pieces.</p>
+      <h2 class="sub-title" style="margin-top:20px;">You already use these ideas every day</h2>
+      <ul>
+        <li>A pin on a map is a <strong>point</strong> &mdash; an exact location.</li>
+        <li>A tightrope, stretched perfectly straight, is a <strong>line</strong>.</li>
+        <li>A calm lake's surface is a <strong>plane</strong>.</li>
+      </ul>
+      <div class="card warm" style="margin-top:16px;">
+        <p style="margin-bottom:0;"><strong>Next week</strong> in Lesson 1.3, we'll meet <strong>postulates</strong> &mdash; statements about points, lines, and planes that we simply accept as true, no proof needed. Today's undefined terms are exactly what those postulates will be written about.</p>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">Which undefined term has zero size?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Point</button>
+          <button class="quiz-opt" data-correct="false">Line</button>
+          <button class="quiz-opt" data-correct="false">Plane</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">How many points does it take to determine exactly one line?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">One</button>
+          <button class="quiz-opt" data-correct="true">Two</button>
+          <button class="quiz-opt" data-correct="false">Three</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3 &mdash; True or False</div>
+        <div class="qtext">Any three points always determine a plane, even if they're all on the same line.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">True</button>
+          <button class="quiz-opt" data-correct="true">False &mdash; they must NOT all be on the same line</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4</div>
+        <div class="qtext">Points that lie on the same line are called...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Coplanar</button>
+          <button class="quiz-opt" data-correct="true">Collinear</button>
+          <button class="quiz-opt" data-correct="false">Undefined</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Point W is off a line containing points X, Y, Z. Can X, Y, Z, and W still be coplanar?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">Yes &mdash; a flat surface can hold the line and W at once</button>
+          <button class="quiz-opt" data-correct="false">No &mdash; being off the line means being off every plane too</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can describe and draw a point, a line, and a plane.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can name each one using correct geometry notation.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can tell whether points are collinear or coplanar.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Point</span>
+        <span class="term-pill">Line</span>
+        <span class="term-pill">Plane</span>
+        <span class="term-pill">Collinear</span>
+        <span class="term-pill">Coplanar</span>
+      </div>
+
+      <div class="next-box">
+        <strong>Next week &mdash; Lesson 1.3: An Ideal Geometry.</strong> We'll meet postulates &mdash; the first statements about points, lines, and planes we simply accept as true, and start building proofs from them.
+      </div>
+
+      <div class="end-actions">
+        <a class="end-btn primary next-lesson-link" href="1-3-an-ideal-geometry.html">Next Lesson: 1.3 &rarr;</a>
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          if (fb) { fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+</script>
+</body>
+</html>
