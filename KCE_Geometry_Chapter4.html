@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 4: Congruent Triangles</title>
+<style>
+  :root{
+    --navy:#0A1F3D;
+    --gold:#C9A84C;
+    --blue:#0047BA;
+    --red:#DB2F30;
+    --cream:#FAF7EF;
+    --ink:#1c1c1c;
+    --line:#E3DDC9;
+    --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:var(--navy);
+    color:var(--ink);
+    line-height:1.55;
+  }
+
+  .app{
+    max-width:920px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 40px rgba(0,0,0,.35);
+  }
+
+  /* ---------- masthead ---------- */
+  .masthead{
+    background:var(--navy);
+    padding:18px 28px 14px;
+  }
+  .mast-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{
+    color:#fff;
+    font-size:13px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(201,168,76,.5);
+    padding:5px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:40px 34px 8px;
+    text-align:center;
+  }
+  .chapter-eyebrow{
+    color:var(--blue);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin:0 0 8px;
+  }
+  h1.chapter-title{
+    color:var(--navy);
+    font-size:34px;
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+  .chapter-sub{
+    font-size:16px;
+    color:#444;
+    max-width:560px;
+    margin:0 auto 8px;
+  }
+
+  /* ---------- lesson grid ---------- */
+  .stage{padding:24px 34px 40px;}
+  .lesson-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){
+    .lesson-grid{grid-template-columns:1fr;}
+  }
+  .lesson-card{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 18px 18px 16px;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .lesson-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(10,31,61,.12);
+    border-color:var(--blue);
+  }
+  .lesson-num{
+    flex:none;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    font-weight:700;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lesson-body{flex:1;}
+  .lesson-title{
+    font-weight:700;
+    font-size:16.5px;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .lesson-desc{
+    font-size:14px;
+    color:#555;
+  }
+  .lesson-arrow{
+    flex:none;
+    color:var(--blue);
+    font-size:20px;
+    font-weight:700;
+    align-self:center;
+  }
+
+  .footer-brand{
+    background:var(--navy);color:#cfd6e4;text-align:center;
+    font-size:11px;letter-spacing:1.5px;padding:14px;
+    margin-top:auto;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div>
+          <div class="wordmark">KingCretot Experience</div>
+          <div class="course-tag">Geometry &middot; Curriculum Overview</div>
+        </div>
+      </div>
+      <div class="lesson-tag">Chapter 4 &middot; 7 Lessons</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="hero">
+    <p class="chapter-eyebrow">Chapter 4</p>
+    <h1 class="chapter-title">Congruent Triangles</h1>
+    <p class="chapter-sub">Seven lessons, one per week. Start with 4.1 if this is your first time through, or open whichever lesson matches where your class is right now.</p>
+  </div>
+
+  <div class="stage">
+    <div class="lesson-grid">
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-1-angles-in-triangles.html">
+        <div class="lesson-num">4.1</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Angles in Triangles</div>
+          <div class="lesson-desc">The Triangle Angle-Sum Theorem, the Exterior Angle Theorem, and classifying triangles</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-2-congruent-figures.html">
+        <div class="lesson-num">4.2</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Congruent Figures</div>
+          <div class="lesson-desc">Corresponding parts and how to write a correct congruence statement</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-3-congruence-postulates.html">
+        <div class="lesson-num">4.3</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Congruence Postulates</div>
+          <div class="lesson-desc">SSS, SAS, and ASA &mdash; the three shortcuts for proving triangles congruent</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-4-applying-congruence-postulates.html">
+        <div class="lesson-num">4.4</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Applying Congruence Postulates</div>
+          <div class="lesson-desc">Two-column proofs, plus why AAA and SSA never guarantee congruence</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-5-conditions-for-congruent-triangles.html">
+        <div class="lesson-num">4.5</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Conditions for Congruent Triangles</div>
+          <div class="lesson-desc">Two more valid shortcuts: AAS and the right-triangle-only HL Theorem</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-6-right-triangle-congruence.html">
+        <div class="lesson-num">4.6</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Right Triangle Congruence</div>
+          <div class="lesson-desc">Deeper HL practice and CPCTC &mdash; unlocking parts you weren't given</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%204%20-%20Congruent%20Triangles/4-7-coordinate-geometry-of-triangles.html">
+        <div class="lesson-num">4.7</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Coordinate Geometry of Triangles</div>
+          <div class="lesson-desc">Proving congruence with the Distance &amp; Slope Formulas on the coordinate plane</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; CHAPTER 4: CONGRUENT TRIANGLES &middot; INTERNAL / STUDENT USE</div>
+</div>
+</body>
+</html>
