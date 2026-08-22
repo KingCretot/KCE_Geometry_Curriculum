@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Lesson 3.5: Equations of Lines</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .card.red{background:#fdeeee;border-left:5px solid var(--red);}
+
+  /* ---- 3.5 visual signature: formula cards + line-graph diagrams ---- */
+  .formula-card{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:14px;text-align:center;}
+  .formula-card .fname{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .formula-card .fexpr{font-size:19px;font-family:Georgia,serif;font-style:italic;}
+  .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
+  .angle-tag{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .chapter-complete{background:linear-gradient(135deg, var(--navy), #142a4d);color:#fff;border-radius:14px;padding:26px 24px;text-align:center;margin-top:18px;border:2px solid var(--gold);}
+  .chapter-complete .cc-title{font-size:22px;font-weight:800;color:var(--gold);margin-bottom:8px;}
+  .chapter-complete .cc-sub{font-size:14.5px;color:#dce3f0;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;justify-content:center;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 3: Parallel &amp; Perpendicular Lines</div></div>
+      </div>
+      <div class="lesson-tag">Lesson 3.5 &middot; Equations of Lines</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+  </div>
+
+  <div class="stage">
+
+    <!-- 1 -->
+    <section class="slide active" data-slide="1">
+      <p class="eyebrow">Let's Begin &mdash; Final Lesson of Chapter 3!</p>
+      <h1 class="slide-title">From a slope and a point, to a full equation</h1>
+      <div class="card warm">
+        <p style="margin-bottom:0;">Every idea from this chapter &mdash; parallel angle relationships, constructions, distance, midpoint, slope &mdash; lands here. Today you'll write the actual equation of a line, and use everything you've learned to write equations for lines parallel or perpendicular to a given one.</p>
+      </div>
+      <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
+      <ul class="obj-list">
+        <li><span class="num">1</span><span>Write the equation of a line in slope-intercept form</span></li>
+        <li><span class="num">2</span><span>Write the equation of a line in point-slope form</span></li>
+        <li><span class="num">3</span><span>Write the equation of a line parallel or perpendicular to a given line</span></li>
+      </ul>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide" data-slide="2">
+      <p class="eyebrow">Form 1</p>
+      <h1 class="slide-title">Slope-intercept form</h1>
+      <div class="formula-card">
+        <div class="fname">Slope-Intercept Form</div>
+        <div class="fexpr">y = mx + b</div>
+      </div>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>m</strong> is the slope from Lesson 3.4. <strong>b</strong> is the y-intercept &mdash; the point where the line crosses the y-axis, at (0, b). This form is easiest to use when you already know both the slope and where the line crosses the y-axis.</p>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide" data-slide="3">
+      <p class="eyebrow">Form 2</p>
+      <h1 class="slide-title">Point-slope form</h1>
+      <div class="formula-card">
+        <div class="fname">Point-Slope Form</div>
+        <div class="fexpr">y &minus; y&#8321; = m(x &minus; x&#8321;)</div>
+      </div>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>(x&#8321;, y&#8321;)</strong> is any known point on the line, and <strong>m</strong> is the slope. Use this form whenever you're given a slope and a single point that isn't the y-intercept &mdash; then simplify into slope-intercept form if needed.</p>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="slide" data-slide="4">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Writing an equation from a point and a slope</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Write the equation of the line through (2, 5) with slope 3.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Start with point-slope form</div>y &minus; 5 = 3(x &minus; 2)</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Distribute</div>y &minus; 5 = 3x &minus; 6</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Solve for y &mdash; slope-intercept form</div>y = 3x &minus; 1</div></div>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide" data-slide="5">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Writing a parallel line's equation</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Write the equation of the line parallel to y = 2x + 1 that passes through (3, 4).</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Parallel lines share a slope</div>The new line must also have slope m = 2.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Use point-slope form</div>y &minus; 4 = 2(x &minus; 3)</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Simplify</div>y &minus; 4 = 2x &minus; 6 &nbsp;&rarr;&nbsp; y = 2x &minus; 2</div></div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide" data-slide="6">
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">Write the equation of the line perpendicular to y = 1/2x + 3 that passes through (4, 1).</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What slope must the new line have?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="false">1/2, same as the given line</button>
+          <button class="choice-btn" data-correct="true">&minus;2, the negative reciprocal of 1/2</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Using point-slope form with slope &minus;2 and point (4, 1), then simplifying, what is the final equation?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">y = &minus;2x + 9</button>
+          <button class="choice-btn" data-correct="false">y = &minus;2x + 1</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+      </div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Every straight design decision, written as one equation</h1>
+      <p>An architect designing a roofline that must stay parallel to an existing roof, or a road engineer laying out a new street that must intersect an existing one at a true right angle, writes exactly these equations before a single beam is cut or a single foot of asphalt is poured.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> economists use slope-intercept form constantly &mdash; a cost equation like C = 15x + 200 (m = 15, b = 200) says exactly what you learned today: 200 is a fixed starting cost, and 15 is the rate the cost climbs for each additional unit.</p>
+      </div>
+      <div class="chapter-complete">
+        <div class="cc-title">&#127881; Chapter 3 Complete!</div>
+        <div class="cc-sub">Transversal angle relationships, converse proofs, compass constructions, and coordinate-plane formulas &mdash; you've now got a complete toolkit for parallel and perpendicular lines.</div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide" data-slide="8">
+      <p class="eyebrow">Mini Knowledge Test</p>
+      <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
+
+      <div class="quiz-q" data-quiz="q1">
+        <div class="qnum">Question 1</div>
+        <div class="qtext">In y = mx + b, what does b represent?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">The slope</button>
+          <button class="quiz-opt" data-correct="true">The y-intercept</button>
+          <button class="quiz-opt" data-correct="false">A point on the x-axis</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q2">
+        <div class="qnum">Question 2</div>
+        <div class="qtext">Which form is best when you're given a slope and one point that is NOT the y-intercept?</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="false">Slope-intercept form</button>
+          <button class="quiz-opt" data-correct="true">Point-slope form</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q3">
+        <div class="qnum">Question 3</div>
+        <div class="qtext">A line parallel to y = 5x &minus; 2 must have slope...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">5</button>
+          <button class="quiz-opt" data-correct="false">&minus;1/5</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q4">
+        <div class="qnum">Question 4</div>
+        <div class="qtext">A line perpendicular to y = 4x + 1 must have slope...</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">&minus;1/4</button>
+          <button class="quiz-opt" data-correct="false">4</button>
+        </div>
+      </div>
+
+      <div class="quiz-q" data-quiz="q5">
+        <div class="qnum">Question 5</div>
+        <div class="qtext">Write the equation of a line through (0, 3) with slope &minus;2.</div>
+        <div class="quiz-opts">
+          <button class="quiz-opt" data-correct="true">y = &minus;2x + 3</button>
+          <button class="quiz-opt" data-correct="false">y = 3x &minus; 2</button>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
+      <p class="eyebrow">Debrief</p>
+      <h1 class="slide-title">What we learned today</h1>
+
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write the equation of a line in slope-intercept form.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write the equation of a line in point-slope form.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write equations of lines parallel or perpendicular to a given line.</div>
+
+      <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
+      <div>
+        <span class="term-pill">Slope-Intercept Form</span>
+        <span class="term-pill">Point-Slope Form</span>
+        <span class="term-pill">y-intercept</span>
+      </div>
+
+      <div class="chapter-complete">
+        <div class="cc-title">&#127881; Chapter 3: Parallel &amp; Perpendicular Lines &mdash; Complete!</div>
+        <div class="cc-sub">Five lessons, from angle relationships all the way to full line equations. Great work.</div>
+      </div>
+
+      <div class="end-actions">
+        <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83c\udf89 Chapter 3 complete \u2014 fantastic work!');
+      goTo(1);
+    });
+  });
+
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (btn.dataset.correct === 'true') {
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+        } else {
+          btn.classList.add('incorrect');
+          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
+          if (fb) { fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+        }
+      });
+    });
+  });
+
+  var quizAnswered = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        quizAnswered[qid] = (btn.dataset.correct === 'true');
+        q.querySelectorAll('.quiz-opt').forEach(function(b){
+          b.disabled = true;
+          if (b.dataset.correct === 'true') b.classList.add('correct');
+          else if (b === btn) b.classList.add('incorrect');
+        });
+        updateScore();
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+  }
+</script>
+</body>
+</html>
