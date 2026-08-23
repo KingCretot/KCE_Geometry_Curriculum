@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 6: Quadrilaterals</title>
+<style>
+  :root{
+    --navy:#0A1F3D;
+    --gold:#C9A84C;
+    --blue:#0047BA;
+    --red:#DB2F30;
+    --cream:#FAF7EF;
+    --ink:#1c1c1c;
+    --line:#E3DDC9;
+    --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:var(--navy);
+    color:var(--ink);
+    line-height:1.55;
+  }
+
+  .app{
+    max-width:920px;
+    margin:0 auto;
+    min-height:100vh;
+    background:var(--cream);
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 0 40px rgba(0,0,0,.35);
+  }
+
+  .masthead{
+    background:var(--navy);
+    padding:18px 28px 14px;
+  }
+  .mast-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{
+    color:#fff;
+    font-size:13px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(201,168,76,.5);
+    padding:5px 12px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+
+  .hero{
+    padding:40px 34px 8px;
+    text-align:center;
+  }
+  .chapter-eyebrow{
+    color:var(--blue);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin:0 0 8px;
+  }
+  h1.chapter-title{
+    color:var(--navy);
+    font-size:34px;
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+  .chapter-sub{
+    font-size:16px;
+    color:#444;
+    max-width:560px;
+    margin:0 auto 8px;
+  }
+
+  .stage{padding:24px 34px 40px;}
+  .lesson-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  @media(max-width:640px){
+    .lesson-grid{grid-template-columns:1fr;}
+  }
+  .lesson-card{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 18px 18px 16px;
+    text-decoration:none;
+    color:inherit;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .lesson-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(10,31,61,.12);
+    border-color:var(--blue);
+  }
+  .lesson-num{
+    flex:none;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--navy);
+    color:var(--gold);
+    font-weight:700;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lesson-body{flex:1;}
+  .lesson-title{
+    font-weight:700;
+    font-size:16.5px;
+    color:var(--navy);
+    margin-bottom:4px;
+  }
+  .lesson-desc{
+    font-size:14px;
+    color:#555;
+  }
+  .lesson-arrow{
+    flex:none;
+    color:var(--blue);
+    font-size:20px;
+    font-weight:700;
+    align-self:center;
+  }
+
+  .footer-brand{
+    background:var(--navy);color:#cfd6e4;text-align:center;
+    font-size:11px;letter-spacing:1.5px;padding:14px;
+    margin-top:auto;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div>
+          <div class="wordmark">KingCretot Experience</div>
+          <div class="course-tag">Geometry &middot; Curriculum Overview</div>
+        </div>
+      </div>
+      <div class="lesson-tag">Chapter 6 &middot; 6 Lessons</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="hero">
+    <p class="chapter-eyebrow">Chapter 6</p>
+    <h1 class="chapter-title">Quadrilaterals</h1>
+    <p class="chapter-sub">Six lessons, one per week. Start with 6.1 if this is your first time through, or open whichever lesson matches where your class is right now.</p>
+  </div>
+
+  <div class="stage">
+    <div class="lesson-grid">
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-1-classifying-quadrilaterals.html">
+        <div class="lesson-num">6.1</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Classifying Quadrilaterals</div>
+          <div class="lesson-desc">The definition of a quadrilateral and the full parallelogram/trapezoid hierarchy</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-2-characteristics-of-parallelograms.html">
+        <div class="lesson-num">6.2</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Characteristics of Parallelograms</div>
+          <div class="lesson-desc">Opposite sides, opposite angles, consecutive angles, and the diagonal-bisecting property</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-3-proofs-of-parallelograms.html">
+        <div class="lesson-num">6.3</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Proofs of Parallelograms</div>
+          <div class="lesson-desc">Five valid methods for proving a quadrilateral is a parallelogram</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-4-rectangles-rhombi-squares.html">
+        <div class="lesson-num">6.4</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Rectangles, Rhombi &amp; Squares</div>
+          <div class="lesson-desc">Bonus diagonal properties layered on top of the parallelogram foundation</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-5-trapezoids-kites.html">
+        <div class="lesson-num">6.5</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Trapezoids &amp; Kites</div>
+          <div class="lesson-desc">Bases, legs, the Midsegment Theorem, and the properties of a kite</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+      <a class="lesson-card" href="Chapter%206%20-%20Quadrilaterals/6-6-coordinate-geometry-of-quadrilaterals.html">
+        <div class="lesson-num">6.6</div>
+        <div class="lesson-body">
+          <div class="lesson-title">Coordinate Geometry of Quadrilaterals</div>
+          <div class="lesson-desc">Using Distance and Slope Formulas to fully classify a quadrilateral</div>
+        </div>
+        <div class="lesson-arrow">&rarr;</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; CHAPTER 6: QUADRILATERALS &middot; INTERNAL / STUDENT USE</div>
+</div>
+</body>
+</html>
