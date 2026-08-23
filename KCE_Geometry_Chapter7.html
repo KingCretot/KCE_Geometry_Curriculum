@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 7: Area</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:30px 28px 26px;text-align:center;}
+  .brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:17px;letter-spacing:.5px;font-weight:600;}
+  .chapter-eyebrow{color:#cfd6e4;font-size:12px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;}
+  .chapter-title{color:#fff;font-size:32px;font-weight:700;margin:0;}
+  .chapter-sub{color:#cfd6e4;font-size:15px;margin-top:8px;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .body{padding:34px 36px 40px;}
+  .intro{background:#fdf8ec;border-left:5px solid var(--gold);border-radius:0 10px 10px 0;padding:18px 22px;margin-bottom:28px;font-size:15.5px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .lesson-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--ink);display:block;transition:.15s;position:relative;}
+  .lesson-card:hover{border-color:var(--blue);box-shadow:0 4px 14px rgba(0,71,186,.12);}
+  .lesson-num{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .lesson-name{color:var(--navy);font-size:16.5px;font-weight:700;margin:0 0 6px;line-height:1.3;}
+  .lesson-desc{color:#555;font-size:13.5px;margin:0;}
+  .terminal-tag{position:absolute;top:14px;right:14px;background:var(--gold);color:var(--navy);font-size:10.5px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:12px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:14px;}
+  @media(max-width:600px){
+    .grid{grid-template-columns:1fr;}
+    .body{padding:24px 20px 30px;}
+    .chapter-title{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="brand">
+      <div class="kc"><span class="inner">KC</span></div>
+      <div class="wordmark">KingCretot Experience</div>
+    </div>
+    <div class="chapter-eyebrow">KCE Geometry &middot; Chapter 7</div>
+    <h1 class="chapter-title">Area</h1>
+    <div class="chapter-sub">Six lessons &middot; From rectangles and triangles to circles, sectors &amp; segments</div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="body">
+    <div class="intro">
+      Chapter 7 shifts from shape and structure to <strong>measurement</strong> &mdash; calculating the two-dimensional space enclosed by a figure. Every formula builds on geometry already mastered in Chapters 1&ndash;6: parallelogram and triangle properties, coordinate geometry, and quadrilateral classification all resurface here as area tools.
+    </div>
+
+    <div class="grid">
+      <a class="lesson-card" href="7-1-areas-of-rectangles-parallelograms-triangles.html">
+        <div class="lesson-num">7.1</div>
+        <div class="lesson-name">Areas of Rectangles, Parallelograms &amp; Triangles</div>
+        <p class="lesson-desc">The three foundational base &times; height formulas.</p>
+      </a>
+      <a class="lesson-card" href="7-2-areas-of-other-quadrilaterals.html">
+        <div class="lesson-num">7.2</div>
+        <div class="lesson-name">Areas of Other Quadrilaterals</div>
+        <p class="lesson-desc">Trapezoids, rhombi, and kites.</p>
+      </a>
+      <a class="lesson-card" href="7-3-the-pythagorean-theorem.html">
+        <div class="lesson-num">7.3</div>
+        <div class="lesson-name">The Pythagorean Theorem</div>
+        <p class="lesson-desc">Finding a missing side length in any right triangle.</p>
+      </a>
+      <a class="lesson-card" href="7-4-special-right-triangles.html">
+        <div class="lesson-num">7.4</div>
+        <div class="lesson-name">Special Right Triangles</div>
+        <p class="lesson-desc">45-45-90 and 30-60-90 fixed-ratio shortcuts.</p>
+      </a>
+      <a class="lesson-card" href="7-5-areas-of-regular-polygons.html">
+        <div class="lesson-num">7.5</div>
+        <div class="lesson-name">Areas of Regular Polygons</div>
+        <p class="lesson-desc">Center, radius, apothem, and the unified polygon formula.</p>
+      </a>
+      <a class="lesson-card" href="7-6-circles-sectors-segments.html">
+        <div class="terminal-tag">CHAPTER COMPLETE</div>
+        <div class="lesson-num">7.6</div>
+        <div class="lesson-name">Circles, Sectors &amp; Segments</div>
+        <p class="lesson-desc">Full circles, pie-slice sectors, and chord-cut segments.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+</body>
+</html>
