@@ -220,6 +220,7 @@
           <button class="choice-btn" data-correct="false">ASA</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Two sides and the angle between them is SAS. ASA would need two angles with a side between them.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A diagram marks only two angles congruent, with no side information given at all. Is that enough to prove congruence?</p>
         <div class="choice-row" data-q="gp2">
@@ -227,6 +228,7 @@
           <button class="choice-btn" data-correct="true">No &mdash; at least one side pair must also be marked congruent</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> No. Two angles fix the shape but not the size, the same problem as AAA. You need at least one pair of matching sides to lock the size in place.</div>
       </div>
     </section>
 
@@ -255,6 +257,7 @@
           <button class="quiz-opt" data-correct="true">SSS</button>
           <button class="quiz-opt" data-correct="false">AAA</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> All three sides marked congruent means SSS. AAA isn't a valid method at all.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -264,6 +267,7 @@
           <button class="quiz-opt" data-correct="true">AAS</button>
           <button class="quiz-opt" data-correct="false">SSA</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Two angles and a side that isn't between them is AAS, which is valid. SSA would be two sides and an angle, and SSA isn't valid.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -273,6 +277,7 @@
           <button class="quiz-opt" data-correct="true">Not enough information to prove congruence</button>
           <button class="quiz-opt" data-correct="false">The triangles are congruent by AAA</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> With only angles marked, you can't prove the triangles congruent. Matching angles show the same shape but say nothing about size.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -282,6 +287,7 @@
           <button class="quiz-opt" data-correct="true">SAS</button>
           <button class="quiz-opt" data-correct="false">SSA</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Two sides with the angle between them is SAS. SSA describes an angle that is <em>not</em> between the sides, and that doesn't prove congruence.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -291,6 +297,7 @@
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. So far the four valid methods are SSS, SAS, ASA, and AAS. SSA and AAA are not on the list. HL, for right triangles only, comes in the next lesson.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

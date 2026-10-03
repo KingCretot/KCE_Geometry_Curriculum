@@ -215,6 +215,7 @@
           <button class="choice-btn" data-correct="false">SAS</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> All three pairs of sides match and nothing is said about angles, so SSS applies. Three fixed side lengths lock a triangle's shape, which is why triangular trusses keep bridges rigid. SAS would need an angle.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Two triangles have two congruent sides and a congruent angle, but the angle is NOT between the two given sides. Does SAS apply?</p>
         <div class="choice-row" data-q="gp2">
@@ -222,6 +223,7 @@
           <button class="choice-btn" data-correct="true">No &mdash; SAS requires the angle to be included, between the two sides</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> No. SAS needs the angle to be <em>between</em> the two sides, like a hinge joining two boards. If the angle isn't between them, the third side can swing to more than one position.</div>
       </div>
     </section>
 
@@ -250,6 +252,7 @@
           <button class="quiz-opt" data-correct="true">All three sides</button>
           <button class="quiz-opt" data-correct="false">All three angles</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> SSS stands for Side-Side-Side, so all three pairs of sides must match. Three angles alone don't fix the size of a triangle.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -259,6 +262,7 @@
           <button class="quiz-opt" data-correct="true">Included, between the two given sides</button>
           <button class="quiz-opt" data-correct="false">Any angle in the triangle</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> In SAS, the angle has to be included, meaning it sits between the two given sides. That's the hinge that locks the third side in place.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -268,6 +272,7 @@
           <button class="quiz-opt" data-correct="true">Included, between the two given angles</button>
           <button class="quiz-opt" data-correct="false">Any side of the triangle</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> In ASA, the side has to be included, between the two given angles. The side connects the two angles' vertices, which fixes the triangle exactly.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -277,6 +282,7 @@
           <button class="quiz-opt" data-correct="true">ASA</button>
           <button class="quiz-opt" data-correct="false">SSS</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Two angles with the side between them is ASA. SSS would need all three sides.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -286,6 +292,7 @@
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. SSS, SAS, and ASA each use exactly three matching parts. Three of the right parts are enough to guarantee all six match.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

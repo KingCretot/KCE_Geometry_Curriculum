@@ -233,13 +233,15 @@
           <button class="choice-btn" data-correct="false">73&deg;</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The three angles of a triangle always add to 180&deg;, so &ang;Z = 180&deg; &minus; 90&deg; &minus; 37&deg; = 53&deg;. 73&deg; comes from forgetting to subtract the right angle along with the 37&deg;.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; What is the exterior angle at X?</p>
         <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="false">90&deg;</button>
-          <button class="choice-btn" data-correct="true">90&deg; &mdash; the sum of &ang;Y and &ang;Z (37&deg; + 53&deg;)</button>
+          <button class="choice-btn" data-correct="false">143&deg; &mdash; 180&deg; minus &ang;Y</button>
+          <button class="choice-btn" data-correct="true">90&deg; &mdash; the sum of &ang;Y and &ang;Z</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> An exterior angle equals the sum of the two interior angles that aren't next to it: &ang;Y + &ang;Z = 37&deg; + 53&deg; = 90&deg;. You can also check it with a straight line: 180&deg; &minus; 90&deg; = 90&deg;. 143&deg; comes from subtracting the wrong angle; the exterior angle at X sits next to &ang;X, so you subtract &ang;X, not &ang;Y.</div>
       </div>
     </section>
 
@@ -269,6 +271,7 @@
           <button class="quiz-opt" data-correct="true">180&deg;</button>
           <button class="quiz-opt" data-correct="false">360&deg;</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Every triangle's interior angles add to 180&deg;. Tear off the three corners of a paper triangle and line them up, and they form a straight line. 360&deg; is the total for a quadrilateral.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -278,6 +281,7 @@
           <button class="quiz-opt" data-correct="true">50&deg;</button>
           <button class="quiz-opt" data-correct="false">70&deg;</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> 180&deg; &minus; 40&deg; &minus; 90&deg; = 50&deg;. 70&deg; is what you'd get if you forgot the 40&deg; or subtracted it from 110 instead of 140.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -287,6 +291,7 @@
           <button class="quiz-opt" data-correct="true">The two non-adjacent interior angles</button>
           <button class="quiz-opt" data-correct="false">All three interior angles</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> An exterior angle equals the sum of the two remote interior angles, the two that aren't touching it. Together, the exterior angle and its neighbor make a straight 180&deg;, and the other two angles fill in exactly that same amount.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -296,6 +301,7 @@
           <button class="quiz-opt" data-correct="true">135&deg;</button>
           <button class="quiz-opt" data-correct="false">45&deg;</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> The exterior angle equals the sum of the two interior angles that aren't next to it: 55&deg; + 80&deg; = 135&deg;. 45&deg; is the third <em>interior</em> angle, which is the one sitting next to the exterior angle.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -305,6 +311,7 @@
           <button class="quiz-opt" data-correct="false">True</button>
           <button class="quiz-opt" data-correct="true">False &mdash; it's always 180&deg;, for every triangle</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> False. The 180&deg; rule holds for every triangle, whether it's tall, flat, right, or obtuse. That's what makes it so useful.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

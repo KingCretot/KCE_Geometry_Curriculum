@@ -213,6 +213,7 @@
           <button class="choice-btn" data-correct="false">SSA (not valid)</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Two right triangles with congruent hypotenuses and one pair of congruent legs are congruent by the HL Theorem. The guaranteed right angle removes the swinging problem that normally makes SSA fail.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Two triangles have congruent hypotenuses and one congruent leg, but neither triangle is marked with a right angle. Does HL apply?</p>
         <div class="choice-row" data-q="gp2">
@@ -220,6 +221,7 @@
           <button class="choice-btn" data-correct="true">No &mdash; HL requires confirmed right angles first</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> No. HL works only when both triangles are confirmed to have right angles. Without the right-angle marks you're back to SSA, which can't prove congruence.</div>
       </div>
     </section>
 
@@ -248,6 +250,7 @@
           <button class="quiz-opt" data-correct="true">The side across from the right angle, always the longest</button>
           <button class="quiz-opt" data-correct="false">Either of the two shorter sides</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The hypotenuse is the side across from the right angle, and it's always the longest side. On a ladder leaning against a wall, the ladder itself is the hypotenuse.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -257,6 +260,7 @@
           <button class="quiz-opt" data-correct="true">Congruent hypotenuses and one congruent leg</button>
           <button class="quiz-opt" data-correct="false">Congruent hypotenuses only</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> HL needs congruent hypotenuses <em>and</em> one pair of congruent legs. The hypotenuse alone isn't enough, because many right triangles share the same hypotenuse length.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -266,6 +270,7 @@
           <button class="quiz-opt" data-correct="true">The guaranteed 90&deg; angle removes SSA's usual ambiguity</button>
           <button class="quiz-opt" data-correct="false">Right triangles are simply easier to draw</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> With the 90&deg; angle locked in, the third side can only land in one spot. The Pythagorean Theorem fixes the last side's length, so SSA's usual two-triangle problem disappears.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -275,6 +280,7 @@
           <button class="quiz-opt" data-correct="true">Both triangles have a marked right angle</button>
           <button class="quiz-opt" data-correct="false">All three sides are marked</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> First confirm that both triangles have a marked right angle. HL depends on that right angle, and without it the theorem doesn't apply.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -284,6 +290,7 @@
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. HL gives a hypotenuse, a leg, and a right angle that isn't between them, which is SSA. The right angle is what makes this one special case reliable.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>

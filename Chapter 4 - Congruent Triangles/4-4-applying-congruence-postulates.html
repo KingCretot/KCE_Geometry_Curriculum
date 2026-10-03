@@ -218,6 +218,7 @@
           <button class="choice-btn" data-correct="false">SSA</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> Two angles plus a side that isn't between them is AAS, which is valid. Once two angles match, the third angle must match too, because all three add to 180&deg;. SSA is not a valid shortcut.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A diagram shows all three pairs of angles congruent, with no side information at all. Can you conclude the triangles are congruent?</p>
         <div class="choice-row" data-q="gp2">
@@ -225,6 +226,7 @@
           <button class="choice-btn" data-correct="true">No &mdash; AAA only proves the same shape, not the same size</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> No. Matching angles guarantee the same shape but not the same size. A photo and its enlargement have identical angles, but one is bigger.</div>
       </div>
     </section>
 
@@ -253,6 +255,7 @@
           <button class="quiz-opt" data-correct="true">A non-included side</button>
           <button class="quiz-opt" data-correct="false">The included side</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> AAS uses two angles and a side that is <em>not</em> between them. If the side were between the angles, it would be ASA.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -262,6 +265,7 @@
           <button class="quiz-opt" data-correct="true">It only guarantees the same shape, not the same size</button>
           <button class="quiz-opt" data-correct="false">It's actually valid, just rarely used</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> AAA guarantees the same shape but not the same size. A small triangle and a giant one can have exactly the same angles, like a slice of pizza and a whole pizza-shaped sign.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -271,6 +275,7 @@
           <button class="quiz-opt" data-correct="true">It can produce two different valid triangles</button>
           <button class="quiz-opt" data-correct="false">It only works for right triangles</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> SSA can produce two different triangles from the same information. The side across from the given angle can swing into two different positions, like a door that can close at two different spots. Since the triangle isn't fixed, it can't prove congruence.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -280,6 +285,7 @@
           <button class="quiz-opt" data-correct="true">ASA</button>
           <button class="quiz-opt" data-correct="false">SSS</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> AAS is ASA in disguise. If two angles match, the third angle matches too (180&deg; rule), and then the given side ends up between two matching angles. That's ASA.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -289,6 +295,7 @@
           <button class="quiz-opt" data-correct="false">True</button>
           <button class="quiz-opt" data-correct="true">False &mdash; neither one is ever valid for proving congruence</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> False. Neither SSA nor AAA is a valid way to prove congruence, because both can describe triangles that aren't the same. The one exception you'll see in Lesson 4.6 is HL, which works only for right triangles.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
