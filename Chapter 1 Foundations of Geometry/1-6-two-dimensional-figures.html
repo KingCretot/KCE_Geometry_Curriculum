@@ -103,6 +103,14 @@
     .nav{padding:14px 16px 18px;}
     .nav .dots{display:none;}
   }
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
 </style>
 </head>
 <body>
@@ -139,6 +147,10 @@
         <li><span class="num">2</span><span>Tell convex figures apart from concave figures</span></li>
         <li><span class="num">3</span><span>Identify a regular polygon</span></li>
       </ul>
+          <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
+      </div>
     </section>
 
     <!-- 2 -->
@@ -242,6 +254,7 @@
           <button class="choice-btn" data-correct="false">Hexagon</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> &ldquo;Octa-&rdquo; means eight, as in an octopus's eight arms. A polygon with 8 sides is an octagon. A hexagon has 6 sides.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Regular or irregular?</p>
         <div class="choice-row" data-q="gp2">
@@ -249,6 +262,7 @@
           <button class="choice-btn" data-correct="false">Irregular &mdash; it has 8 sides</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> A polygon is regular when all its sides are equal <em>and</em> all its angles are equal. The stop sign has both, so it's regular. Having 8 sides is just its name and doesn't make it irregular.</div>
       </div>
     </section>
 
@@ -279,6 +293,7 @@
           <button class="quiz-opt" data-correct="false">Ray</button>
           <button class="quiz-opt" data-correct="false">Plane</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> A polygon is a closed figure made of straight sides that meet only at their endpoints, like a triangle or a picture frame. A ray has no closed shape, and a plane is a flat surface that goes on forever.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -289,6 +304,7 @@
           <button class="quiz-opt" data-correct="true">Pentagon</button>
           <button class="quiz-opt" data-correct="false">Octagon</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> &ldquo;Penta-&rdquo; means five, and the Pentagon building has five sides. A hexagon has 6 sides and an octagon has 8.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -299,6 +315,7 @@
           <button class="quiz-opt" data-correct="true">Concave</button>
           <button class="quiz-opt" data-correct="false">Regular</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> A concave polygon has at least one side that caves inward, like an arrowhead or a star. You can remember it as having a &ldquo;cave.&rdquo; A convex polygon has no dents.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -308,6 +325,7 @@
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False &mdash; equal sides alone is enough</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> True. A regular polygon needs both conditions. A rhombus has four equal sides, but its angles can be different, so it isn't regular unless it's a square.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -318,9 +336,11 @@
           <button class="quiz-opt" data-correct="true">Hexagon</button>
           <button class="quiz-opt" data-correct="false">Octagon</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Bees build honeycomb from regular hexagons. Hexagons fit together with no gaps and use the least wax for the space they hold.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <!-- 10 -->
@@ -408,38 +428,83 @@
     });
   });
 
+  // Shuffle answer order so the correct answer isn't always in the same spot
+  function shuffleKids(el){ var k=Array.prototype.slice.call(el.children); for(var i=k.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=k[i];k[i]=k[j];k[j]=t;} k.forEach(function(c){el.appendChild(c);}); }
+  document.querySelectorAll('.choice-row, .quiz-opts').forEach(shuffleKids);
+
+  // Guided practice: two attempts, then reveal + explanation
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          if (fb) { fb.textContent = 'Not quite \u2014 the correct answer is highlighted in green.'; fb.className = 'feedback bad'; }
+          btn.disabled = true;
+          var left = row.querySelectorAll('.choice-btn:not(.incorrect)').length;
+          if (attempts >= 2 || left <= 1) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (fb) { fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.'; fb.className = 'feedback bad'; }
+            if (exBox) exBox.classList.add('show');
+          } else {
+            if (fb) { fb.textContent = 'Not quite \u2014 give it one more try.'; fb.className = 'feedback bad'; }
+          }
         }
       });
     });
   });
 
+  // Mini knowledge test: two attempts per question, score counts first-or-second-try correct
   var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = q.querySelectorAll('.quiz-opt:not(.incorrect)').length;
+          if (quizAttempts[qid] >= 2 || left <= 1) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -452,6 +517,36 @@
     if (!scoreBox) return;
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/myezragk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Geometry',
+        student: studentName,
+        module: 'geometry-1-6-two-dimensional-figures',
+        lesson: '1.6: 2-Dimensional Figures',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
   }
 </script>
 </body>
