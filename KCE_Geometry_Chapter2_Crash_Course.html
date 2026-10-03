@@ -113,6 +113,14 @@
   .quiz-opt:hover:not(:disabled){border-color:var(--blue);}
   .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
   .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
   .quiz-note{font-size:13px;color:#333;margin-top:10px;padding:9px 12px;background:#eef2fb;border-left:3px solid var(--blue);border-radius:0 8px 8px 0;display:none;}
   .quiz-note.show{display:block;}
   .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:16px;font-size:16px;font-weight:700;margin-top:8px;display:none;}
@@ -158,7 +166,7 @@
           <div class="course-tag">Geometry &middot; Chapter 2 Review</div>
         </div>
       </div>
-      <div><span class="lesson-tag">Crash Course &middot; Lessons 2.5&ndash;2.8</span><span class="test-pill">TEST THURSDAY</span></div>
+      <div><span class="lesson-tag">Crash Course &middot; Lessons 2.5&ndash;2.8</span><span class="test-pill">TEST PREP</span></div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
@@ -175,7 +183,7 @@
       <p class="eyebrow">Welcome</p>
       <h1 class="slide-title">Everything on your review sheet, explained in plain English &mdash; and every answer checked.</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Your teacher handed you two review pages covering Lessons 2.5&ndash;2.8. This crash course walks through <strong>every single item on both pages</strong> &mdash; not just the answer, but <em>why</em> it's the answer, so you're not just memorizing letters, you actually understand the logic behind them. That's what will get you through Thursday even if the test rewords a question.</p>
+        <p style="margin-bottom:0;">Your teacher handed you two review pages covering Lessons 2.5&ndash;2.8. This crash course walks through <strong>every single item on both pages</strong> &mdash; not just the answer, but <em>why</em> it's the answer, so you're not just memorizing letters, you actually understand the logic behind them. That's what will get you through the test even if the test rewords a question.</p>
       </div>
       <h2 class="sub-title">Here's the plan (about 60 minutes):</h2>
       <ul>
@@ -186,6 +194,10 @@
       </ul>
       <div class="card blue">
         <p style="margin-bottom:0;"><strong>The one idea that ties this whole chapter together:</strong> Chapter 2 is about <em>proving</em> things &mdash; and to prove something, you need a toolbox of statements you're already allowed to use without proving them again. That toolbox is exactly what's on your review sheet.</p>
+      </div>
+          <div class="name-field-wrap">
+        <label for="studentName">Your name (so your tutor can see your progress)</label>
+        <input type="text" id="studentName" placeholder="Type your first and last name">
       </div>
     </section>
 
@@ -714,6 +726,7 @@
           <button class="choice-btn" data-correct="false">MY = 29</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> M is between X and Y, so by the Segment Addition Postulate XM + MY = XY. That gives 9 + MY = 20, so MY = 11. 9 just repeats XM, and 29 adds the two numbers instead of subtracting.</div>
       </div>
       <div class="gp-box">
         <p class="gp-prompt">2. &ang;1 and &ang;2 are a linear pair. &ang;1 = 73&deg;. What is &ang;2, and what property/postulate did you use?</p>
@@ -723,6 +736,7 @@
           <button class="choice-btn" data-correct="false">73&deg; &mdash; Vertical Angles</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> A linear pair is two adjacent angles whose outer sides form a straight line, so they add to 180&deg;. 180 &minus; 73 = 107&deg;. 17&deg; would be the complement (sum 90&deg;), and 73&deg; would only be right for vertical angles.</div>
       </div>
       <div class="gp-box">
         <p class="gp-prompt">3. &ang;X and &ang;Z are both complementary to &ang;Y. If m&ang;X = 38&deg;, what is m&ang;Z, and which theorem says so?</p>
@@ -732,6 +746,7 @@
           <button class="choice-btn" data-correct="false">38&deg; &mdash; Vertical Angles Theorem</button>
         </div>
         <p class="feedback" id="fb-gp3"></p>
+        <div class="explain-box" id="ex-gp3"><b>Here's why:</b> &ang;X and &ang;Z both pair with the same &ang;Y to make 90&deg;, so they must be equal: m&ang;Z = 38&deg;. The theorem is Complements of the Same Angle Are Congruent. 52&deg; is &ang;Y, not &ang;Z, and there are no crossing lines, so vertical angles don't apply.</div>
       </div>
     </section>
 
@@ -747,8 +762,9 @@
           <button class="quiz-opt" data-correct="true">Reflexive Property</button>
           <button class="quiz-opt" data-correct="false">Symmetric Property</button>
           <button class="quiz-opt" data-correct="false">Transitive Property</button>
+          <button class="quiz-opt" data-correct="false">Substitution Property</button>
         </div>
-        <p class="quiz-note" id="note-q1">Reflexive means "compared to itself" &mdash; one single angle, no partner involved, so Symmetric (flipping order) and Transitive (linking a middle term) don't apply here.</p>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Reflexive means "compared to itself" &mdash; one single angle, no partner involved, so Symmetric (flipping order) and Transitive (linking a middle term) don't apply here.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -758,8 +774,9 @@
           <button class="quiz-opt" data-correct="false">Complementary to each other</button>
           <button class="quiz-opt" data-correct="false">Right angles</button>
           <button class="quiz-opt" data-correct="true">Congruent to each other</button>
+          <button class="quiz-opt" data-correct="false">Supplementary to each other</button>
         </div>
-        <p class="quiz-note" id="note-q2">This is the "supplements of the same angle" theorem from Slide 8 &mdash; both angles pair with the identical third angle, so the leftovers have to match each other.</p>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> This is the "supplements of the same angle" theorem from Slide 8 &mdash; both angles pair with the identical third angle, so the leftovers have to match each other.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -769,8 +786,9 @@
           <button class="quiz-opt" data-correct="false">x = 3</button>
           <button class="quiz-opt" data-correct="true">x = 5</button>
           <button class="quiz-opt" data-correct="false">x = 10</button>
+          <button class="quiz-opt" data-correct="false">x = 19</button>
         </div>
-        <p class="quiz-note" id="note-q3">Midpoint &rarr; set the halves equal: 4x&minus;1 = 2x+9 &nbsp;&rarr;&nbsp; 2x = 10 &nbsp;&rarr;&nbsp; x = 5. Check: PM = 4(5)&minus;1 = 19 and MQ = 2(5)+9 = 19 &mdash; they match, so x = 5 is confirmed.</p>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Midpoint &rarr; set the halves equal: 4x&minus;1 = 2x+9 &nbsp;&rarr;&nbsp; 2x = 10 &nbsp;&rarr;&nbsp; x = 5. Check: PM = 4(5)&minus;1 = 19 and MQ = 2(5)+9 = 19 &mdash; they match, so x = 5 is confirmed.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -780,8 +798,9 @@
           <button class="quiz-opt" data-correct="false">45&deg;</button>
           <button class="quiz-opt" data-correct="true">90&deg;</button>
           <button class="quiz-opt" data-correct="false">180&deg;</button>
+          <button class="quiz-opt" data-correct="false">60&deg;</button>
         </div>
-        <p class="quiz-note" id="note-q4">Two EQUAL numbers that add to 180 can only be 90 and 90 &mdash; there's no other way to split 180 evenly in half.</p>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> Two EQUAL numbers that add to 180 can only be 90 and 90 &mdash; there's no other way to split 180 evenly in half.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -791,7 +810,7 @@
           <button class="quiz-opt" data-correct="false">True</button>
           <button class="quiz-opt" data-correct="true">False &mdash; linear pairs are always supplementary, but not every supplementary pair is a linear pair</button>
         </div>
-        <p class="quiz-note" id="note-q5">Linear pair is the stricter case &mdash; it requires the angles to be adjacent AND for their outer sides to form a straight line. Two angles anywhere that just happen to add to 180&deg; are supplementary but not necessarily a linear pair.</p>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> Linear pair is the stricter case &mdash; it requires the angles to be adjacent AND for their outer sides to form a straight line. Two angles anywhere that just happen to add to 180&deg; are supplementary but not necessarily a linear pair.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q6">
@@ -801,8 +820,9 @@
           <button class="quiz-opt" data-correct="true">34&deg;</button>
           <button class="quiz-opt" data-correct="false">68&deg;</button>
           <button class="quiz-opt" data-correct="false">136&deg;</button>
+          <button class="quiz-opt" data-correct="false">17&deg;</button>
         </div>
-        <p class="quiz-note" id="note-q6">A bisector splits the WHOLE angle into two equal halves: m&ang;ABD = &frac12; &middot; m&ang;ABC = &frac12; &middot; 68&deg; = 34&deg;.</p>
+        <div class="explain-box" id="ex-q6"><b>Here's why:</b> A bisector splits the WHOLE angle into two equal halves: m&ang;ABD = &frac12; &middot; m&ang;ABC = &frac12; &middot; 68&deg; = 34&deg;.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q7">
@@ -812,8 +832,9 @@
           <button class="quiz-opt" data-correct="false">Segment Addition Postulate</button>
           <button class="quiz-opt" data-correct="true">Definition of Congruent Segments</button>
           <button class="quiz-opt" data-correct="false">Transitive Property</button>
+          <button class="quiz-opt" data-correct="false">Reflexive Property</button>
         </div>
-        <p class="quiz-note" id="note-q7">This is going from a NUMBER statement (=) to a SHAPE statement (&cong;) &mdash; that translation is exactly what the Definition of Congruent Segments does.</p>
+        <div class="explain-box" id="ex-q7"><b>Here's why:</b> This is going from a NUMBER statement (=) to a SHAPE statement (&cong;) &mdash; that translation is exactly what the Definition of Congruent Segments does.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q8">
@@ -823,11 +844,13 @@
           <button class="quiz-opt" data-correct="false">Symmetric Property</button>
           <button class="quiz-opt" data-correct="true">Transitive Property</button>
           <button class="quiz-opt" data-correct="false">Reflexive Property</button>
+          <button class="quiz-opt" data-correct="false">Definition of Congruent Angles</button>
         </div>
-        <p class="quiz-note" id="note-q8">&ang;B is the shared middle link connecting &ang;A to &ang;C, then drops out of the final statement &mdash; that hand-off through a middle term is exactly the Transitive Property.</p>
+        <div class="explain-box" id="ex-q8"><b>Here's why:</b> &ang;B is the shared middle link connecting &ang;A to &ang;C, then drops out of the final statement &mdash; that hand-off through a middle term is exactly the Transitive Property.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 8</span></div>
+      <div class="submit-status" id="submitStatus"></div>
     </section>
 
     <!-- 17: CHEAT SHEET -->
@@ -867,14 +890,14 @@
       <div class="card green">
         <p style="margin-bottom:0;">You've now been through every definition, property, postulate, and theorem on your review sheet &mdash; WHY each one is true, not just what letter to circle &mdash; plus every computation problem, solved and checked. That combination is exactly what carries you through a test that rewords the questions.</p>
       </div>
-      <h2 class="sub-title">Your 3-step game plan for Thursday</h2>
+      <h2 class="sub-title">Your 3-step game plan for test day</h2>
       <ul>
         <li><strong>Read the diagram first.</strong> Is there a midpoint mark? A right-angle square? Crossing lines? That tells you which rule applies before you even look at the numbers.</li>
         <li><strong>Set the equal things equal.</strong> Every algebra problem in this chapter is really just "find the two pieces that must match, and solve."</li>
         <li><strong>Name your reasoning.</strong> If a question asks "why," go back to this cheat sheet &mdash; it's almost always one of these 18 ideas.</li>
       </ul>
       <div class="next-box">
-        Good luck Thursday &mdash; you've got this.
+        Good luck on your test &mdash; you've got this.
       </div>
       <div class="end-actions">
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button>
@@ -897,11 +920,20 @@
   var total = document.querySelectorAll('.slide').length;
   var current = 1;
 
+  var dotsEl = document.getElementById('dots');
+  if (dotsEl) for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
   function goTo(n) {
     if (n < 1 || n > total) return;
     document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    var _d=document.querySelectorAll('.dot'); if(_d.length) _d[current - 1].classList.remove('active');
     current = n;
     document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    if(_d.length) _d[current - 1].classList.add('active');
     document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
     document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
     document.getElementById('prevBtn').disabled = current === 1;
@@ -912,10 +944,6 @@
   document.getElementById('prevBtn').disabled = true;
   document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
   document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
-  document.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowRight') goTo(current + 1);
-    else if (e.key === 'ArrowLeft') goTo(current - 1);
-  });
 
   function showToast(msg){
     var t = document.getElementById('toast');
@@ -927,47 +955,88 @@
 
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      showToast('\uD83C\uDF89 Review complete \u2014 great prep for Thursday!');
+      showToast('\uD83C\uDF89 Review complete \u2014 great prep for your test!');
       goTo(1);
     });
   });
 
-  // Guided practice buttons
+  // Shuffle answer order so the correct answer isn't always in the same spot
+  function shuffleKids(el){ var k=Array.prototype.slice.call(el.children); for(var i=k.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=k[i];k[i]=k[j];k[j]=t;} k.forEach(function(c){el.appendChild(c);}); }
+  document.querySelectorAll('.choice-row, .quiz-opts').forEach(shuffleKids);
+
+  // Guided practice: two attempts, then reveal + explanation
   document.querySelectorAll('.choice-row').forEach(function(row){
     var q = row.dataset.q;
     var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
     row.querySelectorAll('.choice-btn').forEach(function(btn){
       btn.addEventListener('click', function(){
-        row.querySelectorAll('.choice-btn').forEach(function(b){ b.classList.remove('correct','incorrect'); b.disabled = true; });
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
         if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
           btn.classList.add('correct');
           if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+          if (exBox) exBox.classList.add('show');
         } else {
           btn.classList.add('incorrect');
-          row.querySelectorAll('.choice-btn').forEach(function(b){ if (b.dataset.correct === 'true') b.classList.add('correct'); });
-          if (fb) { fb.textContent = 'Not quite \u2014 correct answer highlighted in green.'; fb.className = 'feedback bad'; }
+          btn.disabled = true;
+          var left = row.querySelectorAll('.choice-btn:not(.incorrect)').length;
+          if (attempts >= 2 || left <= 1) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (fb) { fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.'; fb.className = 'feedback bad'; }
+            if (exBox) exBox.classList.add('show');
+          } else {
+            if (fb) { fb.textContent = 'Not quite \u2014 give it one more try.'; fb.className = 'feedback bad'; }
+          }
         }
       });
     });
   });
 
-  // Quiz
+  // Mini knowledge test: two attempts per question, score counts first-or-second-try correct
   var quizAnswered = {};
+  var quizAttempts = {};
   var quizTotal = document.querySelectorAll('.quiz-q').length;
   document.querySelectorAll('.quiz-q').forEach(function(q){
     var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
     q.querySelectorAll('.quiz-opt').forEach(function(btn){
       btn.addEventListener('click', function(){
         if (quizAnswered[qid] !== undefined) return;
-        quizAnswered[qid] = (btn.dataset.correct === 'true');
-        q.querySelectorAll('.quiz-opt').forEach(function(b){
-          b.disabled = true;
-          if (b.dataset.correct === 'true') b.classList.add('correct');
-          else if (b === btn) b.classList.add('incorrect');
-        });
-        var note = q.querySelector('.quiz-note');
-        if (note) note.classList.add('show');
-        updateScore();
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = q.querySelectorAll('.quiz-opt:not(.incorrect)').length;
+          if (quizAttempts[qid] >= 2 || left <= 1) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
       });
     });
   });
@@ -980,6 +1049,36 @@
     if (!scoreBox) return;
     document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
     scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/myezragk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Geometry',
+        student: studentName,
+        module: 'geometry-ch2-crash-course',
+        lesson: 'Chapter 2 Crash Course (Lessons 2.5–2.8 Review)',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
   }
 </script>
 </body>
