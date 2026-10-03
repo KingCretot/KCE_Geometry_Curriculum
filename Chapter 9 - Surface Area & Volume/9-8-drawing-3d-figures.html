@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 8.7: Coordinate Geometry of Circles</title>
+<title>KCE Geometry — Lesson 9.8: Drawing 3-Dimensional Figures</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -75,10 +75,10 @@
   .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
   .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
   .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
-  .complete-box{background:linear-gradient(135deg,var(--navy),#132a52);color:#fff;border-radius:14px;padding:26px 28px;text-align:center;margin-top:10px;border:2px solid var(--gold);}
-  .complete-box .badge-big{font-size:38px;margin-bottom:8px;}
-  .complete-box h3{color:var(--gold);margin:0 0 8px;font-size:20px;}
-  .complete-box p{color:#dbe2ef;margin:0;font-size:14.5px;}
+  .complete-box{background:linear-gradient(135deg,#0A1F3D,#132a4d);color:#fff;border-radius:14px;padding:24px 26px;margin-top:20px;border:2px solid var(--gold);text-align:center;}
+  .complete-box .badge-icon{font-size:34px;margin-bottom:8px;}
+  .complete-box h3{color:var(--gold);font-size:19px;margin:0 0 8px;}
+  .complete-box p{color:#e4e9f2;margin:0;font-size:14.5px;}
   .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
   .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
   .end-btn.primary{background:var(--navy);color:#fff;}
@@ -116,9 +116,9 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 8: Circles</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
       </div>
-      <div class="lesson-tag">Lesson 8.7 &middot; Coordinate Geometry of Circles</div>
+      <div class="lesson-tag">Lesson 9.8 &middot; Drawing 3-D Figures</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
@@ -129,103 +129,115 @@
   </div>
 
   <div class="stage">
+
     <!-- 1 -->
     <section class="slide active" data-slide="1">
-      <p class="eyebrow">Let's Begin</p>
-      <h1 class="slide-title">The final lesson of Chapter 8: writing a circle as an equation</h1>
+      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 9!</p>
+      <h1 class="slide-title">Showing a solid on flat paper</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Just as Lesson 4.7 and Lesson 6.6 closed their chapters with coordinate geometry, we close Chapter 8 the same way: writing the equation of a circle from its center and radius, and reading center/radius back out of a given equation.</p>
+        <p style="margin-bottom:0;">Paper is flat, but the things we design are not. Architects, engineers, game designers, and artists use three standard ways to draw a solid on paper. Each one shows something the others hide.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Write the standard equation of a circle given its center and radius</span></li>
-        <li><span class="num">2</span><span>Find a circle's center and radius from its equation</span></li>
-        <li><span class="num">3</span><span>Determine whether a given point lies on, inside, or outside a circle</span></li>
+        <li><span class="num">1</span><span>Draw and read orthographic (top, front, and side) views</span></li>
+        <li><span class="num">2</span><span>Recognize an isometric drawing</span></li>
+        <li><span class="num">3</span><span>Recognize one-point and two-point perspective drawings</span></li>
       </ul>
-          <div class="name-field-wrap">
+      <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
         <input type="text" id="studentName" placeholder="Type your first and last name">
       </div>
     </section>
-
     <!-- 2 -->
     <section class="slide" data-slide="2">
-      <p class="eyebrow">Core Formula</p>
-      <h1 class="slide-title">The standard equation of a circle</h1>
-      <div class="formula-card">
-        <div class="fname">Circle Equation</div>
-        <div class="fexpr">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</div>
-      </div>
+      <p class="eyebrow">Method 1</p>
+      <h1 class="slide-title">Orthographic views</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">Here (h, k) is the center and r is the radius. This equation comes directly from the Distance Formula: it states that every point (x, y) on the circle is exactly r units from the center (h, k).</p>
+        <p style="margin-bottom:0;">An <strong>orthographic drawing</strong> shows a solid as separate flat views, usually the <strong>top</strong>, <strong>front</strong>, and <strong>right side</strong>, each looking straight at one face. No depth is shown in any single view, so all lengths are true lengths. This is how blueprints work.</p>
+      </div>
+      <div class="diagram-panel">
+        <div class="angle-tag">THREE CUBES IN A ROW, ONE MORE CUBE ON TOP OF THE LEFT END</div>
+        <svg width="270" height="90" viewBox="0 0 270 90"><text x="14" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Front</text><rect x="10" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="32" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="54" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="10" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="104" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Top</text><rect x="100" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="122" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="144" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="192" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Right side</text><rect x="200" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="200" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">The front view shows the stack. The top view shows only the three cubes on the bottom row. The right side view sees the two-cube stack behind the shorter end.</p>
       </div>
     </section>
-
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Writing an equation from center and radius</h1>
+      <p class="eyebrow">Method 2</p>
+      <h1 class="slide-title">Isometric drawing</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Write the equation of a circle with center (3, &minus;2) and radius 5.</p>
+        <p style="margin-bottom:0;">An <strong>isometric drawing</strong> shows a corner view of a solid, usually on isometric dot paper. The three edge directions are drawn <strong>120&deg; apart</strong>: one vertical and two slanting at 30&deg; from horizontal.</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute h, k, r</div>h = 3, k = &minus;2, r = 5</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Write the equation</div>(x &minus; 3)&sup2; + (y + 2)&sup2; = 25</div></div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">Parallel edges on the object stay parallel in the drawing, and lengths along the three directions are drawn at their true size. It is not quite how your eye sees the object, but it is easy to measure from.</p>
+      </div>
     </section>
-
     <!-- 4 -->
     <section class="slide" data-slide="4">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Reading center and radius from an equation</h1>
+      <p class="eyebrow">Method 3</p>
+      <h1 class="slide-title">Perspective drawing</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Find the center and radius of (x + 4)&sup2; + (y &minus; 1)&sup2; = 49.</p>
+        <p style="margin-bottom:0;">A <strong>perspective drawing</strong> shows a solid the way your eye sees it: objects farther away look smaller, and parallel lines going away from you seem to meet at a <strong>vanishing point (VP)</strong> on the <strong>horizon line</strong>.</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Match to the standard form</div>(x &minus; h)&sup2; means h = &minus;4 here, since (x + 4) = (x &minus; (&minus;4))</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Read off center and radius</div>Center = (&minus;4, 1); r&sup2; = 49, so r = 7</div></div>
+      <div class="diagram-panel">
+        <div class="angle-tag">ONE-POINT PERSPECTIVE: A BOX</div>
+        <svg width="260" height="160" viewBox="0 0 260 160"><line x1="0" y1="40" x2="260" y2="40" stroke="#C9A84C" stroke-width="1.5"/><text x="4" y="34" font-size="10" fill="#C9A84C">horizon line</text><circle cx="210" cy="40" r="4" fill="#DB2F30"/><text x="216" y="34" font-size="10" fill="#DB2F30" font-weight="700">VP</text><polygon points="30,80 110,80 110,150 30,150" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="80" x2="93.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="93.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="80" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="150" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="111.5" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="93.0" y1="66.0" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">The front face is flat toward you. Every edge going back into the distance points to the single vanishing point.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">In <strong>two-point perspective</strong>, a corner faces you, and the edges going left and right recede to two vanishing points on the horizon line.</p>
+      </div>
     </section>
-
     <!-- 5 -->
     <section class="slide" data-slide="5">
-      <p class="eyebrow">Core Concept</p>
-      <h1 class="slide-title">Is a point on, inside, or outside the circle?</h1>
-      <div class="card warm">
-        <p style="margin-bottom:0;">Plug the point's coordinates into the left side of the equation and compare to r&sup2;. If the result equals r&sup2;, the point is ON the circle. If it's less than r&sup2;, the point is INSIDE. If it's greater than r&sup2;, the point is OUTSIDE.</p>
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Choosing the right drawing</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Which kind of drawing fits each job?</p>
       </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">A carpenter needs exact measurements of a cabinet&rsquo;s front, top, and side</div>Orthographic views: every length is true size.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">A catalog shows a box from a corner so you can see three faces and measure its edges</div>Isometric drawing: three faces visible, edges drawn true length.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">An artist paints a road stretching toward the horizon</div>One-point perspective: the road&rsquo;s edges meet at one vanishing point.</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">An architect sketches a building seen from the street corner</div>Two-point perspective: the corner is closest, and each wall recedes to its own vanishing point.</div></div>
     </section>
-
     <!-- 6 -->
     <section class="slide" data-slide="6">
       <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
       <h1 class="slide-title">Now you try, with me right here</h1>
       <div class="gp-box">
-        <p class="gp-prompt">A circle has equation (x &minus; 1)&sup2; + (y &minus; 2)&sup2; = 16.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What are the center and radius?</p>
+        <p class="gp-prompt">Name the drawing or the view.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Railroad tracks that seem to meet at a single point on the horizon are an example of...</p>
         <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">Center (1, 2), radius 4</button>
-          <button class="choice-btn" data-correct="false">Center (&minus;1, &minus;2), radius 16</button>
+          <button class="choice-btn" data-correct="true">One-point perspective</button>
+          <button class="choice-btn" data-correct="false">Isometric drawing</button>
+          <button class="choice-btn" data-correct="false">Orthographic views</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> In (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;, the center is (h, k) and the right side is r&sup2;. So the center is (1, 2) and the radius is &radic;16 = 4. The signs inside the parentheses are flipped from the coordinates, and 16 is the radius squared, not the radius.</div>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The rails are parallel, but in perspective they appear to meet at one vanishing point. Isometric drawings keep parallel lines parallel.</div>
 
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Is the point (5, 2) on, inside, or outside this circle?</p>
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cylinder stands upright on its base. What does its top view look like?</p>
         <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">On the circle (distance from center = 4 = r)</button>
-          <button class="choice-btn" data-correct="false">Inside the circle</button>
+          <button class="choice-btn" data-correct="true">A circle</button>
+          <button class="choice-btn" data-correct="false">A rectangle</button>
+          <button class="choice-btn" data-correct="false">A triangle</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Plug in the point: (5 &minus; 1)&sup2; + (2 &minus; 2)&sup2; = 16 + 0 = 16, which equals r&sup2;. So (5, 2) lies exactly on the circle, 4 units to the right of the center.</div>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Looking straight down, you see only the circular top. The front view would be a rectangle.</div>
+
       </div>
     </section>
-
     <!-- 7 -->
     <section class="slide" data-slide="7">
       <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">GPS geofencing and radar range</h1>
-      <p>A GPS geofence &mdash; the invisible circular boundary a delivery app uses to know when you've arrived &mdash; is defined by exactly this circle equation: a center coordinate and a radius, checked against your live location.</p>
+      <h1 class="slide-title">Blueprints, video games, and art museums</h1>
+      <p>Every set of construction plans is a collection of orthographic views. Many classic video games use isometric views to show a 3-D world on a flat screen. Renaissance painters developed perspective so their paintings would look like windows into real space.</p>
       <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> air traffic control radar range is modeled the same way &mdash; a circle equation centered on the radar station determines whether a detected aircraft is within tracking range.</p>
+        <p style="margin-bottom:0;"><strong>Real world:</strong> engineers using CAD software build one 3-D model, and the software produces all three kinds of drawings from it automatically.</p>
+      </div>
+      <div class="next-box">
+        <strong>Chapter 10: Transformations &amp; Symmetry</strong> is next: reflections, translations, rotations, and dilations.
       </div>
     </section>
-
     <!-- 8 -->
     <section class="slide" data-slide="8">
       <p class="eyebrow">Mini Knowledge Test</p>
@@ -233,90 +245,89 @@
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">The standard equation of a circle is...</div>
+        <div class="qtext">An orthographic drawing shows...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</button>
-          <button class="quiz-opt" data-correct="false">(x &minus; h) + (y &minus; k) = r</button>
-          <button class="quiz-opt" data-correct="false">(x + h)² + (y + k)² = r</button>
-          <button class="quiz-opt" data-correct="false">x² + y² = h + k</button>
+          <button class="quiz-opt" data-correct="true">Separate flat views, such as top, front, and side</button>
+          <button class="quiz-opt" data-correct="false">One view with a vanishing point</button>
+          <button class="quiz-opt" data-correct="false">A single corner view on dot paper</button>
+          <button class="quiz-opt" data-correct="false">A cross section of the solid</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The standard form is (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;. Every point on the circle sits exactly r away from the center (h, k). The squares come from the Distance Formula.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Orthographic drawings show each face straight on in its own view, like a blueprint. A vanishing point belongs to perspective.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">A circle has equation (x &minus; 2)&sup2; + (y + 5)&sup2; = 36. Its center is...</div>
+        <div class="qtext">In an isometric drawing, the three edge directions are drawn...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(2, &minus;5)</button>
-          <button class="quiz-opt" data-correct="false">(&minus;2, 5)</button>
-          <button class="quiz-opt" data-correct="false">(−2, −5)</button>
-          <button class="quiz-opt" data-correct="false">(2, 5)</button>
+          <button class="quiz-opt" data-correct="true">120&deg; apart</button>
+          <button class="quiz-opt" data-correct="false">90&deg; apart</button>
+          <button class="quiz-opt" data-correct="false">Meeting at a vanishing point</button>
+          <button class="quiz-opt" data-correct="false">45&deg; apart</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> The equation subtracts h and k, so (x &minus; 2) means h = 2, and (y + 5) means k = &minus;5. The center is (2, &minus;5).</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Isometric means &ldquo;equal measure&rdquo;: the three directions are spaced evenly, 120&deg; apart.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">A circle has equation x&sup2; + y&sup2; = 81. Its radius is...</div>
+        <div class="qtext">In two-point perspective...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">9</button>
-          <button class="quiz-opt" data-correct="false">81</button>
-          <button class="quiz-opt" data-correct="false">40.5</button>
-          <button class="quiz-opt" data-correct="false">18</button>
+          <button class="quiz-opt" data-correct="true">A corner faces the viewer, and edges recede to two vanishing points on the horizon</button>
+          <button class="quiz-opt" data-correct="false">A face is flat toward the viewer, with one vanishing point</button>
+          <button class="quiz-opt" data-correct="false">There are no vanishing points</button>
+          <button class="quiz-opt" data-correct="false">All edges stay parallel</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> x&sup2; + y&sup2; = 81 means r&sup2; = 81, so r = 9. 81 is the radius squared.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Two-point perspective is the corner view. One vanishing point with a face toward you is one-point perspective.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">Plugging a point into the circle equation gives a value LESS than r&sup2;. The point is...</div>
+        <div class="qtext">A cone stands on its base. What is its front view?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Inside the circle</button>
-          <button class="quiz-opt" data-correct="false">Outside the circle</button>
-          <button class="quiz-opt" data-correct="false">On the circle</button>
-          <button class="quiz-opt" data-correct="false">At the center of the circle</button>
+          <button class="quiz-opt" data-correct="true">A triangle</button>
+          <button class="quiz-opt" data-correct="false">A circle</button>
+          <button class="quiz-opt" data-correct="false">A rectangle</button>
+          <button class="quiz-opt" data-correct="false">A circle with a dot in the center</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A value less than r&sup2; means the point is closer to the center than the radius, so it's inside the circle. A value equal to r&sup2; means it's on the circle, and greater means it's outside.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> From the front you see the slanted sides meeting at the apex: a triangle. The top view is the circle with a dot for the apex.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">The standard circle equation is derived from the Distance Formula.</div>
+        <div class="qtext">In an isometric drawing, parallel edges of the object stay parallel.</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. The circle equation is the Distance Formula set equal to the radius, with both sides squared. A circle is every point at the same distance from its center.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. That is one way to tell isometric from perspective, where parallel edges that go back into the distance appear to meet.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-
     <!-- 9 -->
     <section class="slide" data-slide="9">
-      <p class="eyebrow">Lesson Recap</p>
+      <p class="eyebrow">Chapter 9 Complete</p>
       <h1 class="slide-title">What we learned today</h1>
-
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write the standard equation of a circle given its center and radius.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a circle's center and radius from its equation.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can determine whether a given point lies on, inside, or outside a circle.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can draw and read orthographic views.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize an isometric drawing.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize one-point and two-point perspective.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Standard Equation of a Circle</span>
-        <span class="term-pill">Center</span>
-        <span class="term-pill">Radius</span>
+        <span class="term-pill">Orthographic Drawing</span>
+        <span class="term-pill">Isometric Drawing</span>
+        <span class="term-pill">Perspective</span>
+        <span class="term-pill">Vanishing Point</span>
+        <span class="term-pill">Horizon Line</span>
       </div>
 
       <div class="complete-box">
-        <div class="badge-big">&#127942;</div>
-        <h3>Chapter 8: Circles &mdash; Complete!</h3>
-        <p>You've mastered chords, tangents, arcs, inscribed angles, angle-and-circle formulas, circular constructions, and now circle equations on the coordinate plane. Chapter 9: Surface Area &amp; Volume is next.</p>
+        <div class="badge-icon">&#127942;</div>
+        <h3>Chapter 9: Surface Area &amp; Volume &mdash; Complete!</h3>
+        <p>You can analyze solids, find the surface area and volume of prisms, cylinders, pyramids, cones, and spheres, work with great circles, and draw solids three ways. Chapter 10: Transformations &amp; Symmetry is next.</p>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%209%20-%20Surface%20Area%20%26%20Volume/9-1-analyzing-3d-figures.html">Next Chapter: 9.1 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -373,7 +384,7 @@
 
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
+      showToast('\ud83c\udf89 Chapter 9 complete \u2014 fantastic work!');
       goTo(1);
     });
   });
@@ -486,8 +497,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-8-7-coordinate-geometry-of-circles',
-        lesson: '8.7: Coordinate Geometry of Circles',
+        module: 'geometry-9-8-drawing-3d-figures',
+        lesson: '9.8: Drawing 3-Dimensional Figures',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total

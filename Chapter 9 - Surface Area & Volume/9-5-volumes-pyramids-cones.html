@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 8.7: Coordinate Geometry of Circles</title>
+<title>KCE Geometry — Lesson 9.5: Volumes of Pyramids & Cones</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -75,10 +75,10 @@
   .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
   .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
   .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
-  .complete-box{background:linear-gradient(135deg,var(--navy),#132a52);color:#fff;border-radius:14px;padding:26px 28px;text-align:center;margin-top:10px;border:2px solid var(--gold);}
-  .complete-box .badge-big{font-size:38px;margin-bottom:8px;}
-  .complete-box h3{color:var(--gold);margin:0 0 8px;font-size:20px;}
-  .complete-box p{color:#dbe2ef;margin:0;font-size:14.5px;}
+  .complete-box{background:linear-gradient(135deg,#0A1F3D,#132a4d);color:#fff;border-radius:14px;padding:24px 26px;margin-top:20px;border:2px solid var(--gold);text-align:center;}
+  .complete-box .badge-icon{font-size:34px;margin-bottom:8px;}
+  .complete-box h3{color:var(--gold);font-size:19px;margin:0 0 8px;}
+  .complete-box p{color:#e4e9f2;margin:0;font-size:14.5px;}
   .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
   .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
   .end-btn.primary{background:var(--navy);color:#fff;}
@@ -116,207 +116,222 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 8: Circles</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
       </div>
-      <div class="lesson-tag">Lesson 8.7 &middot; Coordinate Geometry of Circles</div>
+      <div class="lesson-tag">Lesson 9.5 &middot; Volumes of Pyramids &amp; Cones</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
 
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
   </div>
 
   <div class="stage">
+
     <!-- 1 -->
     <section class="slide active" data-slide="1">
       <p class="eyebrow">Let's Begin</p>
-      <h1 class="slide-title">The final lesson of Chapter 8: writing a circle as an equation</h1>
+      <h1 class="slide-title">Exactly one-third</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Just as Lesson 4.7 and Lesson 6.6 closed their chapters with coordinate geometry, we close Chapter 8 the same way: writing the equation of a circle from its center and radius, and reading center/radius back out of a given equation.</p>
+        <p style="margin-bottom:0;">Fill a cone with water and pour it into a cylinder with the same base and height. It takes exactly three pours to fill the cylinder. The same is true for a pyramid and a prism. Today that &ldquo;one-third&rdquo; becomes a formula.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Write the standard equation of a circle given its center and radius</span></li>
-        <li><span class="num">2</span><span>Find a circle's center and radius from its equation</span></li>
-        <li><span class="num">3</span><span>Determine whether a given point lies on, inside, or outside a circle</span></li>
+        <li><span class="num">1</span><span>Explain why a pyramid or cone has one-third the volume of a matching prism or cylinder</span></li>
+        <li><span class="num">2</span><span>Calculate the volume of a pyramid or cone</span></li>
+        <li><span class="num">3</span><span>Find a missing dimension, including using a slant height to get the height</span></li>
       </ul>
-          <div class="name-field-wrap">
+      <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
         <input type="text" id="studentName" placeholder="Type your first and last name">
       </div>
     </section>
-
     <!-- 2 -->
     <section class="slide" data-slide="2">
       <p class="eyebrow">Core Formula</p>
-      <h1 class="slide-title">The standard equation of a circle</h1>
+      <h1 class="slide-title">Volume of a pyramid</h1>
       <div class="formula-card">
-        <div class="fname">Circle Equation</div>
-        <div class="fexpr">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</div>
+        <div class="fname">Pyramid</div>
+        <div class="fexpr">V = &frac13;Bh</div>
       </div>
       <div class="card blue">
-        <p style="margin-bottom:0;">Here (h, k) is the center and r is the radius. This equation comes directly from the Distance Formula: it states that every point (x, y) on the circle is exactly r units from the center (h, k).</p>
+        <p style="margin-bottom:0;">A cube can be cut into three congruent pyramids that share one corner of the cube as their apex. Each one has the same base and height as the cube, so each is &frac13; of it. In general, a pyramid holds &frac13; of the prism with the same base and height.</p>
       </div>
     </section>
-
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Writing an equation from center and radius</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Write the equation of a circle with center (3, &minus;2) and radius 5.</p>
+      <p class="eyebrow">Core Formula</p>
+      <h1 class="slide-title">Volume of a cone</h1>
+      <div class="formula-card">
+        <div class="fname">Cone</div>
+        <div class="fexpr">V = &frac13;Bh = &frac13;&pi;r&sup2;h</div>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute h, k, r</div>h = 3, k = &minus;2, r = 5</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Write the equation</div>(x &minus; 3)&sup2; + (y + 2)&sup2; = 25</div></div>
+      <div class="diagram-panel">
+        <div class="angle-tag">RADIUS r, HEIGHT h</div>
+        <svg width="220" height="180" viewBox="0 0 220 180"><line x1="110" y1="25" x2="50" y2="150" stroke="#0A1F3D" stroke-width="2"/><line x1="110" y1="25" x2="170" y2="150" stroke="#0A1F3D" stroke-width="2"/><path d="M50 150 A60 16 0 0 0 170 150" fill="none" stroke="#0A1F3D" stroke-width="2"/><path d="M50 150 A60 16 0 0 1 170 150" fill="none" stroke="#0A1F3D" stroke-width="2" stroke-dasharray="4,3"/><line x1="110" y1="25" x2="110" y2="150" stroke="#0047BA" stroke-width="1.5" stroke-dasharray="4,3"/><text x="114" y="95" font-size="13" fill="#0047BA" font-weight="700">h</text><line x1="110" y1="150" x2="170" y2="150" stroke="#DB2F30" stroke-width="2"/><text x="136" y="145" font-size="13" fill="#DB2F30" font-weight="700">r</text><text x="150" y="85" font-size="14" fill="#C9A84C" font-weight="700">l</text></svg>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">A cone is to a cylinder what a pyramid is to a prism: same base, same height, one-third the volume. Use the <strong>height h</strong> here, not the slant height l.</p>
+      </div>
     </section>
-
     <!-- 4 -->
     <section class="slide" data-slide="4">
       <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Reading center and radius from an equation</h1>
+      <h1 class="slide-title">A pyramid and a cone</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Find the center and radius of (x + 4)&sup2; + (y &minus; 1)&sup2; = 49.</p>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> (a) A square pyramid has base edge 9 and height 10. (b) A cone has radius 3 and height 4. Find each volume.</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Match to the standard form</div>(x &minus; h)&sup2; means h = &minus;4 here, since (x + 4) = (x &minus; (&minus;4))</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Read off center and radius</div>Center = (&minus;4, 1); r&sup2; = 49, so r = 7</div></div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Pyramid: base area</div>B = 9 &times; 9 = 81</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Pyramid: volume</div>V = &frac13;(81)(10) = 270 cubic units</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Cone: volume</div>V = &frac13;&pi;(3)&sup2;(4) = &frac13;(36&pi;) = 12&pi; &asymp; 37.7 cubic units</div></div>
     </section>
-
     <!-- 5 -->
     <section class="slide" data-slide="5">
-      <p class="eyebrow">Core Concept</p>
-      <h1 class="slide-title">Is a point on, inside, or outside the circle?</h1>
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">When you&rsquo;re given the slant height</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> A cone has radius 5 and slant height 13. Find its volume.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Find the height first</div>r, h, and l form a right triangle: h&sup2; + 5&sup2; = 13&sup2;, so h&sup2; = 144 and h = 12.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Now use the volume formula</div>V = &frac13;&pi;(5)&sup2;(12) = &frac13;(300&pi;) = 100&pi; &asymp; 314.2 cubic units</div></div>
       <div class="card warm">
-        <p style="margin-bottom:0;">Plug the point's coordinates into the left side of the equation and compare to r&sup2;. If the result equals r&sup2;, the point is ON the circle. If it's less than r&sup2;, the point is INSIDE. If it's greater than r&sup2;, the point is OUTSIDE.</p>
+        <p style="margin-bottom:0;">Volume always uses the true height. If a problem hands you a slant height, the Pythagorean Theorem from Lesson 7.3 gets you the height.</p>
       </div>
     </section>
-
     <!-- 6 -->
     <section class="slide" data-slide="6">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Working backward</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> A cone has volume 48&pi; and radius 4. Find its height.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute</div>48&pi; = &frac13;&pi;(4)&sup2;h = (16/3)&pi;h</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Solve</div>Divide both sides by &pi;: 48 = (16/3)h. Multiply by 3/16: h = 9.</div></div>
+    </section>
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
       <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
       <h1 class="slide-title">Now you try, with me right here</h1>
       <div class="gp-box">
-        <p class="gp-prompt">A circle has equation (x &minus; 1)&sup2; + (y &minus; 2)&sup2; = 16.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What are the center and radius?</p>
+        <p class="gp-prompt">Find each volume.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; A pyramid has base area 30 and height 6. What is its volume?</p>
         <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">Center (1, 2), radius 4</button>
-          <button class="choice-btn" data-correct="false">Center (&minus;1, &minus;2), radius 16</button>
+          <button class="choice-btn" data-correct="true">60 cubic units</button>
+          <button class="choice-btn" data-correct="false">180 cubic units</button>
+          <button class="choice-btn" data-correct="false">90 cubic units</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> In (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;, the center is (h, k) and the right side is r&sup2;. So the center is (1, 2) and the radius is &radic;16 = 4. The signs inside the parentheses are flipped from the coordinates, and 16 is the radius squared, not the radius.</div>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> V = &frac13;(30)(6) = 60. 180 is the volume of the prism with the same base and height, so it leaves out the &frac13;.</div>
 
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Is the point (5, 2) on, inside, or outside this circle?</p>
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cone has radius 6 and height 5. What is its volume?</p>
         <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">On the circle (distance from center = 4 = r)</button>
-          <button class="choice-btn" data-correct="false">Inside the circle</button>
+          <button class="choice-btn" data-correct="true">60&pi; cubic units</button>
+          <button class="choice-btn" data-correct="false">180&pi; cubic units</button>
+          <button class="choice-btn" data-correct="false">30&pi; cubic units</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Plug in the point: (5 &minus; 1)&sup2; + (2 &minus; 2)&sup2; = 16 + 0 = 16, which equals r&sup2;. So (5, 2) lies exactly on the circle, 4 units to the right of the center.</div>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> V = &frac13;&pi;(36)(5) = &frac13;(180&pi;) = 60&pi;. 180&pi; is the matching cylinder.</div>
+
       </div>
     </section>
-
-    <!-- 7 -->
-    <section class="slide" data-slide="7">
-      <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">GPS geofencing and radar range</h1>
-      <p>A GPS geofence &mdash; the invisible circular boundary a delivery app uses to know when you've arrived &mdash; is defined by exactly this circle equation: a center coordinate and a radius, checked against your live location.</p>
-      <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> air traffic control radar range is modeled the same way &mdash; a circle equation centered on the radar station determines whether a detected aircraft is within tracking range.</p>
-      </div>
-    </section>
-
     <!-- 8 -->
     <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Funnels, sand piles, and the Great Pyramid</h1>
+      <p>Road crews store sand and salt in cone-shaped piles, and they estimate how much they have with &frac13;&pi;r&sup2;h. The Great Pyramid of Giza, with a square base about 230 meters on a side and an original height of about 147 meters, holds roughly &frac13;(230&sup2;)(147) &asymp; 2.6 million cubic meters of stone.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> a conical paper cup at a water cooler looks like it holds a lot, but it holds only a third of a cylinder cup with the same rim and depth.</p>
+      </div>
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 9.6: Surface Area &amp; Volume of Spheres.</strong> The roundest solid of all.
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">The standard equation of a circle is...</div>
+        <div class="qtext">A pyramid and a prism have the same base and the same height. The pyramid&rsquo;s volume is...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</button>
-          <button class="quiz-opt" data-correct="false">(x &minus; h) + (y &minus; k) = r</button>
-          <button class="quiz-opt" data-correct="false">(x + h)² + (y + k)² = r</button>
-          <button class="quiz-opt" data-correct="false">x² + y² = h + k</button>
+          <button class="quiz-opt" data-correct="true">One-third of the prism&rsquo;s</button>
+          <button class="quiz-opt" data-correct="false">One-half of the prism&rsquo;s</button>
+          <button class="quiz-opt" data-correct="false">The same as the prism&rsquo;s</button>
+          <button class="quiz-opt" data-correct="false">Three times the prism&rsquo;s</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The standard form is (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;. Every point on the circle sits exactly r away from the center (h, k). The squares come from the Distance Formula.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Three congruent pyramids fill the matching prism, so each one is &frac13; of it.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">A circle has equation (x &minus; 2)&sup2; + (y + 5)&sup2; = 36. Its center is...</div>
+        <div class="qtext">A square pyramid has base edge 6 and height 10. What is its volume?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(2, &minus;5)</button>
-          <button class="quiz-opt" data-correct="false">(&minus;2, 5)</button>
-          <button class="quiz-opt" data-correct="false">(−2, −5)</button>
-          <button class="quiz-opt" data-correct="false">(2, 5)</button>
+          <button class="quiz-opt" data-correct="true">120 cubic units</button>
+          <button class="quiz-opt" data-correct="false">360 cubic units</button>
+          <button class="quiz-opt" data-correct="false">60 cubic units</button>
+          <button class="quiz-opt" data-correct="false">180 cubic units</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> The equation subtracts h and k, so (x &minus; 2) means h = 2, and (y + 5) means k = &minus;5. The center is (2, &minus;5).</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> B = 36, so V = &frac13;(36)(10) = 120. 360 forgets the &frac13;.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">A circle has equation x&sup2; + y&sup2; = 81. Its radius is...</div>
+        <div class="qtext">A cone has radius 3 and height 10. What is its volume?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">9</button>
-          <button class="quiz-opt" data-correct="false">81</button>
-          <button class="quiz-opt" data-correct="false">40.5</button>
-          <button class="quiz-opt" data-correct="false">18</button>
+          <button class="quiz-opt" data-correct="true">30&pi; cubic units</button>
+          <button class="quiz-opt" data-correct="false">90&pi; cubic units</button>
+          <button class="quiz-opt" data-correct="false">10&pi; cubic units</button>
+          <button class="quiz-opt" data-correct="false">15&pi; cubic units</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> x&sup2; + y&sup2; = 81 means r&sup2; = 81, so r = 9. 81 is the radius squared.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> V = &frac13;&pi;(9)(10) = 30&pi;. 90&pi; is the matching cylinder, and 10&pi; forgets to square the radius.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">Plugging a point into the circle equation gives a value LESS than r&sup2;. The point is...</div>
+        <div class="qtext">A cone has volume 48&pi; and radius 4. What is its height?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Inside the circle</button>
-          <button class="quiz-opt" data-correct="false">Outside the circle</button>
-          <button class="quiz-opt" data-correct="false">On the circle</button>
-          <button class="quiz-opt" data-correct="false">At the center of the circle</button>
+          <button class="quiz-opt" data-correct="true">9</button>
+          <button class="quiz-opt" data-correct="false">3</button>
+          <button class="quiz-opt" data-correct="false">12</button>
+          <button class="quiz-opt" data-correct="false">36</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A value less than r&sup2; means the point is closer to the center than the radius, so it's inside the circle. A value equal to r&sup2; means it's on the circle, and greater means it's outside.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> 48&pi; = &frac13;&pi;(16)h, so 48 = (16/3)h and h = 9. 3 forgets the &frac13;.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">The standard circle equation is derived from the Distance Formula.</div>
+        <div class="qtext">A cone and a cylinder have the same radius and height. The cylinder holds three times as much.</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. The circle equation is the Distance Formula set equal to the radius, with both sides squared. A circle is every point at the same distance from its center.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. The cone holds &frac13; of the cylinder, so the cylinder holds 3 times as much as the cone.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-
-    <!-- 9 -->
-    <section class="slide" data-slide="9">
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
       <p class="eyebrow">Lesson Recap</p>
       <h1 class="slide-title">What we learned today</h1>
-
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write the standard equation of a circle given its center and radius.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a circle's center and radius from its equation.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can determine whether a given point lies on, inside, or outside a circle.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain the one-third relationship.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can calculate the volume of a pyramid or cone.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a missing dimension, including from a slant height.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Standard Equation of a Circle</span>
-        <span class="term-pill">Center</span>
-        <span class="term-pill">Radius</span>
-      </div>
-
-      <div class="complete-box">
-        <div class="badge-big">&#127942;</div>
-        <h3>Chapter 8: Circles &mdash; Complete!</h3>
-        <p>You've mastered chords, tangents, arcs, inscribed angles, angle-and-circle formulas, circular constructions, and now circle equations on the coordinate plane. Chapter 9: Surface Area &amp; Volume is next.</p>
+        <span class="term-pill">V = &frac13;Bh</span>
+        <span class="term-pill">Pyramid Volume</span>
+        <span class="term-pill">Cone Volume</span>
+        <span class="term-pill">Height vs. Slant Height</span>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%209%20-%20Surface%20Area%20%26%20Volume/9-1-analyzing-3d-figures.html">Next Chapter: 9.1 &rarr;</a>
+        <a class="end-btn primary next-lesson-link" href="9-6-spheres.html">Next Lesson: 9.6 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -486,8 +501,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-8-7-coordinate-geometry-of-circles',
-        lesson: '8.7: Coordinate Geometry of Circles',
+        module: 'geometry-9-5-volumes-pyramids-cones',
+        lesson: '9.5: Volumes of Pyramids & Cones',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total

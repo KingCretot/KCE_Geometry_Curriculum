@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 8.7: Coordinate Geometry of Circles</title>
+<title>KCE Geometry — Lesson 9.2: Surface Areas of Prisms & Cylinders</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -75,10 +75,10 @@
   .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
   .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
   .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
-  .complete-box{background:linear-gradient(135deg,var(--navy),#132a52);color:#fff;border-radius:14px;padding:26px 28px;text-align:center;margin-top:10px;border:2px solid var(--gold);}
-  .complete-box .badge-big{font-size:38px;margin-bottom:8px;}
-  .complete-box h3{color:var(--gold);margin:0 0 8px;font-size:20px;}
-  .complete-box p{color:#dbe2ef;margin:0;font-size:14.5px;}
+  .complete-box{background:linear-gradient(135deg,#0A1F3D,#132a4d);color:#fff;border-radius:14px;padding:24px 26px;margin-top:20px;border:2px solid var(--gold);text-align:center;}
+  .complete-box .badge-icon{font-size:34px;margin-bottom:8px;}
+  .complete-box h3{color:var(--gold);font-size:19px;margin:0 0 8px;}
+  .complete-box p{color:#e4e9f2;margin:0;font-size:14.5px;}
   .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
   .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
   .end-btn.primary{background:var(--navy);color:#fff;}
@@ -116,207 +116,232 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 8: Circles</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
       </div>
-      <div class="lesson-tag">Lesson 8.7 &middot; Coordinate Geometry of Circles</div>
+      <div class="lesson-tag">Lesson 9.2 &middot; Surface Areas of Prisms &amp; Cylinders</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
 
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
   </div>
 
   <div class="stage">
+
     <!-- 1 -->
     <section class="slide active" data-slide="1">
       <p class="eyebrow">Let's Begin</p>
-      <h1 class="slide-title">The final lesson of Chapter 8: writing a circle as an equation</h1>
+      <h1 class="slide-title">How much wrapping paper does it take?</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Just as Lesson 4.7 and Lesson 6.6 closed their chapters with coordinate geometry, we close Chapter 8 the same way: writing the equation of a circle from its center and radius, and reading center/radius back out of a given equation.</p>
+        <p style="margin-bottom:0;">Surface area is the total area of every surface on a solid, the amount of paper it would take to wrap it with no overlap. Today we unfold prisms and cylinders flat, find the formulas hiding in the unfolded shapes, and use them in both directions.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Write the standard equation of a circle given its center and radius</span></li>
-        <li><span class="num">2</span><span>Find a circle's center and radius from its equation</span></li>
-        <li><span class="num">3</span><span>Determine whether a given point lies on, inside, or outside a circle</span></li>
+        <li><span class="num">1</span><span>Explain where the surface area formulas for prisms and cylinders come from</span></li>
+        <li><span class="num">2</span><span>Calculate the lateral area and surface area of a prism or cylinder</span></li>
+        <li><span class="num">3</span><span>Find a missing dimension when the surface area is known</span></li>
       </ul>
-          <div class="name-field-wrap">
+      <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
         <input type="text" id="studentName" placeholder="Type your first and last name">
       </div>
     </section>
-
     <!-- 2 -->
     <section class="slide" data-slide="2">
-      <p class="eyebrow">Core Formula</p>
-      <h1 class="slide-title">The standard equation of a circle</h1>
-      <div class="formula-card">
-        <div class="fname">Circle Equation</div>
-        <div class="fexpr">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</div>
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">Bases, lateral faces, and nets</h1>
+      <div class="diagram-panel">
+        <div class="angle-tag">A RIGHT RECTANGULAR PRISM</div>
+        <svg width="220" height="175" viewBox="0 0 220 175"><polygon points="30,70 150,70 150,150 30,150" fill="none" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="70" x2="70" y2="40" stroke="#0A1F3D" stroke-width="2"/><line x1="150" y1="70" x2="190" y2="40" stroke="#0A1F3D" stroke-width="2"/><line x1="150" y1="150" x2="190" y2="120" stroke="#0A1F3D" stroke-width="2"/><line x1="70" y1="40" x2="190" y2="40" stroke="#0A1F3D" stroke-width="2"/><line x1="190" y1="40" x2="190" y2="120" stroke="#0A1F3D" stroke-width="2"/><line x1="70" y1="40" x2="70" y2="120" stroke="#0A1F3D" stroke-width="2" stroke-dasharray="4,3"/><line x1="70" y1="120" x2="190" y2="120" stroke="#0A1F3D" stroke-width="2" stroke-dasharray="4,3"/><line x1="30" y1="150" x2="70" y2="120" stroke="#0A1F3D" stroke-width="2" stroke-dasharray="4,3"/><text x="80" y="168" font-size="12" fill="#0A1F3D">length</text><text x="160" y="145" font-size="12" fill="#0A1F3D">width</text><text x="2" y="115" font-size="13" fill="#DB2F30" font-weight="700">h</text><line x1="18" y1="70" x2="18" y2="150" stroke="#DB2F30" stroke-width="1.5"/></svg>
       </div>
       <div class="card blue">
-        <p style="margin-bottom:0;">Here (h, k) is the center and r is the radius. This equation comes directly from the Distance Formula: it states that every point (x, y) on the circle is exactly r units from the center (h, k).</p>
+        <p style="margin-bottom:0;">The two congruent, parallel faces are the <strong>bases</strong>. The other faces are <strong>lateral faces</strong>, and their total area is the <strong>lateral area (L)</strong>. Add the bases and you get the <strong>surface area (S)</strong>. In a <strong>right</strong> prism, the lateral faces are rectangles and the <strong>height (h)</strong> is the length of a side edge.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">A <strong>net</strong> is the flat pattern you get by unfolding a solid. Every surface area formula in this chapter comes from looking at a net.</p>
       </div>
     </section>
-
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Writing an equation from center and radius</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Write the equation of a circle with center (3, &minus;2) and radius 5.</p>
+      <p class="eyebrow">Core Formula</p>
+      <h1 class="slide-title">Surface area of a right prism</h1>
+      <div class="formula-card">
+        <div class="fname">Right Prism</div>
+        <div class="fexpr">L = Ph &nbsp;&nbsp;&nbsp; S = Ph + 2B</div>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Substitute h, k, r</div>h = 3, k = &minus;2, r = 5</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Write the equation</div>(x &minus; 3)&sup2; + (y + 2)&sup2; = 25</div></div>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Why L = Ph:</strong> unfold the lateral faces and they line up into one long rectangle. Its width is the distance around the base, the perimeter <strong>P</strong>, and its height is <strong>h</strong>. Then add the two bases, each with area <strong>B</strong>.</p>
+      </div>
     </section>
-
     <!-- 4 -->
     <section class="slide" data-slide="4">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Reading center and radius from an equation</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Find the center and radius of (x + 4)&sup2; + (y &minus; 1)&sup2; = 49.</p>
+      <p class="eyebrow">Core Formula</p>
+      <h1 class="slide-title">Surface area of a right cylinder</h1>
+      <div class="formula-card">
+        <div class="fname">Right Cylinder</div>
+        <div class="fexpr">L = 2&pi;rh &nbsp;&nbsp;&nbsp; S = 2&pi;rh + 2&pi;r&sup2;</div>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Match to the standard form</div>(x &minus; h)&sup2; means h = &minus;4 here, since (x + 4) = (x &minus; (&minus;4))</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Read off center and radius</div>Center = (&minus;4, 1); r&sup2; = 49, so r = 7</div></div>
+      <div class="diagram-panel">
+        <div class="angle-tag">RADIUS r, HEIGHT h</div>
+        <svg width="220" height="170" viewBox="0 0 220 170"><ellipse cx="110" cy="40" rx="60" ry="16" fill="none" stroke="#0A1F3D" stroke-width="2"/><line x1="50" y1="40" x2="50" y2="140" stroke="#0A1F3D" stroke-width="2"/><line x1="170" y1="40" x2="170" y2="140" stroke="#0A1F3D" stroke-width="2"/><path d="M50 140 A60 16 0 0 0 170 140" fill="none" stroke="#0A1F3D" stroke-width="2"/><path d="M50 140 A60 16 0 0 1 170 140" fill="none" stroke="#0A1F3D" stroke-width="2" stroke-dasharray="4,3"/><line x1="110" y1="40" x2="170" y2="40" stroke="#DB2F30" stroke-width="2"/><text x="130" y="34" font-size="13" fill="#DB2F30" font-weight="700">r</text><line x1="185" y1="40" x2="185" y2="140" stroke="#0047BA" stroke-width="1.5"/><text x="190" y="95" font-size="13" fill="#0047BA" font-weight="700">h</text></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">Peel the label off a soup can and it unrolls into a rectangle. Its width is the circumference of the can, 2&pi;r, and its height is h.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">It&rsquo;s the prism formula in disguise: the &ldquo;perimeter&rdquo; of a circle base is its circumference 2&pi;r, and each base has area &pi;r&sup2;.</p>
+      </div>
     </section>
-
     <!-- 5 -->
     <section class="slide" data-slide="5">
-      <p class="eyebrow">Core Concept</p>
-      <h1 class="slide-title">Is a point on, inside, or outside the circle?</h1>
-      <div class="card warm">
-        <p style="margin-bottom:0;">Plug the point's coordinates into the left side of the equation and compare to r&sup2;. If the result equals r&sup2;, the point is ON the circle. If it's less than r&sup2;, the point is INSIDE. If it's greater than r&sup2;, the point is OUTSIDE.</p>
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">A prism and a cylinder</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> (a) A rectangular prism has a 5 &times; 3 base and height 4. (b) A cylinder has radius 3 and height 10. Find each surface area.</p>
       </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Prism: perimeter and base</div>P = 5 + 3 + 5 + 3 = 16, and B = 5 &times; 3 = 15</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Prism: surface area</div>S = Ph + 2B = 16(4) + 2(15) = 64 + 30 = 94 square units</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Cylinder: lateral area</div>L = 2&pi;(3)(10) = 60&pi;</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Cylinder: surface area</div>S = 60&pi; + 2&pi;(3)&sup2; = 60&pi; + 18&pi; = 78&pi; &asymp; 245.0 square units</div></div>
     </section>
-
     <!-- 6 -->
     <section class="slide" data-slide="6">
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Working backward to a missing dimension</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> A cube has a surface area of 150 square inches. How long is each edge?</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Use the structure of a cube</div>A cube has 6 congruent square faces, so each face has area 150 &divide; 6 = 25 square inches.</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Find the edge</div>Each face is a square with area 25, so the edge is &radic;25 = 5 inches.</div></div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">The same idea works for a cylinder: if you know S and r, substitute both into S = 2&pi;rh + 2&pi;r&sup2; and solve for h.</p>
+      </div>
+    </section>
+    <!-- 7 -->
+    <section class="slide" data-slide="7">
       <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
       <h1 class="slide-title">Now you try, with me right here</h1>
       <div class="gp-box">
-        <p class="gp-prompt">A circle has equation (x &minus; 1)&sup2; + (y &minus; 2)&sup2; = 16.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What are the center and radius?</p>
+        <p class="gp-prompt">Use the surface area formulas.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; A right prism has a right-triangle base with legs 3 and 4 and hypotenuse 5. Its height is 10. What is its surface area?</p>
         <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">Center (1, 2), radius 4</button>
-          <button class="choice-btn" data-correct="false">Center (&minus;1, &minus;2), radius 16</button>
+          <button class="choice-btn" data-correct="true">132 square units</button>
+          <button class="choice-btn" data-correct="false">120 square units</button>
+          <button class="choice-btn" data-correct="false">126 square units</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> In (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;, the center is (h, k) and the right side is r&sup2;. So the center is (1, 2) and the radius is &radic;16 = 4. The signs inside the parentheses are flipped from the coordinates, and 16 is the radius squared, not the radius.</div>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> P = 3 + 4 + 5 = 12, so L = 12 &times; 10 = 120. Each triangle base has B = &frac12;(3)(4) = 6, and there are two: S = 120 + 12 = 132. 120 leaves out both bases, and 126 counts only one.</div>
 
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Is the point (5, 2) on, inside, or outside this circle?</p>
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cylinder has radius 2 and height 5. What is its surface area?</p>
         <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">On the circle (distance from center = 4 = r)</button>
-          <button class="choice-btn" data-correct="false">Inside the circle</button>
+          <button class="choice-btn" data-correct="true">28&pi; square units</button>
+          <button class="choice-btn" data-correct="false">20&pi; square units</button>
+          <button class="choice-btn" data-correct="false">24&pi; square units</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Plug in the point: (5 &minus; 1)&sup2; + (2 &minus; 2)&sup2; = 16 + 0 = 16, which equals r&sup2;. So (5, 2) lies exactly on the circle, 4 units to the right of the center.</div>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> L = 2&pi;(2)(5) = 20&pi;, and the two bases add 2&pi;(2)&sup2; = 8&pi;, for 28&pi; total. 20&pi; is only the lateral area.</div>
+
       </div>
     </section>
-
-    <!-- 7 -->
-    <section class="slide" data-slide="7">
-      <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">GPS geofencing and radar range</h1>
-      <p>A GPS geofence &mdash; the invisible circular boundary a delivery app uses to know when you've arrived &mdash; is defined by exactly this circle equation: a center coordinate and a radius, checked against your live location.</p>
-      <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> air traffic control radar range is modeled the same way &mdash; a circle equation centered on the radar station determines whether a detected aircraft is within tracking range.</p>
-      </div>
-    </section>
-
     <!-- 8 -->
     <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Every label, box, and can of paint</h1>
+      <p>A cereal company pays for every square inch of cardboard in a box, so packaging designers compute surface area constantly. A painter estimating a room is finding the lateral area of a rectangular prism: the four walls, without the floor or ceiling.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> the paper label on a soup can is exactly the lateral area of a cylinder, 2&pi;rh, the rectangle you get when you unroll it.</p>
+      </div>
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 9.3: Surface Areas of Pyramids &amp; Cones.</strong> Solids that rise to a single point.
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">The standard equation of a circle is...</div>
+        <div class="qtext">The lateral area of a right prism is found with...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;</button>
-          <button class="quiz-opt" data-correct="false">(x &minus; h) + (y &minus; k) = r</button>
-          <button class="quiz-opt" data-correct="false">(x + h)² + (y + k)² = r</button>
-          <button class="quiz-opt" data-correct="false">x² + y² = h + k</button>
+          <button class="quiz-opt" data-correct="true">L = Ph</button>
+          <button class="quiz-opt" data-correct="false">L = Bh</button>
+          <button class="quiz-opt" data-correct="false">L = &frac12;Ph</button>
+          <button class="quiz-opt" data-correct="false">L = 2B</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The standard form is (x &minus; h)&sup2; + (y &minus; k)&sup2; = r&sup2;. Every point on the circle sits exactly r away from the center (h, k). The squares come from the Distance Formula.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Unfolded, the lateral faces form a rectangle P wide and h tall, so L = Ph. Bh is the volume, which you will meet in Lesson 9.4.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">A circle has equation (x &minus; 2)&sup2; + (y + 5)&sup2; = 36. Its center is...</div>
+        <div class="qtext">A cube has edges of length 4. What is its surface area?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">(2, &minus;5)</button>
-          <button class="quiz-opt" data-correct="false">(&minus;2, 5)</button>
-          <button class="quiz-opt" data-correct="false">(−2, −5)</button>
-          <button class="quiz-opt" data-correct="false">(2, 5)</button>
+          <button class="quiz-opt" data-correct="true">96 square units</button>
+          <button class="quiz-opt" data-correct="false">64 square units</button>
+          <button class="quiz-opt" data-correct="false">16 square units</button>
+          <button class="quiz-opt" data-correct="false">48 square units</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> The equation subtracts h and k, so (x &minus; 2) means h = 2, and (y + 5) means k = &minus;5. The center is (2, &minus;5).</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Six square faces, each 4 &times; 4 = 16: 6 &times; 16 = 96. 64 is the volume, and 16 is just one face.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">A circle has equation x&sup2; + y&sup2; = 81. Its radius is...</div>
+        <div class="qtext">A cylinder has radius 5 and height 4. What is its lateral area?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">9</button>
-          <button class="quiz-opt" data-correct="false">81</button>
-          <button class="quiz-opt" data-correct="false">40.5</button>
-          <button class="quiz-opt" data-correct="false">18</button>
+          <button class="quiz-opt" data-correct="true">40&pi; square units</button>
+          <button class="quiz-opt" data-correct="false">20&pi; square units</button>
+          <button class="quiz-opt" data-correct="false">50&pi; square units</button>
+          <button class="quiz-opt" data-correct="false">100&pi; square units</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> x&sup2; + y&sup2; = 81 means r&sup2; = 81, so r = 9. 81 is the radius squared.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> L = 2&pi;rh = 2&pi;(5)(4) = 40&pi;. 20&pi; forgets the 2, and 50&pi; is the area of the two bases.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">Plugging a point into the circle equation gives a value LESS than r&sup2;. The point is...</div>
+        <div class="qtext">A cube has a surface area of 54 square units. How long is each edge?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Inside the circle</button>
-          <button class="quiz-opt" data-correct="false">Outside the circle</button>
-          <button class="quiz-opt" data-correct="false">On the circle</button>
-          <button class="quiz-opt" data-correct="false">At the center of the circle</button>
+          <button class="quiz-opt" data-correct="true">3 units</button>
+          <button class="quiz-opt" data-correct="false">9 units</button>
+          <button class="quiz-opt" data-correct="false">6 units</button>
+          <button class="quiz-opt" data-correct="false">27 units</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> A value less than r&sup2; means the point is closer to the center than the radius, so it's inside the circle. A value equal to r&sup2; means it's on the circle, and greater means it's outside.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> 54 &divide; 6 faces = 9 per face, and a square with area 9 has side 3. 9 is the area of one face, not the edge.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">The standard circle equation is derived from the Distance Formula.</div>
+        <div class="qtext">The lateral area of a cylinder includes the areas of its two circular bases.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">True</button>
-          <button class="quiz-opt" data-correct="false">False</button>
+          <button class="quiz-opt" data-correct="false">True</button>
+          <button class="quiz-opt" data-correct="true">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. The circle equation is the Distance Formula set equal to the radius, with both sides squared. A circle is every point at the same distance from its center.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> False. Lateral area covers only the curved side. Surface area is the lateral area plus the two bases.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-
-    <!-- 9 -->
-    <section class="slide" data-slide="9">
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
       <p class="eyebrow">Lesson Recap</p>
       <h1 class="slide-title">What we learned today</h1>
-
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can write the standard equation of a circle given its center and radius.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a circle's center and radius from its equation.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can determine whether a given point lies on, inside, or outside a circle.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain where the prism and cylinder formulas come from.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can calculate lateral area and surface area.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find a missing dimension from a known surface area.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Standard Equation of a Circle</span>
-        <span class="term-pill">Center</span>
-        <span class="term-pill">Radius</span>
-      </div>
-
-      <div class="complete-box">
-        <div class="badge-big">&#127942;</div>
-        <h3>Chapter 8: Circles &mdash; Complete!</h3>
-        <p>You've mastered chords, tangents, arcs, inscribed angles, angle-and-circle formulas, circular constructions, and now circle equations on the coordinate plane. Chapter 9: Surface Area &amp; Volume is next.</p>
+        <span class="term-pill">Base</span>
+        <span class="term-pill">Lateral Face</span>
+        <span class="term-pill">Lateral Area</span>
+        <span class="term-pill">Surface Area</span>
+        <span class="term-pill">Net</span>
+        <span class="term-pill">Right Prism</span>
+        <span class="term-pill">Right Cylinder</span>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%209%20-%20Surface%20Area%20%26%20Volume/9-1-analyzing-3d-figures.html">Next Chapter: 9.1 &rarr;</a>
+        <a class="end-btn primary next-lesson-link" href="9-3-surface-areas-pyramids-cones.html">Next Lesson: 9.3 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -486,8 +511,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-8-7-coordinate-geometry-of-circles',
-        lesson: '8.7: Coordinate Geometry of Circles',
+        module: 'geometry-9-2-surface-areas-prisms-cylinders',
+        lesson: '9.2: Surface Areas of Prisms & Cylinders',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total

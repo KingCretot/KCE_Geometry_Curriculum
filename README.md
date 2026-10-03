@@ -56,7 +56,8 @@ Page-by-page audit (Oct 4, 2026):
 
 ## Build status
 
-Chapters 1–8 (52 lessons) built. Chapters 9–12 of BJU Geometry 5th ed. not
-yet built: 9 Surface Area & Volume (9.1–9.8), 10 Transformations & Symmetry
+Chapters 1–9 (60 lessons) built. Chapter 9 (Surface Area & Volume, 9.1–9.8)
+added Oct 4, 2026, built with 4 choices on every multiple-choice quiz question.
+Still to build from BJU Geometry 5th ed.: 10 Transformations & Symmetry
 (10.1–10.7), 11 Similarity (11.1–11.7), 12 Introduction to Trigonometry
-(12.1–12.6) — 28 lessons, for 80 total.
+(12.1–12.6) — 20 lessons, for 80 total.
