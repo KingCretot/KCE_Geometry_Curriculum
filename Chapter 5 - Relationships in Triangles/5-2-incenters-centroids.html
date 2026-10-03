@@ -202,6 +202,7 @@
           <button class="choice-btn" data-correct="false">10.5</button>
         </div>
         <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The centroid sits two-thirds of the way along a median from the vertex: 2/3 &times; 21 = 14. 10.5 is the halfway point, but the centroid divides a median 2 : 1, not in half.</div>
 
         <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Which point is guaranteed to always land inside the triangle, no matter its shape?</p>
         <div class="choice-row" data-q="gp2">
@@ -209,6 +210,7 @@
           <button class="choice-btn" data-correct="false">The circumcenter</button>
         </div>
         <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> The incenter is always inside the triangle, because it comes from angle bisectors, and those always point into the triangle. The circumcenter can land outside an obtuse triangle.</div>
       </div>
     </section>
 
@@ -237,6 +239,7 @@
           <button class="quiz-opt" data-correct="true">Angle bisectors</button>
           <button class="quiz-opt" data-correct="false">Medians</button>
         </div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> The incenter is where the three angle bisectors meet. It's the center of the largest circle that fits inside the triangle. The point where the medians meet is the centroid.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
@@ -246,6 +249,7 @@
           <button class="quiz-opt" data-correct="true">The midpoint of the opposite side</button>
           <button class="quiz-opt" data-correct="false">The midpoint of an adjacent side</button>
         </div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> A median goes from a vertex to the midpoint of the <em>opposite</em> side. A triangle has three medians, one from each corner.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
@@ -255,6 +259,7 @@
           <button class="quiz-opt" data-correct="true">2 : 1</button>
           <button class="quiz-opt" data-correct="false">1 : 1</button>
         </div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> The centroid splits each median 2 : 1. The piece from the vertex to the centroid is twice as long as the piece from the centroid to the midpoint. The centroid is also the triangle's balance point; a cardboard triangle balances on a pencil tip right there.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
@@ -264,6 +269,7 @@
           <button class="quiz-opt" data-correct="true">20</button>
           <button class="quiz-opt" data-correct="false">15</button>
         </div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> The vertex-to-centroid piece is 2/3 of the median: 2/3 &times; 30 = 20. 15 would be the halfway point, which isn't where the centroid sits.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
@@ -273,6 +279,7 @@
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. The incenter is built from angle bisectors, which always aim into the triangle, so it stays inside every triangle, whether it's acute, right, or obtuse.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
