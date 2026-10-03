@@ -28,9 +28,10 @@ answer is revealed; answer order is shuffled on each load; and the final quiz
 score auto-submits to the dedicated **KCE Geometry Progress** Formspree form
 (`myezragk`), tagged `program: "KCE Geometry"` with a `module` ID per lesson.
 
-"Here's why" explanations: Chapter 1 complete. Chapters 2–8 still to be
-written (the lessons work without them; the explanation box simply doesn't
-appear yet).
+"Here's why" explanations: complete for all 52 lessons (Chapters 1–8),
+every guided-practice and quiz question. Content fixes made during the audit:
+4.1 checkpoint Q2 had two "90°" choices (wrong one changed to 143°); 8.2 quiz
+Q3 had garbled wording (rewritten).
 
 ## Build status
 
