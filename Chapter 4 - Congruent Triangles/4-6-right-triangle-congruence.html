@@ -44,7 +44,8 @@
 
   /* ---- 4.6 visual signature: right-triangle labeled diagrams (hypotenuse/leg) ---- */
   .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
-  .angle-tag{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
   .postulate-card{background:#fff;border:2px solid var(--navy);border-radius:12px;padding:16px 20px;margin-bottom:14px;}
   .postulate-card .pname{background:var(--navy);color:var(--gold);display:inline-block;padding:4px 12px;border-radius:20px;font-weight:700;font-size:13px;letter-spacing:1px;margin-bottom:10px;}
 
@@ -158,7 +159,7 @@
           <rect x="40" y="134" width="16" height="16" fill="none" stroke="#0A1F3D" stroke-width="2"/>
           <text x="14" y="90" font-size="12" fill="#0047BA">leg</text>
           <text x="110" y="166" font-size="12" fill="#0047BA">leg</text>
-          <text x="110" y="78" font-size="12" fill="#DB2F30">hypotenuse</text>
+          <text x="125" y="68" font-size="12" fill="#DB2F30">hypotenuse</text>
         </svg>
         <p style="margin-bottom:0;font-size:14px;color:#555;">The hypotenuse is always the side directly across from the right angle &mdash; and always the longest side.</p>
       </div>

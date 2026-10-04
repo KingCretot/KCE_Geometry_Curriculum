@@ -191,6 +191,7 @@
           <line x1="20" y1="50" x2="20" y2="100" stroke="#0A1F3D" stroke-width="1.5"/>
           <line x1="90" y1="60" x2="90" y2="110" stroke="#0A1F3D" stroke-width="1.5"/>
           <line x1="160" y1="40" x2="160" y2="90" stroke="#0A1F3D" stroke-width="1.5"/>
+          <polyline points="20,100 90,110 160,90" fill="none" stroke="#0A1F3D" stroke-width="1.5"/>
         </svg>
       </div>
     </section>
@@ -203,10 +204,13 @@
         <div class="label">Pyramid</div>
         <p>A <strong>pyramid</strong> has one polygon <strong>base</strong>, with triangular faces that all rise up and meet at a single point &mdash; the <strong>apex</strong>. Like prisms, its name comes from the base shape (a square pyramid, a triangular pyramid).</p>
         <svg width="160" height="130" viewBox="0 0 160 130">
-          <polygon points="80,15 30,60 130,70" fill="#DB2F30" opacity="0.85"/>
-          <polygon points="80,15 130,70 145,95" fill="#DB2F30" opacity="0.6"/>
-          <polygon points="30,60 130,70 90,110 20,90" fill="#DB2F30" opacity="0.35"/>
-          <circle cx="80" cy="15" r="3" fill="#C9A84C"/>
+          <polygon points="85,15 25,100 115,100" fill="#DB2F30" opacity="0.85"/>
+          <polygon points="85,15 115,100 145,72" fill="#DB2F30" opacity="0.55"/>
+          <polyline points="25,100 115,100 145,72" fill="none" stroke="#fff" stroke-width="1.2" opacity="0.8"/>
+          <line x1="85" y1="15" x2="25" y2="100" stroke="#fff" stroke-width="1.2" opacity="0.8"/><line x1="85" y1="15" x2="115" y2="100" stroke="#fff" stroke-width="1.2" opacity="0.8"/><line x1="85" y1="15" x2="145" y2="72" stroke="#fff" stroke-width="1.2" opacity="0.8"/>
+          <polyline points="25,100 55,72 145,72" fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+          <line x1="85" y1="15" x2="55" y2="72" stroke="#fff" stroke-width="1" stroke-dasharray="3 3" opacity="0.6"/>
+          <circle cx="85" cy="15" r="3" fill="#C9A84C"/>
         </svg>
       </div>
     </section>

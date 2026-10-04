@@ -44,7 +44,8 @@
 
   /* ---- 4.1 visual signature: triangle angle diagrams ---- */
   .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
-  .angle-tag{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
   .formula-card{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:14px;text-align:center;}
   .formula-card .fname{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
   .formula-card .fexpr{font-size:19px;font-family:Georgia,serif;font-style:italic;}
@@ -194,9 +195,9 @@
           <line x1="40" y1="140" x2="250" y2="140" stroke="#0A1F3D" stroke-width="1.5" stroke-dasharray="3 3"/>
           <text x="104" y="14" font-size="13" fill="#DB2F30">A</text>
           <text x="24" y="152" font-size="13" fill="#DB2F30">B</text>
-          <text x="184" y="128" font-size="13" fill="#DB2F30">C</text>
+          <text x="185" y="158" font-size="13" fill="#DB2F30">C</text>
           <text x="214" y="152" font-size="13" fill="#0047BA">D</text>
-          <path d="M 175 140 A 18 18 0 0 1 195 132" fill="none" stroke="#0047BA" stroke-width="2"/>
+          <path d="M 208 140 A 18 18 0 0 0 180 125" fill="none" stroke="#0047BA" stroke-width="2"/>
         </svg>
         <p style="margin-bottom:0;font-size:14px;color:#555;">Exterior &ang;ACD is formed by extending side BC outward past C.</p>
       </div>

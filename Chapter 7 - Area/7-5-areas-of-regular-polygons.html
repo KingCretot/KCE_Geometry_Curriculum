@@ -42,7 +42,8 @@
   .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
   .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
   .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
-  .angle-tag{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
   .formula-card{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:14px;text-align:center;}
   .formula-card .fname{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
   .formula-card .fexpr{font-size:17px;font-family:Georgia,serif;font-style:italic;}
@@ -152,10 +153,13 @@
       <div class="diagram-panel">
         <div class="angle-tag">A REGULAR HEXAGON, WITH ITS CENTER MARKED</div>
         <svg width="200" height="180" viewBox="0 0 200 180">
-          <polygon points="100,20 165,60 165,120 100,160 35,120 35,60" fill="none" stroke="#0A1F3D" stroke-width="2.5"/>
+          <polygon points="100,20 160.6,55 160.6,125 100,160 39.4,125 39.4,55" fill="none" stroke="#0A1F3D" stroke-width="2.5"/>
           <circle cx="100" cy="90" r="3" fill="#0A1F3D"/>
           <line x1="100" y1="90" x2="100" y2="20" stroke="#C9A84C" stroke-width="2" stroke-dasharray="4,3"/>
-          <line x1="100" y1="90" x2="100" y2="160" stroke="#DB2F30" stroke-width="2" stroke-dasharray="4,3"/>
+          <line x1="100" y1="90" x2="160.6" y2="90" stroke="#DB2F30" stroke-width="2" stroke-dasharray="4,3"/>
+          <rect x="152.6" y="82" width="8" height="8" fill="none" stroke="#DB2F30" stroke-width="1.2"/>
+          <text x="104" y="58" font-size="12" font-weight="700" fill="#C9A84C">r</text>
+          <text x="126" y="104" font-size="12" font-weight="700" fill="#DB2F30">a</text>
         </svg>
       </div>
       <div class="card blue">

@@ -50,7 +50,8 @@
     padding:22px 20px;
     text-align:center;
   }
-  .angle-tag{display:inline-block;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
   .angle-type-grid{display:flex;flex-wrap:wrap;gap:12px;}
   .angle-type-card{flex:1 1 130px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:center;}
   .angle-type-card .name{font-weight:700;color:var(--navy);font-size:13.5px;margin-top:6px;}
@@ -216,7 +217,7 @@
         <div class="angle-type-card"><svg width="60" height="45" viewBox="0 0 60 45"><line x1="10" y1="40" x2="10" y2="5" stroke="#0A1F3D" stroke-width="2"/><line x1="10" y1="40" x2="50" y2="40" stroke="#0A1F3D" stroke-width="2"/><rect x="10" y="32" width="8" height="8" fill="none" stroke="#0A1F3D"/></svg><div class="name">Right</div><div class="range">exactly 90&deg;</div></div>
         <div class="angle-type-card"><svg width="60" height="45" viewBox="0 0 60 45"><line x1="28" y1="38" x2="56" y2="38" stroke="#0A1F3D" stroke-width="2"/><line x1="28" y1="38" x2="6" y2="10" stroke="#0A1F3D" stroke-width="2"/></svg><div class="name">Obtuse</div><div class="range">between 90&deg; &amp; 180&deg;</div></div>
         <div class="angle-type-card"><svg width="60" height="45" viewBox="0 0 60 45"><line x1="5" y1="30" x2="55" y2="30" stroke="#0A1F3D" stroke-width="2"/><circle cx="30" cy="30" r="3" fill="#0A1F3D"/></svg><div class="name">Straight</div><div class="range">exactly 180&deg;</div></div>
-        <div class="angle-type-card"><svg width="60" height="45" viewBox="0 0 60 45"><line x1="30" y1="30" x2="30" y2="5" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="30" x2="8" y2="18" stroke="#0A1F3D" stroke-width="2"/><path d="M32 12 A20 20 0 1 0 22 26" fill="none" stroke="#DB2F30" stroke-width="1.5" stroke-dasharray="2 2"/></svg><div class="name">Reflex</div><div class="range">more than 180&deg;</div></div>
+        <div class="angle-type-card"><svg width="60" height="45" viewBox="0 0 60 45"><line x1="30" y1="30" x2="30" y2="5" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="30" x2="8" y2="18" stroke="#0A1F3D" stroke-width="2"/><path d="M30 18 A12 12 0 1 1 19.5 24.3" fill="none" stroke="#DB2F30" stroke-width="1.8"/></svg><div class="name">Reflex</div><div class="range">more than 180&deg;</div></div>
       </div>
     </section>
 
