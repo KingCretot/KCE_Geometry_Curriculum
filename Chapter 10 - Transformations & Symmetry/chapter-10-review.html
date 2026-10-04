@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 10 Review: Transformations & Symmetry</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .formula-card{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:14px;text-align:center;}
+  .formula-card .fname{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .formula-card .fexpr{font-size:17px;font-family:Georgia,serif;font-style:italic;}
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .complete-box{background:linear-gradient(135deg,#0A1F3D,#132a4d);color:#fff;border-radius:14px;padding:24px 26px;margin-top:20px;border:2px solid var(--gold);text-align:center;}
+  .complete-box .badge-icon{font-size:34px;margin-bottom:8px;}
+  .complete-box h3{color:var(--gold);font-size:19px;margin:0 0 8px;}
+  .complete-box p{color:#e4e9f2;margin:0;font-size:14.5px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+
+.card.think{background:#f3f6fb;border-left:5px solid var(--blue);}
+.diagram-row{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;}
+.diagram-row .diagram-panel{flex:1 1 220px;padding:14px;}
+.diagram-cap{display:table;margin:0 auto 8px;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.5px;padding:4px 10px;border-radius:20px;}
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 10: Transformations &amp; Symmetry</div></div>
+      </div>
+      <div class="lesson-tag">Chapter 10 Review</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 8</div>
+  </div>
+
+  <div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Chapter Review</p><h1 class="slide-title">Chapter 10: Transformations &amp; Symmetry — the whole chapter in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Chapter 10 moved figures around the plane: reflections, translations, rotations, and their combinations, then symmetry, dilations, and patterns that tile the plane.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">10.1</span><span>Reflections</span></li><li><span class="num">10.2</span><span>Translations</span></li><li><span class="num">10.3</span><span>Rotations</span></li><li><span class="num">10.4</span><span>Isometries</span></li><li><span class="num">10.5</span><span>Symmetry</span></li><li><span class="num">10.6</span><span>Dilations</span></li><li><span class="num">10.7</span><span>Tessellations</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real chapter test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 10.1–10.3</p><h1 class="slide-title">The three basic moves</h1>
+<div class="rc"><div class="tagl">Lesson 10.1</div><h3>Reflections</h3><p>The line of reflection is the perpendicular bisector of each point-to-image segment. Over the x-axis: (x, y) → (x, −y). Over the y-axis: (x, y) → (−x, y). Over y = x: (x, y) → (y, x). Reflections reverse orientation.</p><div class="ex"><strong>Example:</strong> Reflect (−3, 4) over the x-axis: (−3, −4).</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">Reflection over the y-axis</div><svg width="232" height="147" viewBox="0 0 232 147"><line x1="14" y1="133" x2="14" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="31" y1="133" x2="31" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="48" y1="133" x2="48" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="65" y1="133" x2="65" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="82" y1="133" x2="82" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="99" y1="133" x2="99" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="116" y1="133" x2="116" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="133" y1="133" x2="133" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="150" y1="133" x2="150" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="167" y1="133" x2="167" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="184" y1="133" x2="184" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="201" y1="133" x2="201" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="218" y1="133" x2="218" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="133" x2="218" y2="133" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="116" x2="218" y2="116" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="99" x2="218" y2="99" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="82" x2="218" y2="82" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="65" x2="218" y2="65" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="48" x2="218" y2="48" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="31" x2="218" y2="31" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="14" x2="218" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="116" y1="133" x2="116" y2="14" stroke="#7a869a" stroke-width="1.5"/><line x1="14" y1="116" x2="218" y2="116" stroke="#7a869a" stroke-width="1.5"/><polygon points="133.0,82.0 184.0,82.0 133.0,31.0" fill="#0047BA" fill-opacity="0.15" stroke="#0047BA" stroke-width="2"/><text x="125.2" y="93.8" font-size="11" fill="#0047BA" font-weight="700" text-anchor="middle">A</text><text x="193.8" y="90.9" font-size="11" fill="#0047BA" font-weight="700" text-anchor="middle">B</text><text x="128.1" y="25.2" font-size="11" fill="#0047BA" font-weight="700" text-anchor="middle">C</text><polygon points="99.0,82.0 48.0,82.0 99.0,31.0" fill="#DB2F30" fill-opacity="0.15" stroke="#DB2F30" stroke-width="2"/><text x="106.8" y="93.8" font-size="11" fill="#DB2F30" font-weight="700" text-anchor="middle">A′</text><text x="38.2" y="90.9" font-size="11" fill="#DB2F30" font-weight="700" text-anchor="middle">B′</text><text x="103.9" y="25.2" font-size="11" fill="#DB2F30" font-weight="700" text-anchor="middle">C′</text></svg></div></div>
+<div class="rc"><div class="tagl">Lesson 10.2</div><h3>Translations</h3><p>Every point slides the same distance and direction: (x, y) → (x + a, y + b), or by the vector ⟨a, b⟩. Two reflections over parallel lines make a translation of twice the distance between the lines.</p><div class="ex"><strong>Example:</strong> (3, 5) by ⟨−2, 4⟩ → (1, 9).</div></div><div class="rc"><div class="tagl">Lesson 10.3</div><h3>Rotations about the origin</h3><p>90° counterclockwise: (x, y) → (−y, x). 180°: (x, y) → (−x, −y). 270° counterclockwise (= 90° clockwise): (x, y) → (y, −x). Two reflections over lines meeting at angle θ make a rotation of 2θ.</p><div class="ex"><strong>Example:</strong> Rotate (3, 1) by 90° counterclockwise: (−1, 3).</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">90° counterclockwise about the origin</div><svg width="204" height="160" viewBox="0 0 204 160"><line x1="14" y1="146" x2="14" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="36" y1="146" x2="36" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="58" y1="146" x2="58" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="80" y1="146" x2="80" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="102" y1="146" x2="102" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="124" y1="146" x2="124" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="146" y1="146" x2="146" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="168" y1="146" x2="168" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="190" y1="146" x2="190" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="146" x2="190" y2="146" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="124" x2="190" y2="124" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="102" x2="190" y2="102" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="80" x2="190" y2="80" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="58" x2="190" y2="58" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="36" x2="190" y2="36" stroke="#dde3ee" stroke-width="1"/><line x1="14" y1="14" x2="190" y2="14" stroke="#dde3ee" stroke-width="1"/><line x1="102" y1="146" x2="102" y2="14" stroke="#7a869a" stroke-width="1.5"/><line x1="14" y1="102" x2="190" y2="102" stroke="#7a869a" stroke-width="1.5"/><line x1="102" y1="102" x2="168" y2="80" stroke="#0047BA" stroke-width="2" stroke-dasharray="4,3"/><line x1="102" y1="102" x2="80" y2="36" stroke="#DB2F30" stroke-width="2" stroke-dasharray="4,3"/><circle cx="168" cy="80" r="3.5" fill="#0047BA"/><text x="173" y="75" font-size="11" fill="#0047BA" font-weight="700">A</text><circle cx="80" cy="36" r="3.5" fill="#DB2F30"/><text x="85" y="31" font-size="11" fill="#DB2F30" font-weight="700">A′</text><circle cx="102" cy="102" r="3.5" fill="#0A1F3D"/></svg></div></div>
+
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 10.4–10.5</p><h1 class="slide-title">Isometries and symmetry</h1>
+<div class="rc"><div class="tagl">Lesson 10.4</div><h3>Isometries keep size and shape</h3><p>Reflections, translations, rotations, and glide reflections all preserve distance and angle measure. Translations and rotations are <strong>direct</strong> (orientation kept); reflections and glide reflections are <strong>opposite</strong> (orientation reversed).</p><div class="ex"><strong>Example:</strong> A glide reflection = translation + reflection over a line parallel to it.</div></div><div class="rc"><div class="tagl">Lesson 10.5</div><h3>Symmetry</h3><p><strong>Line symmetry:</strong> a reflection maps the figure onto itself. <strong>Rotational symmetry:</strong> a rotation of less than 360° does; for a regular n-gon the smallest angle is 360°/n. <strong>Point symmetry</strong> is 180° rotational symmetry.</p><div class="ex"><strong>Example:</strong> A regular octagon has 8 lines of symmetry and turns onto itself every 45°.</div></div>
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Key Ideas &middot; Lessons 10.6–10.7</p><h1 class="slide-title">Dilations and tessellations</h1>
+<div class="rc"><div class="tagl">Lesson 10.6</div><h3>Dilations change size, not shape</h3><p>Centered at the origin: (x, y) → (kx, ky). k &gt; 1 enlarges, 0 &lt; k &lt; 1 reduces. Angles stay the same and lengths multiply by k, so a dilation is not an isometry (unless k = 1).</p><div class="ex"><strong>Example:</strong> Scale factor 2.5 turns a 12-unit side into 30.</div></div><div class="rc"><div class="tagl">Lesson 10.7</div><h3>Tessellations</h3><p>A tessellation covers the plane with no gaps or overlaps; the angles at each vertex sum to 360°. Only equilateral triangles, squares, and regular hexagons tessellate alone. Every triangle and every quadrilateral tessellates.</p><div class="ex"><strong>Example:</strong> Hexagons: 3 × 120° = 360°. Pentagons fail: 108° doesn't divide 360°.</div></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Changing the wrong coordinate in a reflection</td><td>Over the x-axis, y changes sign. Over the y-axis, x changes sign.</td></tr><tr><td>Mixing up clockwise and counterclockwise</td><td>Counterclockwise is the positive direction. 90° CW is the same as 270° CCW: (x, y) → (y, −x).</td></tr><tr><td>Two reflections = rotation by θ</td><td>The rotation is <em>twice</em> the angle between the lines (and translation is twice the distance).</td></tr><tr><td>Calling a dilation an isometry</td><td>Dilations change lengths, so they aren't isometries.</td></tr><tr><td>Reading a translation rule backward</td><td>Image minus pre-image gives the shift: (2, −1) → (−3, 4) is (x − 5, y + 5).</td></tr><tr><td>Assuming any regular polygon tessellates</td><td>Only if its interior angle divides 360°: triangle 60°, square 90°, hexagon 120°.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a chapter test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="6"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this chapter on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Geometry &middot; Chapter 10: Transformations &amp; Symmetry</h2><div class="csub">KingCretot Experience &middot; Chapter 10 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Reflect x-axis / y-axis</td><td>(x, −y) / (−x, y)</td><td>(4, −2) over y-axis → (−4, −2)</td></tr><tr><td>Reflect y = x</td><td>(y, x)</td><td>(3, −5) → (−5, 3)</td></tr><tr><td>Translation</td><td>(x + a, y + b), vector ⟨a, b⟩</td><td>⟨−2, 4⟩: (3, 5) → (1, 9)</td></tr><tr><td>Rotate 90° / 180° / 270° CCW</td><td>(−y, x) / (−x, −y) / (y, −x)</td><td>(2, 5) by 90° → (−5, 2)</td></tr><tr><td>Two reflections</td><td>Parallel lines → translation 2d · intersecting → rotation 2θ</td><td>35° apart → 70°</td></tr><tr><td>Isometries</td><td>Direct: translation, rotation · Opposite: reflection, glide reflection</td><td>All keep length and angles</td></tr><tr><td>Rotational symmetry</td><td>Regular n-gon: 360°/n</td><td>Pentagon: 72°</td></tr><tr><td>Point symmetry</td><td>Maps onto itself after 180°</td><td>Letters S, Z, N</td></tr><tr><td>Dilation</td><td>(kx, ky); angles kept, lengths × k</td><td>k = ½: (8, −6) → (4, −3)</td></tr><tr><td>Tessellation</td><td>Vertex angles total 360°</td><td>Triangles, squares, hexagons</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">Reflect (4, −2) over the y-axis.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(4, 2)</button><button class="quiz-opt" data-correct="true">(−4, −2)</button><button class="quiz-opt" data-correct="false">(−4, 2)</button><button class="quiz-opt" data-correct="false">(−2, 4)</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> Over the y-axis, the x-coordinate changes sign and y stays: (−4, −2). (4, 2) is the reflection over the x-axis.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">Reflect (3, −5) over the line y = x.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(5, −3)</button><button class="quiz-opt" data-correct="true">(−5, 3)</button><button class="quiz-opt" data-correct="false">(3, 5)</button><button class="quiz-opt" data-correct="false">(−3, 5)</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> Reflecting over y = x swaps the coordinates: (3, −5) → (−5, 3).</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">Which rule maps A(2, −1) to A′(−3, 4)?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(x, y) → (x − 5, y + 5)</button><button class="quiz-opt" data-correct="false">(x, y) → (−x, −y)</button><button class="quiz-opt" data-correct="false">(x, y) → (x + 5, y − 5)</button><button class="quiz-opt" data-correct="false">(x, y) → (x − 1, y + 3)</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> x goes from 2 to −3 (down 5) and y goes from −1 to 4 (up 5). The second choice runs the move backward.</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">Rotate (2, 5) by 90° counterclockwise about the origin.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(−2, −5)</button><button class="quiz-opt" data-correct="true">(−5, 2)</button><button class="quiz-opt" data-correct="false">(5, 2)</button><button class="quiz-opt" data-correct="false">(5, −2)</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> 90° counterclockwise: (x, y) → (−y, x) = (−5, 2). (5, −2) is the clockwise rotation, and (−2, −5) is 180°.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">Rotate (−4, 1) by 270° counterclockwise about the origin.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">(1, −4)</button><button class="quiz-opt" data-correct="false">(4, −1)</button><button class="quiz-opt" data-correct="true">(1, 4)</button><button class="quiz-opt" data-correct="false">(−1, −4)</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> 270° counterclockwise equals 90° clockwise: (x, y) → (y, −x) = (1, −(−4)) = (1, 4). (−1, −4) is the 90° counterclockwise rotation.</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">A figure is reflected over two lines that intersect at a 35° angle. What single transformation is the result?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">A rotation of 70°</button><button class="quiz-opt" data-correct="false">A reflection over the angle bisector</button><button class="quiz-opt" data-correct="false">A rotation of 35°</button><button class="quiz-opt" data-correct="false">A translation of 35 units</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> Two reflections over intersecting lines make a rotation about their intersection point by twice the angle between them: 2 × 35° = 70°.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">Which transformation reverses a figure's orientation?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">A rotation</button><button class="quiz-opt" data-correct="true">A reflection</button><button class="quiz-opt" data-correct="false">A dilation with scale factor 2</button><button class="quiz-opt" data-correct="false">A translation</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> Reflections (and glide reflections) are opposite isometries &mdash; they flip clockwise into counterclockwise. Translations and rotations keep orientation.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">What is the smallest rotation that maps a regular pentagon onto itself?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">60°</button><button class="quiz-opt" data-correct="false">36°</button><button class="quiz-opt" data-correct="true">72°</button><button class="quiz-opt" data-correct="false">108°</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> A regular n-gon has rotational symmetry every 360°/n: 360° ÷ 5 = 72°. 108° is the pentagon's interior angle.</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">Dilate (8, −6) about the origin by a scale factor of ½.</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">(4, −3)</button><button class="quiz-opt" data-correct="false">(16, −12)</button><button class="quiz-opt" data-correct="false">(8.5, −5.5)</button><button class="quiz-opt" data-correct="false">(4, 3)</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> Multiply each coordinate by ½: (4, −3). (16, −12) multiplies by 2, and (8.5, −5.5) adds ½ instead of multiplying.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">Which regular polygon CAN tessellate the plane by itself?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">Hexagon</button><button class="quiz-opt" data-correct="false">Octagon</button><button class="quiz-opt" data-correct="false">Decagon</button><button class="quiz-opt" data-correct="false">Pentagon</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> A hexagon's 120° angles fit three at a vertex: 3 × 120° = 360°. A pentagon's 108°, an octagon's 135°, and a decagon's 144° don't divide 360°.</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="8"><p class="eyebrow">Debrief</p><h1 class="slide-title">Chapter 10, reviewed</h1>
+<p>You can perform and combine every transformation, identify symmetry, dilate figures, and explain which shapes tile the plane. Chapter 11 takes dilations further into similarity.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole chapter.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../Chapter%2011%20-%20Similarity/11-1-similar-figures.html">Start Chapter 11 &rarr;</a><a class="end-btn secondary" href="../KCE_Geometry_Chapter10.html">Back to Chapter 10</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83d\udd01 Review restarted \u2014 go for a higher score!');
+      goTo(1);
+    });
+  });
+
+  // Shuffle answer order so the correct answer isn't always in the same spot
+  function shuffleKids(el){ var k=Array.prototype.slice.call(el.children); for(var i=k.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=k[i];k[i]=k[j];k[j]=t;} k.forEach(function(c){el.appendChild(c);}); }
+  document.querySelectorAll('.choice-row, .quiz-opts').forEach(shuffleKids);
+
+  // Guided practice: two attempts, then reveal + explanation
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = row.querySelectorAll('.choice-btn:not(.incorrect)').length;
+          if (attempts >= 2 || left <= 1) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (fb) { fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.'; fb.className = 'feedback bad'; }
+            if (exBox) exBox.classList.add('show');
+          } else {
+            if (fb) { fb.textContent = 'Not quite \u2014 give it one more try.'; fb.className = 'feedback bad'; }
+          }
+        }
+      });
+    });
+  });
+
+  // Mini knowledge test: two attempts per question, score counts first-or-second-try correct
+  var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = q.querySelectorAll('.quiz-opt:not(.incorrect)').length;
+          if (quizAttempts[qid] >= 2 || left <= 1) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/myezragk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Geometry',
+        student: studentName,
+        module: 'geometry-chapter-10-review',
+        lesson: 'Chapter 10 Review: Transformations & Symmetry',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

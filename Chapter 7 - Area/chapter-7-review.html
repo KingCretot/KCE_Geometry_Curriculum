@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 7 Review: Area</title>
+<style>
+  :root{
+    --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
+    --cream:#FAF7EF; --ink:#1c1c1c; --line:#E3DDC9; --green:#1a7a3c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;}
+  .app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.35);}
+  .masthead{background:var(--navy);padding:18px 28px 14px;}
+  .mast-row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .kc{border:2px solid var(--gold);padding:4px 9px;line-height:1;flex:none;}
+  .kc .inner{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-weight:700;font-size:15px;letter-spacing:1.5px;}
+  .wordmark{color:var(--gold);font-size:16px;letter-spacing:.5px;font-weight:600;}
+  .course-tag{color:#cfd6e4;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;}
+  .lesson-tag{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px;white-space:nowrap;}
+  .tricolor{height:5px;display:flex;}
+  .tricolor div{flex:1;}
+  .tri-b{background:var(--blue);} .tri-g{background:var(--gold);} .tri-r{background:var(--red);}
+  .progress-wrap{background:#fff;padding:10px 28px;border-bottom:1px solid var(--line);}
+  .progress-track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden;}
+  .progress-fill{background:var(--gold);height:100%;width:10%;border-radius:6px;transition:width .35s ease;}
+  .progress-label{font-size:12px;color:#777;margin-top:6px;letter-spacing:.5px;}
+  .stage{flex:1;padding:34px 34px 20px;}
+  .slide{display:none;animation:fadeIn .3s ease;}
+  .slide.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 6px;}
+  h1.slide-title{color:var(--navy);font-size:26px;margin:0 0 18px;line-height:1.25;}
+  h2.sub-title{color:var(--navy);font-size:19px;margin:0 0 12px;}
+  p{margin:0 0 14px;font-size:16px;}
+  ul{margin:0 0 14px;padding-left:22px;}
+  li{margin-bottom:8px;font-size:16px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px;}
+  .card.warm{background:#fdf8ec;border-left:5px solid var(--gold);}
+  .card.blue{background:#eef2fb;border-left:5px solid var(--blue);}
+  .diagram-panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;}
+  .angle-tag{display:table;margin-left:auto;margin-right:auto;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1px;padding:4px 10px;border-radius:20px;margin-bottom:10px;}
+  .diagram-panel svg{display:block;margin:0 auto;max-width:100%;height:auto;}
+  .formula-card{background:var(--navy);color:#fff;border-radius:12px;padding:18px 22px;margin-bottom:14px;text-align:center;}
+  .formula-card .fname{color:var(--gold);font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .formula-card .fexpr{font-size:17px;font-family:Georgia,serif;font-style:italic;}
+  .obj-list{list-style:none;margin:0;padding:0;}
+  .obj-list li{display:flex;align-items:flex-start;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:15.5px;}
+  .obj-list .num{flex:none;width:24px;height:24px;border-radius:50%;background:var(--blue);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .step{display:flex;gap:14px;margin-bottom:16px;align-items:flex-start;}
+  .step .badge{flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .step .content{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 15px;}
+  .step .content .label{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--blue);font-weight:700;margin-bottom:4px;}
+  .gp-box{background:#fff;border:2px solid var(--blue);border-radius:12px;padding:18px 20px;}
+  .gp-prompt{font-size:16px;margin-bottom:14px;}
+  .choice-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+  .choice-btn{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 16px;font-size:15px;cursor:pointer;font-family:inherit;transition:.15s;}
+  .choice-btn:hover{border-color:var(--blue);}
+  .choice-btn.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .choice-btn.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .feedback{font-size:14.5px;font-weight:600;min-height:20px;}
+  .feedback.ok{color:var(--green);}
+  .feedback.bad{color:var(--red);}
+  .quiz-q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:16px;}
+  .quiz-q .qnum{font-size:12px;color:var(--blue);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+  .quiz-q .qtext{font-size:15.5px;font-weight:600;margin-bottom:12px;}
+  .quiz-opt{text-align:left;background:#faf8f2;border:2px solid var(--line);border-radius:8px;padding:9px 13px;font-size:14.5px;cursor:pointer;font-family:inherit;display:block;width:100%;margin-bottom:8px;}
+  .quiz-opt.correct{background:#e8f6ec;border-color:var(--green);color:var(--green);font-weight:700;}
+  .quiz-opt.incorrect{background:#fdeeee;border-color:var(--red);color:var(--red);}
+  .quiz-score{text-align:center;background:var(--navy);color:#fff;border-radius:12px;padding:18px;font-size:17px;font-weight:700;margin-top:10px;display:none;}
+  .quiz-score.show{display:block;}
+  .quiz-score .gold{color:var(--gold);}
+  .recap-check{display:flex;align-items:center;gap:10px;background:#e8f6ec;border:1px solid #bfe3c9;border-radius:10px;padding:10px 14px;margin-bottom:9px;font-size:15px;}
+  .term-pill{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 12px;margin:4px 6px 4px 0;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .next-box{background:#eef2fb;border-left:5px solid var(--blue);border-radius:0 12px 12px 0;padding:16px 20px;margin-top:18px;}
+  .complete-box{background:linear-gradient(135deg,#0A1F3D,#132a4d);color:#fff;border-radius:14px;padding:24px 26px;margin-top:20px;border:2px solid var(--gold);text-align:center;}
+  .complete-box .badge-icon{font-size:34px;margin-bottom:8px;}
+  .complete-box h3{color:var(--gold);font-size:19px;margin:0 0 8px;}
+  .complete-box p{color:#e4e9f2;margin:0;font-size:14.5px;}
+  .end-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  .end-btn{font-family:inherit;font-size:14.5px;font-weight:700;padding:12px 22px;border-radius:10px;cursor:pointer;letter-spacing:.2px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:2px solid var(--navy);}
+  .end-btn.primary{background:var(--navy);color:#fff;}
+  .end-btn.secondary{background:#fff;color:var(--navy);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px 22px;border-top:1px solid var(--line);background:#fff;}
+  .nav button{font-family:inherit;font-size:14px;font-weight:700;padding:10px 20px;border-radius:8px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer;letter-spacing:.3px;}
+  .nav button.ghost{background:#fff;color:var(--navy);}
+  .nav button:disabled{opacity:.35;cursor:default;}
+  .nav .dots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:260px;}
+  .nav .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .nav .dot.active{background:var(--gold);width:20px;border-radius:5px;}
+  .footer-brand{background:var(--navy);color:#cfd6e4;text-align:center;font-size:11px;letter-spacing:1.5px;padding:10px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;border:1px solid var(--gold);padding:13px 24px;border-radius:30px;font-size:15px;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;z-index:50;max-width:90%;text-align:center;}
+  .toast.show{opacity:1;transform:translate(-50%,0);}
+  @media(max-width:520px){
+    .stage{padding:22px 18px 14px;}
+    h1.slide-title{font-size:21px;}
+    .nav{padding:14px 16px 18px;}
+    .nav .dots{display:none;}
+  }
+  .explain-box{display:none;margin-top:10px;padding:13px 16px;background:#eef3fb;border-left:4px solid var(--blue);border-radius:6px;font-size:14px;line-height:1.55;color:#1c1c1c;}
+  .explain-box.show{display:block;animation:fadeIn .3s ease;}
+  .explain-box b{color:var(--navy);}
+  .name-field-wrap{margin-top:20px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:10px;}
+  .name-field-wrap label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:.3px;}
+  .name-field-wrap input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+  .name-field-wrap input:focus{outline:2px solid var(--blue);outline-offset:1px;}
+  .submit-status{margin-top:14px;font-size:13px;color:#555;min-height:18px;}
+
+.card.think{background:#f3f6fb;border-left:5px solid var(--blue);}
+.diagram-row{display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;}
+.diagram-row .diagram-panel{flex:1 1 220px;padding:14px;}
+.diagram-cap{display:table;margin:0 auto 8px;background:var(--navy);color:var(--gold);font-weight:700;font-size:12px;letter-spacing:.5px;padding:4px 10px;border-radius:20px;}
+.rc{background:#fff;border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:14px 16px;margin:12px 0;}
+.rc .tagl{font-size:11px;letter-spacing:1.5px;color:var(--blue);font-weight:700;text-transform:uppercase;}
+.rc h3{margin:3px 0 6px;font-size:16.5px;color:var(--navy);}
+.rc p{margin:0;}
+.rc .ex{margin-top:9px;background:var(--cream);border-radius:6px;padding:8px 12px;font-size:14px;}
+.mist{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px;background:#fff;}
+.mist th{background:var(--navy);color:#fff;text-align:left;padding:9px 12px;font-size:13px;letter-spacing:.5px;}
+.mist td{border-bottom:1px solid var(--line);padding:9px 12px;vertical-align:top;}
+.mist td:first-child{color:var(--red);font-weight:600;width:42%;}
+.cheat{background:#fff;border:2px solid var(--navy);border-radius:10px;padding:16px 18px;}
+.cheat h2{margin:0 0 4px;font-size:18px;color:var(--navy);}
+.cheat .csub{font-size:12px;color:#666;margin-bottom:10px;}
+.cheat table{width:100%;border-collapse:collapse;font-size:13.5px;}
+.cheat th{background:#efe9da;color:var(--navy);text-align:left;padding:6px 9px;font-size:12px;}
+.cheat td{border-bottom:1px solid var(--line);padding:6px 9px;vertical-align:top;}
+.cheat td:first-child{font-weight:700;color:var(--navy);width:24%;}
+.print-btn{margin-top:12px;background:var(--gold);color:var(--navy);border:none;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-size:14px;}
+@page{margin:0.6in;}@media print{body{background:#fff;}.masthead,.tricolor,.progress-wrap,.nav,.footer-brand,.toast,.print-btn{display:none!important;}
+.slide{display:none!important;}.slide.cheat-slide{display:block!important;animation:none!important;opacity:1!important;transform:none!important;}.app{min-height:0!important;}.slide.cheat-slide>.eyebrow,.slide.cheat-slide>.slide-title,.slide.cheat-slide>p{display:none!important;}
+.app{box-shadow:none;background:#fff;}.stage{padding:0;}.cheat{border:none;padding:0;}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="masthead">
+    <div class="mast-row">
+      <div class="brand">
+        <div class="kc"><span class="inner">KC</span></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 7: Area</div></div>
+      </div>
+      <div class="lesson-tag">Chapter 7 Review</div>
+    </div>
+  </div>
+  <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
+
+  <div class="progress-wrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 8</div>
+  </div>
+
+  <div class="stage">
+<section class="slide active" data-slide="1"><p class="eyebrow">Chapter Review</p><h1 class="slide-title">Chapter 7: Area — the whole chapter in one session</h1>
+<div class="card warm"><p style="margin-bottom:0;">Chapter 7 built area formulas from the rectangle up, and picked up the Pythagorean Theorem and the two special right triangles along the way &mdash; the tools you need to find a missing height or apothem.</p></div><h2 class="sub-title" style="margin-top:22px;">This review covers:</h2><ul class="obj-list"><li><span class="num">7.1</span><span>Areas of Rectangles, Parallelograms &amp; Triangles</span></li><li><span class="num">7.2</span><span>Areas of Other Quadrilaterals</span></li><li><span class="num">7.3</span><span>The Pythagorean Theorem</span></li><li><span class="num">7.4</span><span>Special Right Triangles</span></li><li><span class="num">7.5</span><span>Areas of Regular Polygons</span></li><li><span class="num">7.6</span><span>Circles, Sectors &amp; Segments</span></li></ul><p>The plan: the key ideas from every lesson, the mistakes that cost the most points, a one-page cheat sheet you can print, and a practice test that mixes every lesson together &mdash; the way a real chapter test does.</p><div class="name-field-wrap"><label for="studentName">Your name (so your tutor can see your progress)</label><input type="text" id="studentName" placeholder="Type your first and last name"></div>
+</section>
+<section class="slide" data-slide="2"><p class="eyebrow">Key Ideas &middot; Lessons 7.1–7.2</p><h1 class="slide-title">Polygon area formulas</h1>
+<div class="rc"><div class="tagl">Lesson 7.1</div><h3>Base times perpendicular height</h3><p>Rectangle and parallelogram: A = bh. Triangle: A = ½bh. The height is always perpendicular to the base &mdash; never the slanted side.</p><div class="ex"><strong>Example:</strong> A parallelogram with base 12, slanted side 7, and height 5 has A = 12 × 5 = 60.</div></div><div class="rc"><div class="tagl">Lesson 7.2</div><h3>Trapezoids, rhombi, and kites</h3><p>Trapezoid: A = ½h(b₁ + b₂). Rhombus or kite: A = ½d₁d₂, using the two diagonals (which are perpendicular).</p><div class="ex"><strong>Example:</strong> Bases 5 and 9, height 6: ½(6)(14) = 42.</div></div>
+</section>
+<section class="slide" data-slide="3"><p class="eyebrow">Key Ideas &middot; Lessons 7.3–7.4</p><h1 class="slide-title">Right triangles</h1>
+<div class="rc"><div class="tagl">Lesson 7.3</div><h3>Pythagorean Theorem and its converse</h3><p>In a right triangle, a² + b² = c², where c is the hypotenuse. If a² + b² = c² for a triangle's sides, it's right; if c² is bigger it's obtuse; if smaller, acute.</p><div class="ex"><strong>Example:</strong> 6, 8, 11: 36 + 64 = 100 &lt; 121, so not right (obtuse).</div></div><div class="rc"><div class="tagl">Lesson 7.4</div><h3>Special right triangles</h3><p>45-45-90: legs x and x, hypotenuse x√2. 30-60-90: short leg x, long leg x√3, hypotenuse 2x. The short leg is opposite the 30° angle.</p><div class="ex"><strong>Example:</strong> Hypotenuse 14 in a 30-60-90: short leg 7, long leg 7√3.</div></div><div class="diagram-row"><div class="diagram-panel"><div class="diagram-cap">45-45-90</div><svg width="200" height="150" viewBox="0 0 200 150"><polygon points="30,130 150,130 30,10" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><path d="M42,130 L42,118 L30,118" fill="none" stroke="#0A1F3D" stroke-width="1.5"/><text x="80" y="146" font-size="13" fill="(200, 140)" font-weight="700">x</text><text x="12" y="75" font-size="13" fill="(200, 140)" font-weight="700">x</text><text x="98" y="64" font-size="13" fill="#DB2F30" font-weight="700">x√2</text><text x="122" y="124" font-size="11" fill="#0A1F3D">45°</text><text x="36" y="40" font-size="11" fill="#0A1F3D">45°</text></svg></div><div class="diagram-panel"><div class="diagram-cap">30-60-90</div><svg width="230" height="150" viewBox="0 0 230 150"><polygon points="30,130 200,130 30,32" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><path d="M42,130 L42,118 L30,118" fill="none" stroke="#0A1F3D" stroke-width="1.5"/><text x="100" y="146" font-size="13" fill="(200, 140)" font-weight="700">x√3</text><text x="12" y="85" font-size="13" fill="(200, 140)" font-weight="700">x</text><text x="120" y="72" font-size="13" fill="#DB2F30" font-weight="700">2x</text><text x="165" y="124" font-size="11" fill="#0A1F3D">30°</text><text x="36" y="58" font-size="11" fill="#0A1F3D">60°</text></svg></div></div>
+
+</section>
+<section class="slide" data-slide="4"><p class="eyebrow">Key Ideas &middot; Lessons 7.5–7.6</p><h1 class="slide-title">Regular polygons and circles</h1>
+<div class="rc"><div class="tagl">Lesson 7.5</div><h3>Apothem and perimeter</h3><p>The <strong>apothem</strong> runs from the center to the midpoint of a side, perpendicular to it. A = ½aP, where P is the perimeter. The <strong>radius</strong> runs from the center to a vertex.</p><div class="ex"><strong>Example:</strong> Regular hexagon, side 8: P = 48, apothem 4√3, A = ½(4√3)(48) = 96√3.</div></div><div class="rc"><div class="tagl">Lesson 7.6</div><h3>Circles, sectors, segments</h3><p>Circle: A = πr². Sector: A = (θ/360)πr². Segment (between a chord and its arc) = sector area − triangle area.</p><div class="ex"><strong>Example:</strong> 120° sector, radius 6: (120/360)(36π) = 12π.</div></div>
+</section>
+<section class="slide" data-slide="5"><p class="eyebrow">Watch Out</p><h1 class="slide-title">The mistakes that cost the most points</h1>
+<table class="mist"><tr><th>The mistake</th><th>The fix</th></tr><tr><td>Using the slanted side as the height</td><td>Height is perpendicular to the base. In a parallelogram, the slanted side is longer than the height.</td></tr><tr><td>Forgetting the ½ in triangle, trapezoid, and kite formulas</td><td>Triangle ½bh, trapezoid ½h(b₁ + b₂), kite ½d₁d₂.</td></tr><tr><td>Putting the hypotenuse in for a or b</td><td>c is always the side across from the right angle, the longest side.</td></tr><tr><td>Adding when you should subtract for a missing leg</td><td>Leg² = hypotenuse² − other leg². Hypotenuse 25, leg 7: √(625 − 49) = 24.</td></tr><tr><td>Mixing up √2 and √3</td><td>√2 goes with 45-45-90. √3 goes with 30-60-90, on the long leg.</td></tr><tr><td>Using the radius as the apothem</td><td>The apothem goes to the middle of a side; the radius goes to a vertex.</td></tr><tr><td>Using diameter in πr²</td><td>Halve the diameter first.</td></tr></table><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Before any test:</strong> read this list once more. Most lost points on a chapter test come from a small handful of repeat mistakes, not from not knowing the material.</p></div>
+</section>
+<section class="slide cheat-slide" data-slide="6"><p class="eyebrow">Cheat Sheet</p><h1 class="slide-title">Everything from this chapter on one page</h1>
+<p>Print this page or take a screenshot. It's your last look before the test.</p><div class="cheat"><h2>Geometry &middot; Chapter 7: Area</h2><div class="csub">KingCretot Experience &middot; Chapter 7 cheat sheet</div><table><tr><th>Topic</th><th>Rule</th><th>Example</th></tr><tr><td>Rectangle / parallelogram</td><td>A = bh (perpendicular height)</td><td>12 × 5 = 60</td></tr><tr><td>Triangle</td><td>A = ½bh</td><td>½(14)(9) = 63</td></tr><tr><td>Trapezoid</td><td>A = ½h(b₁ + b₂)</td><td>½(8)(7 + 13) = 80</td></tr><tr><td>Rhombus / kite</td><td>A = ½d₁d₂</td><td>½(10)(16) = 80</td></tr><tr><td>Pythagorean</td><td>a² + b² = c²</td><td>9, 12, 15</td></tr><tr><td>Converse</td><td>c² = a² + b² right · &gt; obtuse · &lt; acute</td><td>6, 8, 11 obtuse</td></tr><tr><td>45-45-90</td><td>x : x : x√2</td><td>Leg 6 → hyp 6√2</td></tr><tr><td>30-60-90</td><td>x : x√3 : 2x</td><td>Hyp 14 → 7 and 7√3</td></tr><tr><td>Regular polygon</td><td>A = ½aP</td><td>Hexagon side 8: 96√3</td></tr><tr><td>Circle / sector</td><td>πr² · (θ/360)πr²</td><td>120°, r = 6: 12π</td></tr><tr><td>Segment</td><td>Sector − triangle</td><td>Bounded by chord and arc</td></tr></table></div><button class="print-btn" onclick="window.print()">&#128424; Print the cheat sheet</button>
+</section>
+<section class="slide" data-slide="7"><p class="eyebrow">Practice Test</p><h1 class="slide-title">10 questions, every lesson mixed together</h1>
+<p>Just like a unit test, these jump between lessons. You get two tries on each question, and every question explains itself after you answer.</p><div class="quiz-q" data-quiz="q1"><div class="qnum">Question 1</div><div class="qtext">A parallelogram has base 12, slanted side 7, and height 5. What is its area?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">84</button><button class="quiz-opt" data-correct="false">30</button><button class="quiz-opt" data-correct="false">35</button><button class="quiz-opt" data-correct="true">60</button></div>
+<div class="explain-box" id="ex-q1"><b>Here's why:</b> A = bh uses the perpendicular height, not the slanted side: 12 × 5 = 60. 84 uses the slanted side instead.</div></div>
+<div class="quiz-q" data-quiz="q2"><div class="qnum">Question 2</div><div class="qtext">What is the area of a triangle with base 14 and height 9?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">23</button><button class="quiz-opt" data-correct="false">126</button><button class="quiz-opt" data-correct="true">63</button><button class="quiz-opt" data-correct="false">46</button></div>
+<div class="explain-box" id="ex-q2"><b>Here's why:</b> A = ½bh = ½(14)(9) = 63. 126 forgets the ½.</div></div>
+<div class="quiz-q" data-quiz="q3"><div class="qnum">Question 3</div><div class="qtext">A trapezoid has bases 7 and 13 and height 8. What is its area?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">160</button><button class="quiz-opt" data-correct="true">80</button><button class="quiz-opt" data-correct="false">104</button><button class="quiz-opt" data-correct="false">56</button></div>
+<div class="explain-box" id="ex-q3"><b>Here's why:</b> A = ½h(b₁ + b₂) = ½(8)(20) = 80. 160 forgets the ½, and 56 and 104 use just one base.</div></div>
+<div class="quiz-q" data-quiz="q4"><div class="qnum">Question 4</div><div class="qtext">A kite has diagonals of 10 and 16. What is its area?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">80</button><button class="quiz-opt" data-correct="false">26</button><button class="quiz-opt" data-correct="false">160</button><button class="quiz-opt" data-correct="false">40</button></div>
+<div class="explain-box" id="ex-q4"><b>Here's why:</b> A = ½d₁d₂ = ½(10)(16) = 80. 160 forgets the ½, and 26 adds the diagonals.</div></div>
+<div class="quiz-q" data-quiz="q5"><div class="qnum">Question 5</div><div class="qtext">A right triangle has legs 9 and 12. What is the hypotenuse?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">225</button><button class="quiz-opt" data-correct="false">21</button><button class="quiz-opt" data-correct="true">15</button><button class="quiz-opt" data-correct="false">7.9</button></div>
+<div class="explain-box" id="ex-q5"><b>Here's why:</b> c² = 81 + 144 = 225, so c = 15. 225 forgets the square root, and 21 adds the legs.</div></div>
+<div class="quiz-q" data-quiz="q6"><div class="qnum">Question 6</div><div class="qtext">A right triangle has hypotenuse 25 and one leg 7. What is the other leg?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">26</button><button class="quiz-opt" data-correct="false">18</button><button class="quiz-opt" data-correct="false">32</button><button class="quiz-opt" data-correct="true">24</button></div>
+<div class="explain-box" id="ex-q6"><b>Here's why:</b> Leg² = 25² − 7² = 625 − 49 = 576, so the leg is 24. 26 adds the squares as if 25 were a leg.</div></div>
+<div class="quiz-q" data-quiz="q7"><div class="qnum">Question 7</div><div class="qtext">A 45-45-90 triangle has legs of 6. What is the hypotenuse?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">6√3</button><button class="quiz-opt" data-correct="false">3√2</button><button class="quiz-opt" data-correct="true">6√2</button><button class="quiz-opt" data-correct="false">12</button></div>
+<div class="explain-box" id="ex-q7"><b>Here's why:</b> In a 45-45-90 triangle, hypotenuse = leg × √2 = 6√2 (about 8.49). √3 belongs to the 30-60-90 triangle.</div></div>
+<div class="quiz-q" data-quiz="q8"><div class="qnum">Question 8</div><div class="qtext">A 30-60-90 triangle has hypotenuse 14. What is the longer leg?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">14√3</button><button class="quiz-opt" data-correct="false">7</button><button class="quiz-opt" data-correct="true">7√3</button><button class="quiz-opt" data-correct="false">7√2</button></div>
+<div class="explain-box" id="ex-q8"><b>Here's why:</b> Hypotenuse = 2x, so x = 7 is the short leg. The long leg is x√3 = 7√3 (about 12.1).</div></div>
+<div class="quiz-q" data-quiz="q9"><div class="qnum">Question 9</div><div class="qtext">A regular hexagon has side 8 and apothem 4√3. What is its area?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="true">96√3</button><button class="quiz-opt" data-correct="false">96</button><button class="quiz-opt" data-correct="false">192√3</button><button class="quiz-opt" data-correct="false">48√3</button></div>
+<div class="explain-box" id="ex-q9"><b>Here's why:</b> P = 6 × 8 = 48. A = ½aP = ½(4√3)(48) = 96√3. 192√3 forgets the ½.</div></div>
+<div class="quiz-q" data-quiz="q10"><div class="qnum">Question 10</div><div class="qtext">What is the area of a 120° sector of a circle with radius 6?</div><div class="quiz-opts"><button class="quiz-opt" data-correct="false">24π</button><button class="quiz-opt" data-correct="true">12π</button><button class="quiz-opt" data-correct="false">4π</button><button class="quiz-opt" data-correct="false">36π</button></div>
+<div class="explain-box" id="ex-q10"><b>Here's why:</b> The full circle is π(6²) = 36π. A 120° sector is 120/360 = 1/3 of it: 12π. 4π is one-third of the circumference &mdash; that's the arc length, not the area.</div></div>
+<div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 10</span></div><div class="submit-status" id="submitStatus"></div>
+</section>
+<section class="slide" data-slide="8"><p class="eyebrow">Debrief</p><h1 class="slide-title">Chapter 7, reviewed</h1>
+<p>You can find the area of every polygon in the course, recover missing lengths with the Pythagorean Theorem and special right triangles, and measure circles, sectors, and segments. Chapter 8 looks closely at circles: chords, tangents, arcs, and angles.</p><div class="card think"><p style="margin-bottom:0;"><strong>&#128173; Missed a question?</strong> Each one lines up with a lesson. Go back to that lesson's worked examples before the test &mdash; it's faster than re-reading the whole chapter.</p></div><div class="end-actions"><a class="end-btn primary next-lesson-link" href="../Chapter%208%20-%20Circles/8-1-circles-and-chords.html">Start Chapter 8 &rarr;</a><a class="end-btn secondary" href="../KCE_Geometry_Chapter7.html">Back to Chapter 7</a><button class="end-btn secondary" data-action="restart">&#8635; Restart This Review</button></div>
+</section>
+
+  </div>
+
+  <div class="nav">
+    <button class="ghost" id="prevBtn">&larr; Back</button>
+    <div class="dots" id="dots"></div>
+    <button id="nextBtn">Next &rarr;</button>
+  </div>
+
+  <div class="footer-brand">KINGCRETOT EXPERIENCE &middot; GEOMETRY CURRICULUM &middot; INTERNAL / STUDENT USE</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  var total = document.querySelectorAll('.slide').length;
+  var current = 1;
+
+  var dotsEl = document.getElementById('dots');
+  for (var i = 1; i <= total; i++) {
+    var d = document.createElement('div');
+    d.className = 'dot' + (i === 1 ? ' active' : '');
+    dotsEl.appendChild(d);
+  }
+
+  function goTo(n) {
+    if (n < 1 || n > total) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    document.querySelectorAll('.dot')[current - 1].classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.querySelectorAll('.dot')[current - 1].classList.add('active');
+    document.getElementById('progressFill').style.width = Math.round(current / total * 100) + '%';
+    document.getElementById('progressLabel').textContent = 'Slide ' + current + ' of ' + total;
+    document.getElementById('prevBtn').disabled = current === 1;
+    var nb = document.getElementById('nextBtn');
+    if (current === total) { nb.style.display = 'none'; } else { nb.style.display = 'inline-block'; nb.textContent = 'Next \u2192'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  document.getElementById('prevBtn').disabled = true;
+  document.getElementById('prevBtn').addEventListener('click', function(){ goTo(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ goTo(current + 1); });
+
+  function showToast(msg){
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3200);
+  }
+
+  document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      showToast('\ud83d\udd01 Review restarted \u2014 go for a higher score!');
+      goTo(1);
+    });
+  });
+
+  // Shuffle answer order so the correct answer isn't always in the same spot
+  function shuffleKids(el){ var k=Array.prototype.slice.call(el.children); for(var i=k.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=k[i];k[i]=k[j];k[j]=t;} k.forEach(function(c){el.appendChild(c);}); }
+  document.querySelectorAll('.choice-row, .quiz-opts').forEach(shuffleKids);
+
+  // Guided practice: two attempts, then reveal + explanation
+  document.querySelectorAll('.choice-row').forEach(function(row){
+    var q = row.dataset.q;
+    var fb = document.getElementById('fb-' + q);
+    var exBox = document.getElementById('ex-' + q);
+    var attempts = 0;
+    var locked = false;
+    row.querySelectorAll('.choice-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (locked) return;
+        if (btn.classList.contains('incorrect')) return;
+        attempts++;
+        if (btn.dataset.correct === 'true') {
+          locked = true;
+          row.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (fb) { fb.textContent = '\u2713 Correct!'; fb.className = 'feedback ok'; }
+          if (exBox) exBox.classList.add('show');
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = row.querySelectorAll('.choice-btn:not(.incorrect)').length;
+          if (attempts >= 2 || left <= 1) {
+            locked = true;
+            row.querySelectorAll('.choice-btn').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (fb) { fb.textContent = 'The correct answer is highlighted in green \u2014 read the explanation below.'; fb.className = 'feedback bad'; }
+            if (exBox) exBox.classList.add('show');
+          } else {
+            if (fb) { fb.textContent = 'Not quite \u2014 give it one more try.'; fb.className = 'feedback bad'; }
+          }
+        }
+      });
+    });
+  });
+
+  // Mini knowledge test: two attempts per question, score counts first-or-second-try correct
+  var quizAnswered = {};
+  var quizAttempts = {};
+  var quizTotal = document.querySelectorAll('.quiz-q').length;
+  document.querySelectorAll('.quiz-q').forEach(function(q){
+    var qid = q.dataset.quiz;
+    var exBox = document.getElementById('ex-' + qid);
+    quizAttempts[qid] = 0;
+    q.querySelectorAll('.quiz-opt').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if (quizAnswered[qid] !== undefined) return;
+        if (btn.classList.contains('incorrect')) return;
+        quizAttempts[qid]++;
+        if (btn.dataset.correct === 'true') {
+          quizAnswered[qid] = true;
+          q.querySelectorAll('.quiz-opt').forEach(function(b){ b.disabled = true; });
+          btn.classList.add('correct');
+          if (exBox) exBox.classList.add('show');
+          updateScore();
+        } else {
+          btn.classList.add('incorrect');
+          btn.disabled = true;
+          var left = q.querySelectorAll('.quiz-opt:not(.incorrect)').length;
+          if (quizAttempts[qid] >= 2 || left <= 1) {
+            quizAnswered[qid] = false;
+            q.querySelectorAll('.quiz-opt').forEach(function(b){
+              b.disabled = true;
+              if (b.dataset.correct === 'true') b.classList.add('correct');
+            });
+            if (exBox) exBox.classList.add('show');
+            updateScore();
+          } else {
+            showToast('Not quite \u2014 try this one once more.');
+          }
+        }
+      });
+    });
+  });
+  function updateScore(){
+    var answeredCount = Object.keys(quizAnswered).length;
+    if (quizTotal === 0 || answeredCount < quizTotal) return;
+    var score = 0;
+    for (var k in quizAnswered) if (quizAnswered[k]) score++;
+    var scoreBox = document.getElementById('quizScore');
+    if (!scoreBox) return;
+    document.getElementById('scoreText').textContent = score + ' / ' + quizTotal;
+    scoreBox.classList.add('show');
+    submitProgress(score, quizTotal);
+  }
+
+  var alreadySubmitted = false;
+  function submitProgress(score, total) {
+    if (alreadySubmitted) return;
+    alreadySubmitted = true;
+    var nameEl = document.getElementById('studentName');
+    var studentName = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : '(name not entered)';
+    var pct = Math.round((score/total)*100);
+    var mastered = pct >= 80 ? 'yes' : 'no';
+    var statusEl = document.getElementById('submitStatus');
+    if (statusEl) statusEl.textContent = 'Sending your results to your tutor\u2026';
+    fetch('https://formspree.io/f/myezragk', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        program: 'KCE Geometry',
+        student: studentName,
+        module: 'geometry-chapter-7-review',
+        lesson: 'Chapter 7 Review: Area',
+        score: pct,
+        mastered: mastered,
+        rawScore: score + ' / ' + total
+      })
+    }).then(function(r){
+      if (statusEl) statusEl.textContent = r.ok ? '\u2713 Results sent to your tutor.' : 'Could not send results \u2014 please tell your tutor your score.';
+    }).catch(function(){
+      if (statusEl) statusEl.textContent = 'Could not send results \u2014 please tell your tutor your score.';
+    });
+  }
+</script>
+</body>
+</html>

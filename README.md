@@ -71,3 +71,12 @@ Still to build from BJU Geometry 5th ed.: 10 Transformations & Symmetry
 - Forward links: 9.8 → 10.1, 10.7 → 11.1, 11.7 → 12.1, 12.6 → course home.
 - Every lesson: name field, two-try guided practice with explanations, 5-question quiz (4 choices on multiple choice), Formspree myezragk with per-lesson module IDs.
 - Automated checks passed on all 81 pages: links, slide navigation, two-try answers, explanations, Formspree payload, desktop/mobile overflow.
+
+## Chapter reviews (Oct 4, 2026)
+- 12 chapter reviews, one per chapter: Chapter N/chapter-N-review.html.
+- Same format as the Algebra 1 unit reviews: welcome + name field, key ideas from every lesson (with diagrams), common mistakes table, printable one-page cheat sheet, 10-question mixed practice test (4 choices, two tries, explanations), debrief.
+- Formspree myezragk, module IDs geometry-chapter-N-review.
+- Navigation: each chapter's last lesson → its review → first lesson of the next chapter. Chapter 12 review → course home.
+- Each chapter page and the hub carry a review card after the last lesson.
+- Chapter 2 Crash Course retired: its content (= vs ≅, Reflexive/Symmetric/Transitive, linear pairs, vertical angles) folded into the Chapter 2 Review, which now covers 2.1–2.8 without the teacher-worksheet framing. KCE_Geometry_Chapter2_Crash_Course.html now redirects to the Chapter 2 Review so old links keep working.
+- Every practice-test answer recomputed; all 12 reviews pass the automated navigation, scoring, and Formspree payload test.
