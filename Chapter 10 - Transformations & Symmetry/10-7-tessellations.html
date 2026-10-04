@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 9.8: Drawing 3-Dimensional Figures</title>
+<title>KCE Geometry — Lesson 10.7: Tessellations</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -116,32 +116,32 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 10: Transformations &amp; Symmetry</div></div>
       </div>
-      <div class="lesson-tag">Lesson 9.8 &middot; Drawing 3-D Figures</div>
+      <div class="lesson-tag">Lesson 10.7 &middot; Tessellations</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
 
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
   </div>
 
   <div class="stage">
 
     <!-- 1 -->
     <section class="slide active" data-slide="1">
-      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 9!</p>
-      <h1 class="slide-title">Showing a solid on flat paper</h1>
+      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 10!</p>
+      <h1 class="slide-title">Covering the plane with no gaps</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Paper is flat, but the things we design are not. Architects, engineers, game designers, and artists use three standard ways to draw a solid on paper. Each one shows something the others hide.</p>
+        <p style="margin-bottom:0;">A <strong>tessellation</strong> is a pattern of shapes that covers a flat surface completely, with no gaps and no overlaps. Floor tiles, honeycombs, and brick walls are all tessellations, and every one of them is built from the transformations in this chapter.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Draw and read orthographic (top, front, and side) views</span></li>
-        <li><span class="num">2</span><span>Recognize an isometric drawing</span></li>
-        <li><span class="num">3</span><span>Recognize one-point and two-point perspective drawings</span></li>
+        <li><span class="num">1</span><span>Explain why only three regular polygons tessellate by themselves</span></li>
+        <li><span class="num">2</span><span>Test whether a combination of regular polygons can meet at a vertex</span></li>
+        <li><span class="num">3</span><span>Identify the transformations that build a tessellation</span></li>
       </ul>
       <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
@@ -150,185 +150,188 @@
     </section>
     <!-- 2 -->
     <section class="slide" data-slide="2">
-      <p class="eyebrow">Method 1</p>
-      <h1 class="slide-title">Orthographic views</h1>
+      <p class="eyebrow">Core Idea</p>
+      <h1 class="slide-title">The angles at each vertex must add to 360&deg;</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>orthographic drawing</strong> shows a solid as separate flat views, usually the <strong>top</strong>, <strong>front</strong>, and <strong>right side</strong>, each looking straight at one face. No depth is shown in any single view, so all lengths are true lengths. This is how blueprints work.</p>
+        <p style="margin-bottom:0;">Wherever corners of the tiles meet, their angles must fill a full turn exactly: 360&deg;. Any less leaves a gap, and any more forces an overlap.</p>
       </div>
-      <div class="diagram-panel">
-        <div class="angle-tag">THREE CUBES IN A ROW, ONE MORE CUBE ON TOP OF THE LEFT END</div>
-        <svg width="270" height="90" viewBox="0 0 270 90"><text x="14" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Front</text><rect x="10" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="32" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="54" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="10" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="104" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Top</text><rect x="100" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="122" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="144" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="192" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Right side</text><rect x="200" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="200" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front view shows the stack. The top view shows only the three cubes on the bottom row. The right side view sees the two-cube stack behind the shorter end.</p>
-      </div>
+      <div style="overflow-x:auto;"><table style="border-collapse:collapse;width:100%;font-size:14.5px;margin:10px 0;"><tr><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #0A1F3D;">Regular polygon</th><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #0A1F3D;">Interior angle</th><th style="text-align:left;padding:6px 10px;border-bottom:2px solid #0A1F3D;">Fits evenly around a point?</th></tr><tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;">Equilateral triangle</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">60&deg;</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">360 &divide; 60 = 6 &#10003;</td></tr><tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;">Square</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">90&deg;</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">360 &divide; 90 = 4 &#10003;</td></tr><tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;">Regular pentagon</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">108&deg;</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">360 &divide; 108 &asymp; 3.33 &#10007;</td></tr><tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;">Regular hexagon</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">120&deg;</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">360 &divide; 120 = 3 &#10003;</td></tr><tr><td style="padding:6px 10px;border-bottom:1px solid #ddd;">Regular octagon</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">135&deg;</td><td style="padding:6px 10px;border-bottom:1px solid #ddd;">360 &divide; 135 &asymp; 2.67 &#10007;</td></tr></table></div>
     </section>
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Method 2</p>
-      <h1 class="slide-title">Isometric drawing</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>isometric drawing</strong> shows a corner view of a solid, usually on isometric dot paper. The three edge directions are drawn <strong>120&deg; apart</strong>: one vertical and two slanting at 30&deg; from horizontal.</p>
+      <p class="eyebrow">Regular Tessellations</p>
+      <h1 class="slide-title">Only three regular polygons work alone</h1>
+      <div class="diagram-panel">
+        <div class="angle-tag">REGULAR HEXAGONS: 3 MEET AT EVERY VERTEX</div>
+        <svg width="190" height="170" viewBox="0 0 190 170"><polygon points="42.0,20.0 31.0,39.1 9.0,39.1 -2.0,20.0 9.0,0.9 31.0,0.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="75.0,39.1 64.0,58.1 42.0,58.1 31.0,39.1 42.0,20.0 64.0,20.0" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="108.0,20.0 97.0,39.1 75.0,39.1 64.0,20.0 75.0,0.9 97.0,0.9" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="141.0,39.1 130.0,58.1 108.0,58.1 97.0,39.1 108.0,20.0 130.0,20.0" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="174.0,20.0 163.0,39.1 141.0,39.1 130.0,20.0 141.0,0.9 163.0,0.9" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="42.0,58.1 31.0,77.2 9.0,77.2 -2.0,58.1 9.0,39.1 31.0,39.1" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="75.0,77.2 64.0,96.2 42.0,96.2 31.0,77.2 42.0,58.1 64.0,58.1" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="108.0,58.1 97.0,77.2 75.0,77.2 64.0,58.1 75.0,39.1 97.0,39.1" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="141.0,77.2 130.0,96.2 108.0,96.2 97.0,77.2 108.0,58.1 130.0,58.1" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="174.0,58.1 163.0,77.2 141.0,77.2 130.0,58.1 141.0,39.1 163.0,39.1" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="42.0,96.2 31.0,115.3 9.0,115.3 -2.0,96.2 9.0,77.2 31.0,77.2" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="75.0,115.3 64.0,134.3 42.0,134.3 31.0,115.3 42.0,96.2 64.0,96.2" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="108.0,96.2 97.0,115.3 75.0,115.3 64.0,96.2 75.0,77.2 97.0,77.2" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="141.0,115.3 130.0,134.3 108.0,134.3 97.0,115.3 108.0,96.2 130.0,96.2" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="174.0,96.2 163.0,115.3 141.0,115.3 130.0,96.2 141.0,77.2 163.0,77.2" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="42.0,134.3 31.0,153.4 9.0,153.4 -2.0,134.3 9.0,115.3 31.0,115.3" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="75.0,153.4 64.0,172.4 42.0,172.4 31.0,153.4 42.0,134.3 64.0,134.3" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="108.0,134.3 97.0,153.4 75.0,153.4 64.0,134.3 75.0,115.3 97.0,115.3" fill="#fbe9e9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="141.0,153.4 130.0,172.4 108.0,172.4 97.0,153.4 108.0,134.3 130.0,134.3" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="174.0,134.3 163.0,153.4 141.0,153.4 130.0,134.3 141.0,115.3 163.0,115.3" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">This is the pattern bees use in a honeycomb.</p>
       </div>
-      <div class="card warm">
-        <p style="margin-bottom:0;">Parallel edges on the object stay parallel in the drawing, and lengths along the three directions are drawn at their true size. It is not quite how your eye sees the object, but it is easy to measure from.</p>
+      <div class="card blue">
+        <p style="margin-bottom:0;">A <strong>regular tessellation</strong> uses one regular polygon. Only equilateral triangles, squares, and regular hexagons can do it, because only their angles divide 360&deg; evenly. Polygons with more than six sides have angles bigger than 120&deg;, so three won&rsquo;t fit and two aren&rsquo;t enough.</p>
       </div>
     </section>
     <!-- 4 -->
     <section class="slide" data-slide="4">
-      <p class="eyebrow">Method 3</p>
-      <h1 class="slide-title">Perspective drawing</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;">A <strong>perspective drawing</strong> shows a solid the way your eye sees it: objects farther away look smaller, and parallel lines going away from you seem to meet at a <strong>vanishing point (VP)</strong> on the <strong>horizon line</strong>.</p>
-      </div>
+      <p class="eyebrow">Semiregular Tessellations</p>
+      <h1 class="slide-title">Mixing regular polygons</h1>
       <div class="diagram-panel">
-        <div class="angle-tag">ONE-POINT PERSPECTIVE: A BOX</div>
-        <svg width="260" height="160" viewBox="0 0 260 160"><line x1="0" y1="40" x2="260" y2="40" stroke="#C9A84C" stroke-width="1.5"/><text x="4" y="34" font-size="10" fill="#C9A84C">horizon line</text><circle cx="210" cy="40" r="4" fill="#DB2F30"/><text x="216" y="34" font-size="10" fill="#DB2F30" font-weight="700">VP</text><polygon points="30,80 110,80 110,150 30,150" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="80" x2="93.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="93.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="80" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="150" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="111.5" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="93.0" y1="66.0" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front face is flat toward you. Every edge going back into the distance points to the single vanishing point.</p>
+        <div class="angle-tag">OCTAGONS AND SQUARES: 135&deg; + 135&deg; + 90&deg; = 360&deg;</div>
+        <svg width="193" height="193" viewBox="0 0 193 193"><polygon points="27.0,10.0 51.0,10.0 67.9,27.0 67.9,51.0 51.0,67.9 27.0,67.9 10.0,51.0 10.0,27.0" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="67.9,51.0 84.9,67.9 67.9,84.9 51.0,67.9" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="27.0,67.9 51.0,67.9 67.9,84.9 67.9,108.9 51.0,125.9 27.0,125.9 10.0,108.9 10.0,84.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="67.9,108.9 84.9,125.9 67.9,142.9 51.0,125.9" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="27.0,125.9 51.0,125.9 67.9,142.9 67.9,166.9 51.0,183.8 27.0,183.8 10.0,166.9 10.0,142.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="84.9,10.0 108.9,10.0 125.9,27.0 125.9,51.0 108.9,67.9 84.9,67.9 67.9,51.0 67.9,27.0" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="125.9,51.0 142.9,67.9 125.9,84.9 108.9,67.9" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="84.9,67.9 108.9,67.9 125.9,84.9 125.9,108.9 108.9,125.9 84.9,125.9 67.9,108.9 67.9,84.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="125.9,108.9 142.9,125.9 125.9,142.9 108.9,125.9" fill="#f7efd9" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="84.9,125.9 108.9,125.9 125.9,142.9 125.9,166.9 108.9,183.8 84.9,183.8 67.9,166.9 67.9,142.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="142.9,10.0 166.9,10.0 183.8,27.0 183.8,51.0 166.9,67.9 142.9,67.9 125.9,51.0 125.9,27.0" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="142.9,67.9 166.9,67.9 183.8,84.9 183.8,108.9 166.9,125.9 142.9,125.9 125.9,108.9 125.9,84.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/><polygon points="142.9,125.9 166.9,125.9 183.8,142.9 183.8,166.9 166.9,183.8 142.9,183.8 125.9,166.9 125.9,142.9" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="1.5"/></svg>
       </div>
-      <div class="card warm">
-        <p style="margin-bottom:0;">In <strong>two-point perspective</strong>, a corner faces you, and the edges going left and right recede to two vanishing points on the horizon line.</p>
+      <div class="card blue">
+        <p style="margin-bottom:0;">A <strong>semiregular tessellation</strong> uses two or more regular polygons, with the same arrangement at every vertex. There are exactly eight of them. The octagon-and-square pattern above is common on bathroom floors.</p>
       </div>
     </section>
     <!-- 5 -->
     <section class="slide" data-slide="5">
       <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Choosing the right drawing</h1>
+      <h1 class="slide-title">Testing a vertex</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Which kind of drawing fits each job?</p>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> Can two regular 12-gons and one equilateral triangle meet at a vertex? Can regular octagons tessellate alone?</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">A carpenter needs exact measurements of a cabinet&rsquo;s front, top, and side</div>Orthographic views: every length is true size.</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">A catalog shows a box from a corner so you can see three faces and measure its edges</div>Isometric drawing: three faces visible, edges drawn true length.</div></div>
-      <div class="step"><div class="badge">3</div><div class="content"><div class="label">An artist paints a road stretching toward the horizon</div>One-point perspective: the road&rsquo;s edges meet at one vanishing point.</div></div>
-      <div class="step"><div class="badge">4</div><div class="content"><div class="label">An architect sketches a building seen from the street corner</div>Two-point perspective: the corner is closest, and each wall recedes to its own vanishing point.</div></div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Interior angle of a regular 12-gon</div>(12 &minus; 2) &times; 180&deg; &divide; 12 = 150&deg;</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Add the angles</div>150&deg; + 150&deg; + 60&deg; = 360&deg;. Yes, they fit exactly.</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Octagons alone</div>Each angle is 135&deg;, and 360 &divide; 135 is not a whole number, so no. They need squares to fill the gaps.</div></div>
     </section>
     <!-- 6 -->
     <section class="slide" data-slide="6">
-      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
-      <h1 class="slide-title">Now you try, with me right here</h1>
-      <div class="gp-box">
-        <p class="gp-prompt">Name the drawing or the view.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Railroad tracks that seem to meet at a single point on the horizon are an example of...</p>
-        <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">One-point perspective</button>
-          <button class="choice-btn" data-correct="false">Isometric drawing</button>
-          <button class="choice-btn" data-correct="false">Orthographic views</button>
-        </div>
-        <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The rails are parallel, but in perspective they appear to meet at one vanishing point. Isometric drawings keep parallel lines parallel.</div>
-
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cylinder stands upright on its base. What does its top view look like?</p>
-        <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">A circle</button>
-          <button class="choice-btn" data-correct="false">A rectangle</button>
-          <button class="choice-btn" data-correct="false">A triangle</button>
-        </div>
-        <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Looking straight down, you see only the circular top. The front view would be a rectangle.</div>
-
+      <p class="eyebrow">Beyond Regular Polygons</p>
+      <h1 class="slide-title">Any triangle, any quadrilateral, and Escher</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Every</strong> triangle tessellates: put six copies around a point, and the angles a, b, c each appear twice, for 2(a + b + c) = 360&deg;. <strong>Every</strong> quadrilateral tessellates too, since its four angles already add to 360&deg;.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">Artist M. C. Escher made famous tessellations of birds, fish, and lizards. He started with a polygon that tessellates, cut a shape out of one side, and attached it to another side by a translation, rotation, or glide reflection, so the tiles still fit perfectly.</p>
       </div>
     </section>
     <!-- 7 -->
     <section class="slide" data-slide="7">
-      <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">Blueprints, video games, and art museums</h1>
-      <p>Every set of construction plans is a collection of orthographic views. Many classic video games use isometric views to show a 3-D world on a flat screen. Renaissance painters developed perspective so their paintings would look like windows into real space.</p>
-      <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> engineers using CAD software build one 3-D model, and the software produces all three kinds of drawings from it automatically.</p>
-      </div>
-      <div class="next-box">
-        <strong>Chapter 10: Transformations &amp; Symmetry</strong> is next: reflections, translations, rotations, and dilations.
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">Check the angles at a vertex.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Each angle of a regular hexagon is 120&deg;. How many hexagons meet at each vertex of a hexagon tessellation?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">3</button>
+          <button class="choice-btn" data-correct="false">4</button>
+          <button class="choice-btn" data-correct="false">6</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> 360&deg; &divide; 120&deg; = 3. Six would be the count for equilateral triangles.</div>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Can regular pentagons tessellate the plane by themselves?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">No, because 360&deg; &divide; 108&deg; is not a whole number</button>
+          <button class="choice-btn" data-correct="false">Yes, five fit around each point</button>
+          <button class="choice-btn" data-correct="false">Yes, but only in rows</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Three pentagons fill 324&deg; and leave a gap; four would need 432&deg; and overlap.</div>
+
       </div>
     </section>
     <!-- 8 -->
     <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Floors, honeycombs, and soccer balls</h1>
+      <p>Tile setters choose squares, hexagons, or octagon-and-square patterns because only patterns that tessellate cover a floor without cutting tiles into odd shapes. Honeybees build hexagons because that shape tessellates and uses the least wax for each cell.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> a classic soccer ball is hexagons and pentagons, but that is a pattern on a sphere, not a flat tessellation. The curve of the ball is what lets the pentagons fit.</p>
+      </div>
+      <div class="next-box">
+        <strong>Chapter 11: Similarity</strong> is next: figures with the same shape but different sizes.
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">An orthographic drawing shows...</div>
+        <div class="qtext">How many regular polygons can tessellate the plane by themselves?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Separate flat views, such as top, front, and side</button>
-          <button class="quiz-opt" data-correct="false">One view with a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">A single corner view on dot paper</button>
-          <button class="quiz-opt" data-correct="false">A cross section of the solid</button>
+          <button class="quiz-opt" data-correct="true">3</button>
+          <button class="quiz-opt" data-correct="false">4</button>
+          <button class="quiz-opt" data-correct="false">5</button>
+          <button class="quiz-opt" data-correct="false">Infinitely many</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Orthographic drawings show each face straight on in its own view, like a blueprint. A vanishing point belongs to perspective.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Only the equilateral triangle, square, and regular hexagon have angles that divide 360&deg; evenly.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">In an isometric drawing, the three edge directions are drawn...</div>
+        <div class="qtext">Which regular polygon CANNOT tessellate by itself?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">120&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">90&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">Meeting at a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">45&deg; apart</button>
+          <button class="quiz-opt" data-correct="true">Pentagon</button>
+          <button class="quiz-opt" data-correct="false">Triangle</button>
+          <button class="quiz-opt" data-correct="false">Square</button>
+          <button class="quiz-opt" data-correct="false">Hexagon</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Isometric means &ldquo;equal measure&rdquo;: the three directions are spaced evenly, 120&deg; apart.</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> A pentagon&rsquo;s 108&deg; angle does not divide 360&deg; evenly. The other three do.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">In two-point perspective...</div>
+        <div class="qtext">How many squares meet at each vertex of a square tessellation?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A corner faces the viewer, and edges recede to two vanishing points on the horizon</button>
-          <button class="quiz-opt" data-correct="false">A face is flat toward the viewer, with one vanishing point</button>
-          <button class="quiz-opt" data-correct="false">There are no vanishing points</button>
-          <button class="quiz-opt" data-correct="false">All edges stay parallel</button>
+          <button class="quiz-opt" data-correct="true">4</button>
+          <button class="quiz-opt" data-correct="false">3</button>
+          <button class="quiz-opt" data-correct="false">6</button>
+          <button class="quiz-opt" data-correct="false">8</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Two-point perspective is the corner view. One vanishing point with a face toward you is one-point perspective.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> 90&deg; &times; 4 = 360&deg;.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">A cone stands on its base. What is its front view?</div>
+        <div class="qtext">A semiregular tessellation uses two regular octagons and one ____ at each vertex.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A triangle</button>
-          <button class="quiz-opt" data-correct="false">A circle</button>
-          <button class="quiz-opt" data-correct="false">A rectangle</button>
-          <button class="quiz-opt" data-correct="false">A circle with a dot in the center</button>
+          <button class="quiz-opt" data-correct="true">Square</button>
+          <button class="quiz-opt" data-correct="false">Equilateral triangle</button>
+          <button class="quiz-opt" data-correct="false">Regular hexagon</button>
+          <button class="quiz-opt" data-correct="false">Regular pentagon</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> From the front you see the slanted sides meeting at the apex: a triangle. The top view is the circle with a dot for the apex.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> 135&deg; + 135&deg; = 270&deg;, and 360&deg; &minus; 270&deg; = 90&deg;, the angle of a square.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">In an isometric drawing, parallel edges of the object stay parallel.</div>
+        <div class="qtext">Every quadrilateral, even an irregular one, tessellates the plane.</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. That is one way to tell isometric from perspective, where parallel edges that go back into the distance appear to meet.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. Its four angles add to 360&deg;, so four copies, one of each corner, fit around every vertex.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-    <!-- 9 -->
-    <section class="slide" data-slide="9">
-      <p class="eyebrow">Chapter 9 Complete</p>
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Chapter 10 Complete</p>
       <h1 class="slide-title">What we learned today</h1>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can draw and read orthographic views.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize an isometric drawing.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize one-point and two-point perspective.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain why only three regular polygons tessellate alone.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can test whether regular polygons fit around a vertex.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can identify the transformations that build a tessellation.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Orthographic Drawing</span>
-        <span class="term-pill">Isometric Drawing</span>
-        <span class="term-pill">Perspective</span>
-        <span class="term-pill">Vanishing Point</span>
-        <span class="term-pill">Horizon Line</span>
+        <span class="term-pill">Tessellation</span>
+        <span class="term-pill">Regular Tessellation</span>
+        <span class="term-pill">Semiregular Tessellation</span>
+        <span class="term-pill">Vertex Arrangement</span>
       </div>
 
       <div class="complete-box">
         <div class="badge-icon">&#127942;</div>
-        <h3>Chapter 9: Surface Area &amp; Volume &mdash; Complete!</h3>
-        <p>You can analyze solids, find the surface area and volume of prisms, cylinders, pyramids, cones, and spheres, work with great circles, and draw solids three ways. Chapter 10: Transformations &amp; Symmetry is next.</p>
+        <h3>Chapter 10: Transformations &amp; Symmetry &mdash; Complete!</h3>
+        <p>You can reflect, translate, rotate, and dilate figures, combine isometries, count symmetries, and build tessellations. Chapter 11: Similarity is next.</p>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%2010%20-%20Transformations%20%26%20Symmetry/10-1-reflections.html">Next Chapter: 10.1 &rarr;</a>
+        <a class="end-btn primary next-lesson-link" href="../Chapter%2011%20-%20Similarity/11-1-similar-figures.html">Next Chapter: 11.1 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -385,7 +388,7 @@
 
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      showToast('\ud83c\udf89 Chapter 9 complete \u2014 fantastic work!');
+      showToast('\ud83c\udf89 Chapter 10 complete \u2014 fantastic work!');
       goTo(1);
     });
   });
@@ -498,8 +501,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-9-8-drawing-3d-figures',
-        lesson: '9.8: Drawing 3-Dimensional Figures',
+        module: 'geometry-10-7-tessellations',
+        lesson: '10.7: Tessellations',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total

@@ -61,3 +61,13 @@ added Oct 4, 2026, built with 4 choices on every multiple-choice quiz question.
 Still to build from BJU Geometry 5th ed.: 10 Transformations & Symmetry
 (10.1–10.7), 11 Similarity (11.1–11.7), 12 Introduction to Trigonometry
 (12.1–12.6) — 20 lessons, for 80 total.
+
+
+## Chapters 10–12 build (Oct 4, 2026)
+- Chapter 10 Transformations & Symmetry: 10.1–10.7
+- Chapter 11 Similarity: 11.1–11.7
+- Chapter 12 Introduction to Trigonometry: 12.1–12.6
+- Chapter landing pages KCE_Geometry_Chapter10–12.html; hub cards added; hub now reads 12 chapters, 80 lessons.
+- Forward links: 9.8 → 10.1, 10.7 → 11.1, 11.7 → 12.1, 12.6 → course home.
+- Every lesson: name field, two-try guided practice with explanations, 5-question quiz (4 choices on multiple choice), Formspree myezragk with per-lesson module IDs.
+- Automated checks passed on all 81 pages: links, slide navigation, two-try answers, explanations, Formspree payload, desktop/mobile overflow.

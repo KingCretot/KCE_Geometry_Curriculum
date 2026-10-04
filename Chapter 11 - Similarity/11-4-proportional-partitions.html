@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 9.8: Drawing 3-Dimensional Figures</title>
+<title>KCE Geometry — Lesson 11.4: Proportional Partitions</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -116,32 +116,32 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 11: Similarity</div></div>
       </div>
-      <div class="lesson-tag">Lesson 9.8 &middot; Drawing 3-D Figures</div>
+      <div class="lesson-tag">Lesson 11.4 &middot; Proportional Partitions</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
 
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
   </div>
 
   <div class="stage">
 
     <!-- 1 -->
     <section class="slide active" data-slide="1">
-      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 9!</p>
-      <h1 class="slide-title">Showing a solid on flat paper</h1>
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">Parallel lines split sides proportionally</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Paper is flat, but the things we design are not. Architects, engineers, game designers, and artists use three standard ways to draw a solid on paper. Each one shows something the others hide.</p>
+        <p style="margin-bottom:0;">Draw a segment inside a triangle parallel to one side, and it cuts the other two sides into proportional pieces. That idea, and a few relatives of it, let you find lengths without measuring a single one.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Draw and read orthographic (top, front, and side) views</span></li>
-        <li><span class="num">2</span><span>Recognize an isometric drawing</span></li>
-        <li><span class="num">3</span><span>Recognize one-point and two-point perspective drawings</span></li>
+        <li><span class="num">1</span><span>Use the Triangle Proportionality Theorem and its converse</span></li>
+        <li><span class="num">2</span><span>Apply proportional segments formed by three parallel lines</span></li>
+        <li><span class="num">3</span><span>Use the Triangle Angle Bisector Theorem</span></li>
       </ul>
       <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
@@ -150,185 +150,189 @@
     </section>
     <!-- 2 -->
     <section class="slide" data-slide="2">
-      <p class="eyebrow">Method 1</p>
-      <h1 class="slide-title">Orthographic views</h1>
+      <p class="eyebrow">Theorem</p>
+      <h1 class="slide-title">Triangle Proportionality (Side-Splitter)</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>orthographic drawing</strong> shows a solid as separate flat views, usually the <strong>top</strong>, <strong>front</strong>, and <strong>right side</strong>, each looking straight at one face. No depth is shown in any single view, so all lengths are true lengths. This is how blueprints work.</p>
+        <p style="margin-bottom:0;">If a line parallel to one side of a triangle intersects the other two sides, it divides those sides <strong>proportionally</strong>.</p>
       </div>
       <div class="diagram-panel">
-        <div class="angle-tag">THREE CUBES IN A ROW, ONE MORE CUBE ON TOP OF THE LEFT END</div>
-        <svg width="270" height="90" viewBox="0 0 270 90"><text x="14" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Front</text><rect x="10" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="32" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="54" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="10" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="104" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Top</text><rect x="100" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="122" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="144" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="192" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Right side</text><rect x="200" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="200" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front view shows the stack. The top view shows only the three cubes on the bottom row. The right side view sees the two-cube stack behind the shorter end.</p>
+        <div class="angle-tag">DE &#8741; BC</div>
+        <svg width="280" height="170" viewBox="0 0 280 170"><polygon points="20,155 260,155 140,15" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="92" y1="71" x2="188" y2="71" stroke="#DB2F30" stroke-width="2.2"/><text x="134" y="10" font-size="12" fill="#0A1F3D" font-weight="700">A</text><text x="6" y="165" font-size="12" fill="#0A1F3D" font-weight="700">B</text><text x="262" y="165" font-size="12" fill="#0A1F3D" font-weight="700">C</text><text x="76" y="74" font-size="12" fill="#DB2F30" font-weight="700">D</text><text x="193" y="74" font-size="12" fill="#DB2F30" font-weight="700">E</text><text x="102" y="45" font-size="12" fill="#0047BA" font-weight="700">4</text><text x="42" y="120" font-size="12" fill="#0047BA" font-weight="700">6</text><text x="170" y="45" font-size="12" fill="#0047BA" font-weight="700">6</text><text x="230" y="120" font-size="12" fill="#0047BA" font-weight="700">x</text></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">AD/DB = AE/EC</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">Why it works: the parallel line makes &#9651;ADE ~ &#9651;ABC by AA, since corresponding angles are congruent.</p>
       </div>
     </section>
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Method 2</p>
-      <h1 class="slide-title">Isometric drawing</h1>
+      <p class="eyebrow">Worked Example</p>
+      <h1 class="slide-title">Finding a missing piece</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>isometric drawing</strong> shows a corner view of a solid, usually on isometric dot paper. The three edge directions are drawn <strong>120&deg; apart</strong>: one vertical and two slanting at 30&deg; from horizontal.</p>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> In the diagram, DE &#8741; BC, AD = 4, DB = 6, and AE = 6. Find EC.</p>
       </div>
-      <div class="card warm">
-        <p style="margin-bottom:0;">Parallel edges on the object stay parallel in the drawing, and lengths along the three directions are drawn at their true size. It is not quite how your eye sees the object, but it is easy to measure from.</p>
-      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Set up the proportion</div>4/6 = 6/x</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Cross multiply</div>4x = 36, so x = 9</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Converse</div>The converse is also true: if a segment divides two sides of a triangle proportionally, it is parallel to the third side.</div></div>
     </section>
     <!-- 4 -->
     <section class="slide" data-slide="4">
-      <p class="eyebrow">Method 3</p>
-      <h1 class="slide-title">Perspective drawing</h1>
+      <p class="eyebrow">Relatives</p>
+      <h1 class="slide-title">Midsegments and parallel lines</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">A <strong>perspective drawing</strong> shows a solid the way your eye sees it: objects farther away look smaller, and parallel lines going away from you seem to meet at a <strong>vanishing point (VP)</strong> on the <strong>horizon line</strong>.</p>
+        <p style="margin-bottom:0;"><strong>Midsegment:</strong> the segment joining the midpoints of two sides is parallel to the third side and half as long. This is the special case where both sides are split 1 : 1.</p>
       </div>
-      <div class="diagram-panel">
-        <div class="angle-tag">ONE-POINT PERSPECTIVE: A BOX</div>
-        <svg width="260" height="160" viewBox="0 0 260 160"><line x1="0" y1="40" x2="260" y2="40" stroke="#C9A84C" stroke-width="1.5"/><text x="4" y="34" font-size="10" fill="#C9A84C">horizon line</text><circle cx="210" cy="40" r="4" fill="#DB2F30"/><text x="216" y="34" font-size="10" fill="#DB2F30" font-weight="700">VP</text><polygon points="30,80 110,80 110,150 30,150" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="80" x2="93.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="93.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="80" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="150" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="111.5" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="93.0" y1="66.0" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front face is flat toward you. Every edge going back into the distance points to the single vanishing point.</p>
-      </div>
-      <div class="card warm">
-        <p style="margin-bottom:0;">In <strong>two-point perspective</strong>, a corner faces you, and the edges going left and right recede to two vanishing points on the horizon line.</p>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Three parallel lines:</strong> if three or more parallel lines cut two transversals, they divide the transversals proportionally. If one transversal is cut into pieces 5 and 10, the other is cut in the same 1 : 2 ratio.</p>
       </div>
     </section>
     <!-- 5 -->
     <section class="slide" data-slide="5">
-      <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Choosing the right drawing</h1>
+      <p class="eyebrow">Theorem</p>
+      <h1 class="slide-title">Triangle Angle Bisector Theorem</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Which kind of drawing fits each job?</p>
+        <p style="margin-bottom:0;">An angle bisector of a triangle divides the opposite side into two segments proportional to the other two sides.</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">A carpenter needs exact measurements of a cabinet&rsquo;s front, top, and side</div>Orthographic views: every length is true size.</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">A catalog shows a box from a corner so you can see three faces and measure its edges</div>Isometric drawing: three faces visible, edges drawn true length.</div></div>
-      <div class="step"><div class="badge">3</div><div class="content"><div class="label">An artist paints a road stretching toward the horizon</div>One-point perspective: the road&rsquo;s edges meet at one vanishing point.</div></div>
-      <div class="step"><div class="badge">4</div><div class="content"><div class="label">An architect sketches a building seen from the street corner</div>Two-point perspective: the corner is closest, and each wall recedes to its own vanishing point.</div></div>
+      <div class="card blue">
+        <p style="margin-bottom:0;"><strong>Problem:</strong> In &#9651;PQR, PQ = 8 and PR = 12. The bisector of &ang;P meets QR, which is 15 long, at S. Find QS and SR.</p>
+      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Set up</div>QS/SR = PQ/PR, so x/(15 &minus; x) = 8/12</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Cross multiply</div>12x = 120 &minus; 8x, so 20x = 120 and x = 6</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Answer</div>QS = 6 and SR = 9. The longer piece is next to the longer side.</div></div>
     </section>
     <!-- 6 -->
     <section class="slide" data-slide="6">
-      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
-      <h1 class="slide-title">Now you try, with me right here</h1>
-      <div class="gp-box">
-        <p class="gp-prompt">Name the drawing or the view.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Railroad tracks that seem to meet at a single point on the horizon are an example of...</p>
-        <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">One-point perspective</button>
-          <button class="choice-btn" data-correct="false">Isometric drawing</button>
-          <button class="choice-btn" data-correct="false">Orthographic views</button>
-        </div>
-        <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The rails are parallel, but in perspective they appear to meet at one vanishing point. Isometric drawings keep parallel lines parallel.</div>
-
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cylinder stands upright on its base. What does its top view look like?</p>
-        <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">A circle</button>
-          <button class="choice-btn" data-correct="false">A rectangle</button>
-          <button class="choice-btn" data-correct="false">A triangle</button>
-        </div>
-        <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Looking straight down, you see only the circular top. The front view would be a rectangle.</div>
-
+      <p class="eyebrow">Watch Out</p>
+      <h1 class="slide-title">Keep the pieces in the same order</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;">Write each ratio top-to-bottom on both sides: AD/DB = AE/EC. Mixing in a whole side, like AD/AB = AE/EC, gives a wrong answer.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">If you do want to use the whole side, use it on both sides: AD/AB = AE/AC. That is also true, because &#9651;ADE ~ &#9651;ABC.</p>
       </div>
     </section>
     <!-- 7 -->
     <section class="slide" data-slide="7">
-      <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">Blueprints, video games, and art museums</h1>
-      <p>Every set of construction plans is a collection of orthographic views. Many classic video games use isometric views to show a 3-D world on a flat screen. Renaissance painters developed perspective so their paintings would look like windows into real space.</p>
-      <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> engineers using CAD software build one 3-D model, and the software produces all three kinds of drawings from it automatically.</p>
-      </div>
-      <div class="next-box">
-        <strong>Chapter 10: Transformations &amp; Symmetry</strong> is next: reflections, translations, rotations, and dilations.
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">Set up the proportion.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; In &#9651;ABC, DE &#8741; BC with AD = 3, DB = 6, and AE = 4. Find EC.</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">8</button>
+          <button class="choice-btn" data-correct="false">2</button>
+          <button class="choice-btn" data-correct="false">7</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> 3/6 = 4/x gives 3x = 24, so x = 8. 2 comes from flipping one ratio.</div>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; Three parallel lines cut one transversal into pieces of 5 and 10. On the other transversal, the first piece is 4. How long is the second piece?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">8</button>
+          <button class="choice-btn" data-correct="false">9</button>
+          <button class="choice-btn" data-correct="false">12.5</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> The ratio 5 : 10 is 1 : 2, so the second piece is 2 &times; 4 = 8. 9 adds 5 instead of keeping the ratio.</div>
+
       </div>
     </section>
     <!-- 8 -->
     <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Ramps, rooflines, and city maps</h1>
+      <p>Builders use the Triangle Proportionality Theorem when they add evenly spaced horizontal braces to a sloped roof or ramp. Each brace is parallel to the base, so the slanted rafters are divided proportionally.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> on city maps where parallel streets cross two diagonal avenues, the block lengths along one avenue are proportional to those along the other.</p>
+      </div>
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 11.5: Lengths, Areas &amp; Volumes of Similar Figures.</strong> What happens to area and volume when lengths are scaled.
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">An orthographic drawing shows...</div>
+        <div class="qtext">In &#9651;ABC, DE &#8741; BC with AD = 5, DB = 10, and AE = 6. Find EC.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Separate flat views, such as top, front, and side</button>
-          <button class="quiz-opt" data-correct="false">One view with a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">A single corner view on dot paper</button>
-          <button class="quiz-opt" data-correct="false">A cross section of the solid</button>
+          <button class="quiz-opt" data-correct="true">12</button>
+          <button class="quiz-opt" data-correct="false">3</button>
+          <button class="quiz-opt" data-correct="false">9</button>
+          <button class="quiz-opt" data-correct="false">15</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Orthographic drawings show each face straight on in its own view, like a blueprint. A vanishing point belongs to perspective.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> 5/10 = 6/x gives 5x = 60, so x = 12.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">In an isometric drawing, the three edge directions are drawn...</div>
+        <div class="qtext">If a segment divides two sides of a triangle proportionally, then it...</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">120&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">90&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">Meeting at a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">45&deg; apart</button>
+          <button class="quiz-opt" data-correct="true">Is parallel to the third side</button>
+          <button class="quiz-opt" data-correct="false">Bisects the third side</button>
+          <button class="quiz-opt" data-correct="false">Is perpendicular to the third side</button>
+          <button class="quiz-opt" data-correct="false">Is half the length of each side</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Isometric means &ldquo;equal measure&rdquo;: the three directions are spaced evenly, 120&deg; apart.</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> That is the converse of the Triangle Proportionality Theorem.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">In two-point perspective...</div>
+        <div class="qtext">In a triangle, the sides next to an angle are 6 and 9. The bisector of that angle splits the opposite side, which is 10 long. How long is the piece next to the side of 6?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A corner faces the viewer, and edges recede to two vanishing points on the horizon</button>
-          <button class="quiz-opt" data-correct="false">A face is flat toward the viewer, with one vanishing point</button>
-          <button class="quiz-opt" data-correct="false">There are no vanishing points</button>
-          <button class="quiz-opt" data-correct="false">All edges stay parallel</button>
+          <button class="quiz-opt" data-correct="true">4</button>
+          <button class="quiz-opt" data-correct="false">6</button>
+          <button class="quiz-opt" data-correct="false">5</button>
+          <button class="quiz-opt" data-correct="false">3.6</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Two-point perspective is the corner view. One vanishing point with a face toward you is one-point perspective.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> x/(10 &minus; x) = 6/9 gives 9x = 60 &minus; 6x, so 15x = 60 and x = 4. 5 would split it evenly, which only happens when the two sides are equal.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">A cone stands on its base. What is its front view?</div>
+        <div class="qtext">Parallel lines cut one transversal into pieces of 6 and 9. The first piece of the other transversal is 4. Find the second piece.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A triangle</button>
-          <button class="quiz-opt" data-correct="false">A circle</button>
-          <button class="quiz-opt" data-correct="false">A rectangle</button>
-          <button class="quiz-opt" data-correct="false">A circle with a dot in the center</button>
+          <button class="quiz-opt" data-correct="true">6</button>
+          <button class="quiz-opt" data-correct="false">7</button>
+          <button class="quiz-opt" data-correct="false">13.5</button>
+          <button class="quiz-opt" data-correct="false">2.7</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> From the front you see the slanted sides meeting at the apex: a triangle. The top view is the circle with a dot for the apex.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> 4/x = 6/9 gives 6x = 36, so x = 6.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">In an isometric drawing, parallel edges of the object stay parallel.</div>
+        <div class="qtext">A midsegment of a triangle is parallel to the third side and half its length.</div>
         <div class="quiz-opts">
           <button class="quiz-opt" data-correct="true">True</button>
           <button class="quiz-opt" data-correct="false">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. That is one way to tell isometric from perspective, where parallel edges that go back into the distance appear to meet.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. It is the special case of the Triangle Proportionality Theorem where each side is split 1 : 1.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-    <!-- 9 -->
-    <section class="slide" data-slide="9">
-      <p class="eyebrow">Chapter 9 Complete</p>
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Lesson Recap</p>
       <h1 class="slide-title">What we learned today</h1>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can draw and read orthographic views.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize an isometric drawing.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize one-point and two-point perspective.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can use the Triangle Proportionality Theorem and its converse.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can use proportional segments on parallel lines.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can apply the Triangle Angle Bisector Theorem.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Orthographic Drawing</span>
-        <span class="term-pill">Isometric Drawing</span>
-        <span class="term-pill">Perspective</span>
-        <span class="term-pill">Vanishing Point</span>
-        <span class="term-pill">Horizon Line</span>
-      </div>
-
-      <div class="complete-box">
-        <div class="badge-icon">&#127942;</div>
-        <h3>Chapter 9: Surface Area &amp; Volume &mdash; Complete!</h3>
-        <p>You can analyze solids, find the surface area and volume of prisms, cylinders, pyramids, cones, and spheres, work with great circles, and draw solids three ways. Chapter 10: Transformations &amp; Symmetry is next.</p>
+        <span class="term-pill">Triangle Proportionality Theorem</span>
+        <span class="term-pill">Midsegment</span>
+        <span class="term-pill">Triangle Angle Bisector Theorem</span>
+        <span class="term-pill">Transversal</span>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%2010%20-%20Transformations%20%26%20Symmetry/10-1-reflections.html">Next Chapter: 10.1 &rarr;</a>
+        <a class="end-btn primary next-lesson-link" href="11-5-similar-figures-measures.html">Next Lesson: 11.5 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -385,7 +389,7 @@
 
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      showToast('\ud83c\udf89 Chapter 9 complete \u2014 fantastic work!');
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
       goTo(1);
     });
   });
@@ -498,8 +502,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-9-8-drawing-3d-figures',
-        lesson: '9.8: Drawing 3-Dimensional Figures',
+        module: 'geometry-11-4-proportional-partitions',
+        lesson: '11.4: Proportional Partitions',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KCE Geometry — Lesson 9.8: Drawing 3-Dimensional Figures</title>
+<title>KCE Geometry — Lesson 11.3: Similarity within Right Triangles</title>
 <style>
   :root{
     --navy:#0A1F3D; --gold:#C9A84C; --blue:#0047BA; --red:#DB2F30;
@@ -116,32 +116,32 @@
     <div class="mast-row">
       <div class="brand">
         <div class="kc"><span class="inner">KC</span></div>
-        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 9: Surface Area &amp; Volume</div></div>
+        <div><div class="wordmark">KingCretot Experience</div><div class="course-tag">Geometry &middot; Chapter 11: Similarity</div></div>
       </div>
-      <div class="lesson-tag">Lesson 9.8 &middot; Drawing 3-D Figures</div>
+      <div class="lesson-tag">Lesson 11.3 &middot; Right-Triangle Similarity</div>
     </div>
   </div>
   <div class="tricolor"><div class="tri-b"></div><div class="tri-g"></div><div class="tri-r"></div></div>
 
   <div class="progress-wrap">
     <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-label" id="progressLabel">Slide 1 of 9</div>
+    <div class="progress-label" id="progressLabel">Slide 1 of 10</div>
   </div>
 
   <div class="stage">
 
     <!-- 1 -->
     <section class="slide active" data-slide="1">
-      <p class="eyebrow">Let's Begin &mdash; Last Lesson of Chapter 9!</p>
-      <h1 class="slide-title">Showing a solid on flat paper</h1>
+      <p class="eyebrow">Let's Begin</p>
+      <h1 class="slide-title">One altitude, three similar triangles</h1>
       <div class="card warm">
-        <p style="margin-bottom:0;">Paper is flat, but the things we design are not. Architects, engineers, game designers, and artists use three standard ways to draw a solid on paper. Each one shows something the others hide.</p>
+        <p style="margin-bottom:0;">Draw the altitude from the right angle of a right triangle to its hypotenuse, and something remarkable happens: you get <strong>three</strong> triangles, and all three are similar. That fact leads to a fast way to find missing lengths using the <strong>geometric mean</strong>.</p>
       </div>
       <h2 class="sub-title" style="margin-top:22px;">By the end of today, you will be able to:</h2>
       <ul class="obj-list">
-        <li><span class="num">1</span><span>Draw and read orthographic (top, front, and side) views</span></li>
-        <li><span class="num">2</span><span>Recognize an isometric drawing</span></li>
-        <li><span class="num">3</span><span>Recognize one-point and two-point perspective drawings</span></li>
+        <li><span class="num">1</span><span>Find the geometric mean of two numbers</span></li>
+        <li><span class="num">2</span><span>Explain why the altitude to the hypotenuse creates three similar triangles</span></li>
+        <li><span class="num">3</span><span>Use the geometric mean relationships to find missing lengths</span></li>
       </ul>
       <div class="name-field-wrap">
         <label for="studentName">Your name (so your tutor can see your progress)</label>
@@ -150,185 +150,189 @@
     </section>
     <!-- 2 -->
     <section class="slide" data-slide="2">
-      <p class="eyebrow">Method 1</p>
-      <h1 class="slide-title">Orthographic views</h1>
+      <p class="eyebrow">Vocabulary</p>
+      <h1 class="slide-title">The geometric mean</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>orthographic drawing</strong> shows a solid as separate flat views, usually the <strong>top</strong>, <strong>front</strong>, and <strong>right side</strong>, each looking straight at one face. No depth is shown in any single view, so all lengths are true lengths. This is how blueprints work.</p>
+        <p style="margin-bottom:0;">The <strong>geometric mean</strong> of two positive numbers a and b is the positive number x where a/x = x/b. Solving gives x&sup2; = ab, so x = &radic;(ab).</p>
       </div>
-      <div class="diagram-panel">
-        <div class="angle-tag">THREE CUBES IN A ROW, ONE MORE CUBE ON TOP OF THE LEFT END</div>
-        <svg width="270" height="90" viewBox="0 0 270 90"><text x="14" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Front</text><rect x="10" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="32" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="54" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="10" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="104" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Top</text><rect x="100" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="122" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="144" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><text x="192" y="22" font-size="11" fill="#0A1F3D" font-weight="700">Right side</text><rect x="200" y="52" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/><rect x="200" y="30" width="22" height="22" fill="#eef3fb" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front view shows the stack. The top view shows only the three cubes on the bottom row. The right side view sees the two-cube stack behind the shorter end.</p>
-      </div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Example</div>The geometric mean of 4 and 9 is &radic;36 = 6. Check: 4/6 = 6/9 &#10003;</div></div>
     </section>
     <!-- 3 -->
     <section class="slide" data-slide="3">
-      <p class="eyebrow">Method 2</p>
-      <h1 class="slide-title">Isometric drawing</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;">An <strong>isometric drawing</strong> shows a corner view of a solid, usually on isometric dot paper. The three edge directions are drawn <strong>120&deg; apart</strong>: one vertical and two slanting at 30&deg; from horizontal.</p>
+      <p class="eyebrow">See It</p>
+      <h1 class="slide-title">The altitude to the hypotenuse</h1>
+      <div class="diagram-panel">
+        <div class="angle-tag">RIGHT &#9651;ABC WITH ALTITUDE CD</div>
+        <svg width="300" height="170" viewBox="0 0 300 170"><polygon points="20,150 280,150 113.6,25" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="113.6" y1="25" x2="113.6" y2="150" stroke="#DB2F30" stroke-width="2" stroke-dasharray="4,3"/><polygon points="113.6,150 113.6,140 123.6,140 123.6,150" fill="none" fill-opacity="1" stroke="#DB2F30" stroke-width="1.2"/><text x="8" y="160" font-size="12" fill="#0A1F3D" font-weight="700">A</text><text x="282" y="160" font-size="12" fill="#0A1F3D" font-weight="700">B</text><text x="108" y="18" font-size="12" fill="#0A1F3D" font-weight="700">C</text><text x="108" y="166" font-size="12" fill="#DB2F30" font-weight="700">D</text><text x="55" y="145" font-size="12" fill="#0047BA" font-weight="700">9</text><text x="190" y="145" font-size="12" fill="#0047BA" font-weight="700">16</text><text x="118" y="95" font-size="12" fill="#DB2F30" font-weight="700">h</text></svg>
+        <p style="margin-bottom:0;font-size:14px;color:#555;">CD splits the hypotenuse into segments of 9 and 16.</p>
       </div>
-      <div class="card warm">
-        <p style="margin-bottom:0;">Parallel edges on the object stay parallel in the drawing, and lengths along the three directions are drawn at their true size. It is not quite how your eye sees the object, but it is easy to measure from.</p>
+      <div class="card blue">
+        <p style="margin-bottom:0;">&#9651;ACB, &#9651;ADC, and &#9651;CDB are all similar. Each small triangle shares an acute angle with the big one, and all three have a right angle, so AA applies to each pair.</p>
       </div>
     </section>
     <!-- 4 -->
     <section class="slide" data-slide="4">
-      <p class="eyebrow">Method 3</p>
-      <h1 class="slide-title">Perspective drawing</h1>
-      <div class="card blue">
-        <p style="margin-bottom:0;">A <strong>perspective drawing</strong> shows a solid the way your eye sees it: objects farther away look smaller, and parallel lines going away from you seem to meet at a <strong>vanishing point (VP)</strong> on the <strong>horizon line</strong>.</p>
+      <p class="eyebrow">Two Relationships</p>
+      <h1 class="slide-title">Altitude and legs as geometric means</h1>
+      <div class="formula-card">
+        <div class="fname">Altitude Rule</div>
+        <div class="fexpr">h = &radic;(segment &times; segment)</div>
       </div>
-      <div class="diagram-panel">
-        <div class="angle-tag">ONE-POINT PERSPECTIVE: A BOX</div>
-        <svg width="260" height="160" viewBox="0 0 260 160"><line x1="0" y1="40" x2="260" y2="40" stroke="#C9A84C" stroke-width="1.5"/><text x="4" y="34" font-size="10" fill="#C9A84C">horizon line</text><circle cx="210" cy="40" r="4" fill="#DB2F30"/><text x="216" y="34" font-size="10" fill="#DB2F30" font-weight="700">VP</text><polygon points="30,80 110,80 110,150 30,150" fill="#eef3fb" fill-opacity="1" stroke="#0A1F3D" stroke-width="2"/><line x1="30" y1="80" x2="93.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="93.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="80" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="110" y1="150" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="111.5" x2="210" y2="40" stroke="#DB2F30" stroke-width="1" stroke-dasharray="4,3"/><line x1="93.0" y1="66.0" x2="145.0" y2="66.0" stroke="#0A1F3D" stroke-width="2"/><line x1="145.0" y1="66.0" x2="145.0" y2="111.5" stroke="#0A1F3D" stroke-width="2"/></svg>
-        <p style="margin-bottom:0;font-size:14px;color:#555;">The front face is flat toward you. Every edge going back into the distance points to the single vanishing point.</p>
+      <div class="card blue">
+        <p style="margin-bottom:0;">The altitude is the geometric mean of the two pieces of the hypotenuse.</p>
+      </div>
+      <div class="formula-card">
+        <div class="fname">Leg Rule</div>
+        <div class="fexpr">leg = &radic;(hypotenuse &times; adjacent segment)</div>
       </div>
       <div class="card warm">
-        <p style="margin-bottom:0;">In <strong>two-point perspective</strong>, a corner faces you, and the edges going left and right recede to two vanishing points on the horizon line.</p>
+        <p style="margin-bottom:0;">Each leg is the geometric mean of the whole hypotenuse and the piece of the hypotenuse right next to that leg.</p>
       </div>
     </section>
     <!-- 5 -->
     <section class="slide" data-slide="5">
       <p class="eyebrow">Worked Example</p>
-      <h1 class="slide-title">Choosing the right drawing</h1>
+      <h1 class="slide-title">Using the diagram above</h1>
       <div class="card blue">
-        <p style="margin-bottom:0;"><strong>Problem:</strong> Which kind of drawing fits each job?</p>
+        <p style="margin-bottom:0;"><strong>Problem:</strong> The hypotenuse is split into AD = 9 and DB = 16. Find the altitude h and both legs.</p>
       </div>
-      <div class="step"><div class="badge">1</div><div class="content"><div class="label">A carpenter needs exact measurements of a cabinet&rsquo;s front, top, and side</div>Orthographic views: every length is true size.</div></div>
-      <div class="step"><div class="badge">2</div><div class="content"><div class="label">A catalog shows a box from a corner so you can see three faces and measure its edges</div>Isometric drawing: three faces visible, edges drawn true length.</div></div>
-      <div class="step"><div class="badge">3</div><div class="content"><div class="label">An artist paints a road stretching toward the horizon</div>One-point perspective: the road&rsquo;s edges meet at one vanishing point.</div></div>
-      <div class="step"><div class="badge">4</div><div class="content"><div class="label">An architect sketches a building seen from the street corner</div>Two-point perspective: the corner is closest, and each wall recedes to its own vanishing point.</div></div>
+      <div class="step"><div class="badge">1</div><div class="content"><div class="label">Altitude</div>h = &radic;(9 &times; 16) = &radic;144 = 12</div></div>
+      <div class="step"><div class="badge">2</div><div class="content"><div class="label">Leg AC</div>The hypotenuse is 25 and the piece next to AC is 9: AC = &radic;(25 &times; 9) = &radic;225 = 15</div></div>
+      <div class="step"><div class="badge">3</div><div class="content"><div class="label">Leg BC</div>BC = &radic;(25 &times; 16) = &radic;400 = 20</div></div>
+      <div class="step"><div class="badge">4</div><div class="content"><div class="label">Check with Pythagoras</div>15&sup2; + 20&sup2; = 225 + 400 = 625 = 25&sup2; &#10003;</div></div>
     </section>
     <!-- 6 -->
     <section class="slide" data-slide="6">
-      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
-      <h1 class="slide-title">Now you try, with me right here</h1>
-      <div class="gp-box">
-        <p class="gp-prompt">Name the drawing or the view.</p>
-        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; Railroad tracks that seem to meet at a single point on the horizon are an example of...</p>
-        <div class="choice-row" data-q="gp1">
-          <button class="choice-btn" data-correct="true">One-point perspective</button>
-          <button class="choice-btn" data-correct="false">Isometric drawing</button>
-          <button class="choice-btn" data-correct="false">Orthographic views</button>
-        </div>
-        <p class="feedback" id="fb-gp1"></p>
-        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> The rails are parallel, but in perspective they appear to meet at one vanishing point. Isometric drawings keep parallel lines parallel.</div>
-
-        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; A cylinder stands upright on its base. What does its top view look like?</p>
-        <div class="choice-row" data-q="gp2">
-          <button class="choice-btn" data-correct="true">A circle</button>
-          <button class="choice-btn" data-correct="false">A rectangle</button>
-          <button class="choice-btn" data-correct="false">A triangle</button>
-        </div>
-        <p class="feedback" id="fb-gp2"></p>
-        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> Looking straight down, you see only the circular top. The front view would be a rectangle.</div>
-
+      <p class="eyebrow">Watch Out</p>
+      <h1 class="slide-title">Use the adjacent segment</h1>
+      <div class="card blue">
+        <p style="margin-bottom:0;">For a leg, multiply the <strong>whole</strong> hypotenuse by the segment that touches that leg, not the far one.</p>
+      </div>
+      <div class="card warm">
+        <p style="margin-bottom:0;">For AC above, the segment that touches A is AD = 9. Using 16 instead would give 20, which is the other leg.</p>
       </div>
     </section>
     <!-- 7 -->
     <section class="slide" data-slide="7">
-      <p class="eyebrow">Why This Matters</p>
-      <h1 class="slide-title">Blueprints, video games, and art museums</h1>
-      <p>Every set of construction plans is a collection of orthographic views. Many classic video games use isometric views to show a 3-D world on a flat screen. Renaissance painters developed perspective so their paintings would look like windows into real space.</p>
-      <div class="card warm">
-        <p style="margin-bottom:0;"><strong>Real world:</strong> engineers using CAD software build one 3-D model, and the software produces all three kinds of drawings from it automatically.</p>
-      </div>
-      <div class="next-box">
-        <strong>Chapter 10: Transformations &amp; Symmetry</strong> is next: reflections, translations, rotations, and dilations.
+      <p class="eyebrow">Your Turn &mdash; Guided Practice</p>
+      <h1 class="slide-title">Now you try, with me right here</h1>
+      <div class="gp-box">
+        <p class="gp-prompt">Use the geometric mean.</p>
+        <p style="font-weight:600;font-size:15px;">Question 1 &mdash; What is the geometric mean of 4 and 16?</p>
+        <div class="choice-row" data-q="gp1">
+          <button class="choice-btn" data-correct="true">8</button>
+          <button class="choice-btn" data-correct="false">10</button>
+          <button class="choice-btn" data-correct="false">64</button>
+        </div>
+        <p class="feedback" id="fb-gp1"></p>
+        <div class="explain-box" id="ex-gp1"><b>Here's why:</b> &radic;(4 &times; 16) = &radic;64 = 8. 10 is the arithmetic mean (the ordinary average), and 64 forgets the square root.</div>
+
+        <p style="font-weight:600;font-size:15px;margin-top:18px;">Question 2 &mdash; The altitude to the hypotenuse splits it into segments of 2 and 8. How long is the altitude?</p>
+        <div class="choice-row" data-q="gp2">
+          <button class="choice-btn" data-correct="true">4</button>
+          <button class="choice-btn" data-correct="false">5</button>
+          <button class="choice-btn" data-correct="false">16</button>
+        </div>
+        <p class="feedback" id="fb-gp2"></p>
+        <div class="explain-box" id="ex-gp2"><b>Here's why:</b> h = &radic;(2 &times; 8) = &radic;16 = 4.</div>
+
       </div>
     </section>
     <!-- 8 -->
     <section class="slide" data-slide="8">
+      <p class="eyebrow">Why This Matters</p>
+      <h1 class="slide-title">Surveying and architecture</h1>
+      <p>Surveyors and carpenters use the geometric mean relationships to find heights and distances when only part of a right triangle can be measured, for instance the two pieces of a roof&rsquo;s span on either side of a support post.</p>
+      <div class="card warm">
+        <p style="margin-bottom:0;"><strong>Real world:</strong> the geometric mean also shows up in finance and science. An investment that grows 4&times; one year and 9&times; the next grew the same as one that grew 6&times; each year, since 4 &times; 9 = 6 &times; 6.</p>
+      </div>
+      <div class="next-box">
+        <strong>Next &mdash; Lesson 11.4: Proportional Partitions.</strong> Parallel lines that cut sides into proportional pieces.
+      </div>
+    </section>
+    <!-- 9 -->
+    <section class="slide" data-slide="9">
       <p class="eyebrow">Mini Knowledge Test</p>
       <h1 class="slide-title">Show what you know &mdash; 5 quick questions</h1>
 
       <div class="quiz-q" data-quiz="q1">
         <div class="qnum">Question 1</div>
-        <div class="qtext">An orthographic drawing shows...</div>
+        <div class="qtext">What is the geometric mean of 3 and 27?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">Separate flat views, such as top, front, and side</button>
-          <button class="quiz-opt" data-correct="false">One view with a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">A single corner view on dot paper</button>
-          <button class="quiz-opt" data-correct="false">A cross section of the solid</button>
+          <button class="quiz-opt" data-correct="true">9</button>
+          <button class="quiz-opt" data-correct="false">15</button>
+          <button class="quiz-opt" data-correct="false">12</button>
+          <button class="quiz-opt" data-correct="false">81</button>
         </div>
-        <div class="explain-box" id="ex-q1"><b>Here's why:</b> Orthographic drawings show each face straight on in its own view, like a blueprint. A vanishing point belongs to perspective.</div>
+        <div class="explain-box" id="ex-q1"><b>Here's why:</b> &radic;(3 &times; 27) = &radic;81 = 9. 15 is the ordinary average.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q2">
         <div class="qnum">Question 2</div>
-        <div class="qtext">In an isometric drawing, the three edge directions are drawn...</div>
+        <div class="qtext">The altitude to the hypotenuse splits it into segments of 3 and 12. How long is the altitude?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">120&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">90&deg; apart</button>
-          <button class="quiz-opt" data-correct="false">Meeting at a vanishing point</button>
-          <button class="quiz-opt" data-correct="false">45&deg; apart</button>
+          <button class="quiz-opt" data-correct="true">6</button>
+          <button class="quiz-opt" data-correct="false">7.5</button>
+          <button class="quiz-opt" data-correct="false">9</button>
+          <button class="quiz-opt" data-correct="false">36</button>
         </div>
-        <div class="explain-box" id="ex-q2"><b>Here's why:</b> Isometric means &ldquo;equal measure&rdquo;: the three directions are spaced evenly, 120&deg; apart.</div>
+        <div class="explain-box" id="ex-q2"><b>Here's why:</b> h = &radic;(3 &times; 12) = &radic;36 = 6. 36 forgets the square root.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q3">
         <div class="qnum">Question 3</div>
-        <div class="qtext">In two-point perspective...</div>
+        <div class="qtext">A right triangle&rsquo;s hypotenuse is 25. The segment next to one leg is 9. How long is that leg?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A corner faces the viewer, and edges recede to two vanishing points on the horizon</button>
-          <button class="quiz-opt" data-correct="false">A face is flat toward the viewer, with one vanishing point</button>
-          <button class="quiz-opt" data-correct="false">There are no vanishing points</button>
-          <button class="quiz-opt" data-correct="false">All edges stay parallel</button>
+          <button class="quiz-opt" data-correct="true">15</button>
+          <button class="quiz-opt" data-correct="false">12</button>
+          <button class="quiz-opt" data-correct="false">20</button>
+          <button class="quiz-opt" data-correct="false">16</button>
         </div>
-        <div class="explain-box" id="ex-q3"><b>Here's why:</b> Two-point perspective is the corner view. One vanishing point with a face toward you is one-point perspective.</div>
+        <div class="explain-box" id="ex-q3"><b>Here's why:</b> leg = &radic;(25 &times; 9) = &radic;225 = 15. 20 uses the far segment, 16.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q4">
         <div class="qnum">Question 4</div>
-        <div class="qtext">A cone stands on its base. What is its front view?</div>
+        <div class="qtext">Counting the original, how many similar triangles does the altitude to the hypotenuse create?</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">A triangle</button>
-          <button class="quiz-opt" data-correct="false">A circle</button>
-          <button class="quiz-opt" data-correct="false">A rectangle</button>
-          <button class="quiz-opt" data-correct="false">A circle with a dot in the center</button>
+          <button class="quiz-opt" data-correct="true">3</button>
+          <button class="quiz-opt" data-correct="false">2</button>
+          <button class="quiz-opt" data-correct="false">4</button>
+          <button class="quiz-opt" data-correct="false">1</button>
         </div>
-        <div class="explain-box" id="ex-q4"><b>Here's why:</b> From the front you see the slanted sides meeting at the apex: a triangle. The top view is the circle with a dot for the apex.</div>
+        <div class="explain-box" id="ex-q4"><b>Here's why:</b> The original triangle and the two smaller ones it is split into: three triangles, all similar.</div>
       </div>
 
       <div class="quiz-q" data-quiz="q5">
         <div class="qnum">Question 5 &mdash; True or False</div>
-        <div class="qtext">In an isometric drawing, parallel edges of the object stay parallel.</div>
+        <div class="qtext">The geometric mean of 5 and 20 is 12.5.</div>
         <div class="quiz-opts">
-          <button class="quiz-opt" data-correct="true">True</button>
-          <button class="quiz-opt" data-correct="false">False</button>
+          <button class="quiz-opt" data-correct="false">True</button>
+          <button class="quiz-opt" data-correct="true">False</button>
         </div>
-        <div class="explain-box" id="ex-q5"><b>Here's why:</b> True. That is one way to tell isometric from perspective, where parallel edges that go back into the distance appear to meet.</div>
+        <div class="explain-box" id="ex-q5"><b>Here's why:</b> False. &radic;(5 &times; 20) = &radic;100 = 10. 12.5 is the ordinary average.</div>
       </div>
 
       <div class="quiz-score" id="quizScore">Score: <span class="gold" id="scoreText">0 / 5</span></div>
       <div class="submit-status" id="submitStatus"></div>
     </section>
-    <!-- 9 -->
-    <section class="slide" data-slide="9">
-      <p class="eyebrow">Chapter 9 Complete</p>
+    <!-- 10 -->
+    <section class="slide" data-slide="10">
+      <p class="eyebrow">Lesson Recap</p>
       <h1 class="slide-title">What we learned today</h1>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can draw and read orthographic views.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize an isometric drawing.</div>
-      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can recognize one-point and two-point perspective.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find the geometric mean of two numbers.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can explain why the altitude creates three similar triangles.</div>
+      <div class="recap-check"><svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="9" fill="#1a7a3c"/><path d="M5 9.5 L8 12.5 L13 6" stroke="#fff" stroke-width="2" fill="none"/></svg> You can find altitudes and legs with the geometric mean.</div>
 
       <h2 class="sub-title" style="margin-top:22px;">Vocabulary from today</h2>
       <div>
-        <span class="term-pill">Orthographic Drawing</span>
-        <span class="term-pill">Isometric Drawing</span>
-        <span class="term-pill">Perspective</span>
-        <span class="term-pill">Vanishing Point</span>
-        <span class="term-pill">Horizon Line</span>
-      </div>
-
-      <div class="complete-box">
-        <div class="badge-icon">&#127942;</div>
-        <h3>Chapter 9: Surface Area &amp; Volume &mdash; Complete!</h3>
-        <p>You can analyze solids, find the surface area and volume of prisms, cylinders, pyramids, cones, and spheres, work with great circles, and draw solids three ways. Chapter 10: Transformations &amp; Symmetry is next.</p>
+        <span class="term-pill">Geometric Mean</span>
+        <span class="term-pill">Altitude to the Hypotenuse</span>
+        <span class="term-pill">Adjacent Segment</span>
       </div>
 
       <div class="end-actions">
-        <a class="end-btn primary next-lesson-link" href="../Chapter%2010%20-%20Transformations%20%26%20Symmetry/10-1-reflections.html">Next Chapter: 10.1 &rarr;</a>
+        <a class="end-btn primary next-lesson-link" href="11-4-proportional-partitions.html">Next Lesson: 11.4 &rarr;</a>
         <button class="end-btn secondary" data-action="restart">&#8635; Restart This Lesson</button>
       </div>
     </section>
@@ -385,7 +389,7 @@
 
   document.querySelectorAll('[data-action="restart"]').forEach(function(btn){
     btn.addEventListener('click', function(){
-      showToast('\ud83c\udf89 Chapter 9 complete \u2014 fantastic work!');
+      showToast('\ud83c\udf89 Lesson complete \u2014 nice work today!');
       goTo(1);
     });
   });
@@ -498,8 +502,8 @@
       body: JSON.stringify({
         program: 'KCE Geometry',
         student: studentName,
-        module: 'geometry-9-8-drawing-3d-figures',
-        lesson: '9.8: Drawing 3-Dimensional Figures',
+        module: 'geometry-11-3-similarity-right-triangles',
+        lesson: '11.3: Similarity within Right Triangles',
         score: pct,
         mastered: mastered,
         rawScore: score + ' / ' + total
