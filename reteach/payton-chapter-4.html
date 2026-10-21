@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KCE Geometry — Chapter 4 Reteach for Payton</title>
+<style>
+:root{--navy:#0A1F3D;--gold:#C9A84C;--blue:#0047BA;--red:#DB2F30;--cream:#FAF7EF;--ink:#1c1c1c;--line:#E3DDC9;--green:#1a7a3c;--muted:#5b6475}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--navy);color:var(--ink);line-height:1.55;font-size:16px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:var(--navy);line-height:1.25}
+.app{max-width:920px;margin:0 auto;min-height:100vh;background:var(--cream);box-shadow:0 0 40px rgba(0,0,0,.35)}
+.masthead{background:var(--navy);padding:18px 24px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.kc{border:2px solid var(--gold);padding:4px 9px}.kc div{border:1px solid var(--gold);padding:3px 7px;color:var(--gold);font-family:Georgia,serif;font-weight:700;font-size:15px;letter-spacing:1.5px}
+.wordmark{color:var(--gold);font-family:Georgia,serif;font-size:17px;font-weight:700}
+.tagline{font-size:10px;font-weight:700;letter-spacing:2.5px}.tagline .e1{color:var(--blue)}.tagline .e2{color:var(--gold)}.tagline .e3{color:var(--red)}
+.pill{color:#fff;font-size:13px;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.5);padding:5px 12px;border-radius:20px}
+.tricolor{height:5px;display:flex}.tricolor i{flex:1}
+.stickybar{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:9px 24px}
+.track{background:#eee6d2;height:8px;border-radius:6px;overflow:hidden}.fill{background:var(--gold);height:100%;width:0;transition:width .3s}
+.plabel{font-size:12.5px;color:#666;margin-top:5px}
+main{padding:22px 24px 30px}
+.who{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;display:grid;grid-template-columns:1fr 160px;gap:12px;margin-bottom:18px}
+.who label{display:block;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.who input{width:100%;font:inherit;padding:9px 11px;border:1.5px solid var(--line);border-radius:8px}
+section.part{margin:30px 0 8px}
+.eyebrow{color:var(--blue);font-weight:700;font-size:12.5px;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px}
+h1{font-size:28px;margin:0 0 8px}
+h2{font-size:23px;margin:0 0 10px}
+h3{font-size:18px;margin:16px 0 8px}
+p{margin:0 0 12px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0}
+.gold{border-left:5px solid var(--gold)}
+.navy{background:var(--navy);color:#fff;border-color:var(--navy)}.navy h3{color:var(--gold)}
+.tool{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.tool div{background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14.5px}
+.tool b{display:block;font-family:Georgia,serif;font-size:19px;color:var(--navy)}
+.tool .ok{border-color:#9fd3b0}.tool .no{border-color:#f0a9a9;background:#fff6f6}
+.tool .no b{color:var(--red)}
+ol.steps{padding-left:22px;margin:6px 0 10px}ol.steps li{margin:5px 0}
+.figs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:8px 0}
+.figs svg{max-width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px}
+.q{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.q .qn{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#8a6d16}
+.q .stem{font-weight:700;color:var(--navy);margin:4px 0 10px}
+.given{background:var(--cream);border:1px dashed #d8cfb6;border-radius:8px;padding:8px 12px;margin:0 0 10px;font-size:15px}
+.opts{display:grid;gap:8px}
+.opt{display:block;text-align:left;width:100%;font:inherit;background:#fff;border:2px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;color:var(--ink)}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt.bad{border-color:var(--red);background:#fdeeed}.opt.good{border-color:var(--green);background:#e6f4ea}
+.opt:disabled{cursor:default}
+.numrow{display:flex;gap:8px;flex-wrap:wrap}.numrow input{flex:1;min-width:120px;font:inherit;font-size:17px;padding:9px 11px;border:2px solid var(--line);border-radius:9px}
+.btn{font:700 15px Arial,Helvetica,sans-serif;border:none;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--navy);color:#fff}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.fb{margin-top:10px;font-size:15px}
+.fb .head{font-weight:700}.fb.good .head{color:var(--green)}.fb.bad .head{color:var(--red)}.fb.hint .head{color:#9a6a00}
+.fb ol{margin:6px 0 0;padding-left:22px}.fb li{margin:4px 0}
+.score{font-family:Georgia,serif;font-size:42px;color:var(--navy);font-weight:700;margin:6px 0}
+.teach{background:var(--navy);color:#e8edf5;border-radius:12px;padding:12px 16px;margin:12px 0}.teach summary{cursor:pointer;color:var(--gold);font-weight:700}
+.teach p,.teach li{color:#e8edf5}
+footer{background:var(--navy);color:#fff;text-align:center;padding:18px 20px;font-size:13px;line-height:1.7}
+footer .nm{font-family:Georgia,serif;color:var(--gold);font-size:16px}footer .g{color:var(--gold)}
+code,.m{font-family:Consolas,Menlo,monospace}
+@media (max-width:640px){main{padding:16px}.who{grid-template-columns:1fr}.masthead{padding:14px 16px}.stickybar{padding:8px 16px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="masthead">
+  <div class="brand"><div class="kc"><div>KC</div></div><div><div class="wordmark">KingCretot Experience</div><div class="tagline"><span class="e1">EDUCATE</span><span class="e2"> · EMPOWER · </span><span class="e3">EXCEL</span></div></div></div>
+  <div class="pill">Geometry · Chapter 4 Reteach</div>
+</header>
+<div class="tricolor"><i style="background:#0047BA"></i><i style="background:#C9A84C"></i><i style="background:#DB2F30"></i></div>
+<div class="stickybar"><div class="track"><div class="fill" id="fill"></div></div><div class="plabel" id="plabel">0 of 34 questions done</div></div>
+
+<main>
+<div class="who">
+  <div><label for="sname">Name</label><input id="sname" type="text" value="Payton South" autocomplete="name"></div>
+  <div><label for="sdate">Date</label><input id="sdate" type="text" readonly></div>
+</div>
+
+<p class="eyebrow">Chapter 4 · Congruent Triangles</p>
+<h1>Proving Triangles Congruent: Choose the Right Shortcut</h1>
+<p>On your Tuesday, October 20 checks you mastered 4.1, 4.3, 4.5 and 4.7. The points you lost came from three places: <b>4.4</b> (AAS, and why SSA and AAA don't work), <b>4.6</b> (right triangles and HL), and the <b>Chapter 4 Review</b>, which mixes everything. Today we fix exactly those.</p>
+<div class="card gold"><b>How this works:</b> every question gives you <b>two tries</b>. After a wrong first try you get a hint. After your second try you see the correct answer and the full step-by-step solution. Work on paper first, then answer.</div>
+
+<details class="teach"><summary>For the instructor (60–75 minutes)</summary>
+<p>Parts 1–4 are the core (4.4 and 4.6). Do Part 1 out loud together; let Payton drive Parts 2–7 with the four-step method, stopping him whenever he skips Step 3 (the "walk around the triangle" check). The Exit Check is 10 new questions; results go to KCE (Formspree) with every miss listed. Target 8/10.</p>
+</details>
+
+<!-- ================= PART 1 ================= -->
+<section class="part" id="p1">
+<p class="eyebrow">Part 1 · The Toolbox</p>
+<h2>Five shortcuts that work, two that never do</h2>
+<div class="tool">
+  <div class="ok"><b>SSS</b>All three pairs of sides.</div>
+  <div class="ok"><b>SAS</b>Two sides and the angle <u>between</u> them.</div>
+  <div class="ok"><b>ASA</b>Two angles and the side <u>between</u> them.</div>
+  <div class="ok"><b>AAS</b>Two angles and a side that is <u>not</u> between them.</div>
+  <div class="ok"><b>HL</b>Right triangles only: hypotenuse + one leg.</div>
+  <div class="no"><b>SSA ✗</b>Two sides and an angle <u>not</u> between them. The third side can swing into two positions.</div>
+  <div class="no"><b>AAA ✗</b>Same shape, not always the same size (think photo vs. poster).</div>
+</div>
+
+<h3>The key word: "included"</h3>
+<p>An angle is <b>included</b> between two sides when its vertex is the point the two sides share. A side is <b>included</b> between two angles when the side's two endpoints are the two angles' vertices. Use the letters:</p>
+<div class="figs" id="figTool"></div>
+<div class="card navy"><h3>The four-step method (use it on every problem)</h3>
+<ol class="steps">
+<li><b>Mark what you know.</b> Copy every given onto the picture, then add the free facts: a shared side (Reflexive Property), vertical angles, right-angle marks.</li>
+<li><b>Count.</b> How many pairs of sides (S) and angles (A) do you have?</li>
+<li><b>Walk around the triangle.</b> Go A → B → C and say each marked part in order. Is the angle sandwiched between the two sides? Is the side sandwiched between the two angles?</li>
+<li><b>Name the shortcut</b>, or say "not enough" if what you have is SSA or AAA.</li>
+</ol></div>
+<div class="card"><b>Worked example.</b> Given ∠A ≅ ∠D, ∠B ≅ ∠E, and BC ≅ EF.
+<ol class="steps">
+<li>Mark: angle at A, angle at B, side BC.</li>
+<li>Count: 2 angles + 1 side, so it's ASA or AAS.</li>
+<li>Walk: the side between ∠A and ∠B would be AB. Our side is BC, whose endpoints are B and C, and A is not one of them. So the side is <b>not</b> included.</li>
+<li>Two angles + non-included side = <b>AAS</b>. ✓</li>
+</ol></div>
+</section>
+
+<section class="part" id="p2"><p class="eyebrow">Part 2 · Included or not? (Lesson 4.4)</p><h2>Read the letters</h2><div id="qs2"></div></section>
+<section class="part" id="p3"><p class="eyebrow">Part 3 · Pick the shortcut, or "not enough" (Lessons 4.3–4.5)</p><h2>Use all four steps</h2><div id="qs3"></div></section>
+
+<section class="part" id="p4"><p class="eyebrow">Part 4 · Right triangles and HL (Lesson 4.6)</p><h2>The one time "SSA" is allowed</h2>
+<div class="card gold">
+<p><b>Hypotenuse</b> = the side across from the right angle (always the longest). The other two sides are the <b>legs</b>.</p>
+<p><b>HL Theorem</b> needs all three: (1) both triangles have a <b>marked right angle</b>, (2) the <b>hypotenuses</b> are congruent, (3) <b>one pair of legs</b> is congruent.</p>
+<p><b>Other right-triangle cases use the regular shortcuts:</b> both legs → <b>SAS</b> (the right angle is between the legs); hypotenuse + an acute angle → <b>AAS</b>; a leg + an acute angle → <b>ASA</b> or <b>AAS</b> (walk around to see which).</p>
+</div>
+<div class="figs"><svg viewBox="0 0 300 190" width="300" aria-label="Right triangle ABC with the right angle at C">
+ <polygon points="50,160 50,30 250,160" fill="#EEF3FE" stroke="#0A1F3D" stroke-width="2.5"/>
+ <polyline points="50,142 68,142 68,160" fill="none" stroke="#0047BA" stroke-width="2.5"/>
+ <text x="32" y="26" font-size="18" font-family="Georgia">A</text><text x="30" y="176" font-size="18" font-family="Georgia">C</text><text x="256" y="176" font-size="18" font-family="Georgia">B</text>
+ <text x="160" y="88" font-size="14" font-family="Arial" fill="#DB2F30" transform="rotate(33 160 88)">hypotenuse AB</text>
+ <text x="150" y="182" font-size="13" font-family="Arial" fill="#0A1F3D" text-anchor="middle">leg CB</text><text x="44" y="100" font-size="13" font-family="Arial" fill="#0A1F3D" text-anchor="end">leg AC</text>
+</svg></div>
+<div id="qs4"></div></section>
+
+<section class="part" id="p5"><p class="eyebrow">Part 5 · Matching parts, Reflexive, CPCTC (Lessons 4.2–4.5)</p><h2>Order matters</h2>
+<div class="card gold"><p>In <b>ΔJKL ≅ ΔRST</b> the letters match by position: <b>1st ↔ 1st, 2nd ↔ 2nd, 3rd ↔ 3rd</b>. So J↔R, K↔S, L↔T, and side KL ↔ side ST (2nd-3rd ↔ 2nd-3rd).</p>
+<p><b>Reflexive Property:</b> a shared side is congruent to itself (BD ≅ BD). <b>CPCTC</b> (Corresponding Parts of Congruent Triangles are Congruent) can only be used <b>after</b> the triangles are proven congruent.</p></div>
+<div id="qs5"></div></section>
+
+<section class="part" id="p6"><p class="eyebrow">Part 6 · Angles in triangles (Lesson 4.1)</p><h2>180° and the exterior angle</h2>
+<div class="card gold"><p><b>Angle sum:</b> the three interior angles add to 180°. <b>Exterior angle:</b> equals the sum of the two <b>remote</b> interior angles (the two not touching it). Type numbers only, no ° sign needed.</p></div>
+<div id="qs6"></div></section>
+
+<section class="part" id="p7"><p class="eyebrow">Part 7 · Triangles on the coordinate plane (Lesson 4.7)</p><h2>Distance for sides, slope for right angles</h2>
+<div class="card gold"><p><b>Sides:</b> Distance Formula d = √((x₂ − x₁)² + (y₂ − y₁)²). Two equal sides → isosceles; all different → scalene. <b>Right angle:</b> two sides with slopes whose product is −1, or one horizontal side meeting one vertical side.</p></div>
+<div id="qs7"></div></section>
+
+<section class="part" id="exit"><p class="eyebrow">Exit Check</p><h2>10 new questions: show what you fixed</h2>
+<p>Same rules: two tries, answers after the second. Your results go to your tutor when you finish all 10.</p>
+<div id="qsx"></div>
+<div class="card" id="result" style="display:none;text-align:center">
+  <div class="eyebrow">Exit Check score</div><div class="score" id="xscore">0/10</div>
+  <p id="xmsg"></p><p id="xsend" style="font-size:14px;color:#5b6475"></p>
+  <button type="button" class="btn gold" id="resend" style="display:none">Send results again</button>
+</div>
+</section>
+</main>
+<footer><div class="nm">KingCretot Experience</div>
+Approved Provider: <span class="g">Step Up For Students</span> · <span class="g">Arizona ESA</span> · <span class="g">West Virginia Hope Scholarship</span><br>
+kingcretot.com · kce@kingcretot.com · 914.809.0112 · <span style="white-space:nowrap">PO Box 2322, Arcadia, FL 34265</span></footer>
+</div>
+
+<script>
+(function(){
+/* Diagrams: simple pairs of triangles drawn from coordinates with tick marks, angle arcs and right-angle boxes. */
+function fig(spec){
+  var W=spec.w||320,H=spec.h||190,s='<svg viewBox="0 0 '+W+' '+H+'" width="'+W+'" role="img" aria-label="'+(spec.label||'diagram')+'">';
+  (spec.tris||[]).forEach(function(t){
+    var P=t.p, names=Object.keys(P);
+    s+='<polygon points="'+names.map(function(n){return P[n].join(',')}).join(' ')+'" fill="'+(t.fill||'#EEF3FE')+'" fill-opacity="'+(t.op||1)+'" stroke="#0A1F3D" stroke-width="2.5"/>';
+  });
+  (spec.tris||[]).forEach(function(t){
+    var P=t.p, names=Object.keys(P), cx=0, cy=0; names.forEach(function(n){cx+=P[n][0]/3;cy+=P[n][1]/3;});
+    (t.ticks||[]).forEach(function(tk){var a=P[tk[0][0]],b=P[tk[0][1]],n=tk[1],mx=(a[0]+b[0])/2,my=(a[1]+b[1])/2,dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,px=-uy,py=ux;
+      for(var i=0;i<n;i++){var o=(i-(n-1)/2)*7,x=mx+ux*o,y=my+uy*o;s+='<line x1="'+(x-px*8).toFixed(1)+'" y1="'+(y-py*8).toFixed(1)+'" x2="'+(x+px*8).toFixed(1)+'" y2="'+(y+py*8).toFixed(1)+'" stroke="#DB2F30" stroke-width="3"/>';}});
+    (t.arcs||[]).forEach(function(ar){var v=P[ar[0]],others=names.filter(function(n){return n!==ar[0]}),a=P[others[0]],b=P[others[1]];
+      for(var i=0;i<ar[1];i++){var r=20+i*7,ua=[a[0]-v[0],a[1]-v[1]],ub=[b[0]-v[0],b[1]-v[1]],la=Math.hypot(ua[0],ua[1]),lb=Math.hypot(ub[0],ub[1]);
+        var p1=[v[0]+ua[0]/la*r,v[1]+ua[1]/la*r],p2=[v[0]+ub[0]/lb*r,v[1]+ub[1]/lb*r],cr=ua[0]*ub[1]-ua[1]*ub[0];
+        s+='<path d="M '+p1[0].toFixed(1)+' '+p1[1].toFixed(1)+' A '+r+' '+r+' 0 0 '+(cr>0?1:0)+' '+p2[0].toFixed(1)+' '+p2[1].toFixed(1)+'" fill="none" stroke="#0047BA" stroke-width="3"/>';}});
+    if(t.right){var v=P[t.right],others=names.filter(function(n){return n!==t.right}),a=P[others[0]],b=P[others[1]],ua=[a[0]-v[0],a[1]-v[1]],ub=[b[0]-v[0],b[1]-v[1]],la=Math.hypot(ua[0],ua[1]),lb=Math.hypot(ub[0],ub[1]),k=14;
+      var q1=[v[0]+ua[0]/la*k,v[1]+ua[1]/la*k],q2=[v[0]+ub[0]/lb*k,v[1]+ub[1]/lb*k],q3=[q1[0]+ub[0]/lb*k,q1[1]+ub[1]/lb*k];
+      s+='<polyline points="'+[q1,q3,q2].map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'" fill="none" stroke="#0047BA" stroke-width="2.5"/>';}
+    names.forEach(function(n){if((t.skip||[]).indexOf(n)>-1)return;var p=P[n],dx=p[0]-cx,dy=p[1]-cy,L=Math.hypot(dx,dy)||1;s+='<text x="'+(p[0]+dx/L*15-6).toFixed(1)+'" y="'+(p[1]+dy/L*15+6).toFixed(1)+'" font-size="17" font-family="Georgia" fill="#0A1F3D">'+n+'</text>';});
+  });
+  (spec.extra||[]).forEach(function(x){s+=x;});
+  return s+'</svg>';
+}
+var CAP=function(x,y,s){return '<text x="'+x+'" y="'+y+'" font-size="14" text-anchor="middle" font-family="Arial" fill="#0A1F3D">'+s+'</text>';};
+document.getElementById('figTool').innerHTML=fig({label:'SAS: angle B between sides AB and BC',w:300,h:205,tris:[{p:{A:[40,165],B:[150,30],C:[260,165]},ticks:[['AB',1],['BC',2]],arcs:[['B',1]]}],extra:[CAP(150,200,'SAS: ∠B is between AB and BC')]})+fig({label:'ASA: side AC between angles A and C',w:300,h:205,tris:[{p:{A:[40,165],B:[150,30],C:[260,165]},ticks:[['AC',1]],arcs:[['A',1],['C',2]]}],extra:[CAP(150,200,'ASA: AC is between ∠A and ∠C')]});
+
+var Q={
+qs2:[
+ {s:'In ΔABC, which angle is included between sides AB and BC?',c:['∠A','∠B','∠C','No angle is included'],a:1,h:'Which letter do AB and BC have in common?',
+  st:['AB uses letters A and B; BC uses letters B and C.','The shared letter is B, so the sides meet at vertex B.','The angle at that vertex, <b>∠B</b>, is the included angle.']},
+ {s:'In ΔABC, which side is included between ∠A and ∠C?',c:['AB','BC','AC','None'],a:2,h:'The included side connects the two vertices.',
+  st:['The two angles sit at vertices A and C.','The side whose endpoints are A and C is <b>AC</b>.','So AC is the included side.']},
+ {s:'Given: ∠P ≅ ∠X, ∠Q ≅ ∠Y, and QR ≅ YZ. Is QR included between ∠P and ∠Q?',c:['Yes, so this is ASA','No, so this is AAS','Yes, so this is SAS','No, so this is SSA (not enough)'],a:1,h:'For QR to be included, its endpoints must be P and Q.',
+  st:['∠P and ∠Q sit at vertices P and Q, so the included side would be <b>PQ</b>.','QR has endpoints Q and R; P is not one of them, so QR is <b>not</b> included.','Two angles + a non-included side = <b>AAS</b>, which is valid.']},
+ {s:'Given: ∠P ≅ ∠X, PQ ≅ XY, and ∠Q ≅ ∠Y. Which shortcut?',c:['AAS','SAS','ASA','HL'],a:2,h:'Walk P → Q: angle, side, angle?',
+  st:['Mark ∠P, side PQ, ∠Q.','Walking P → Q: angle at P, then side PQ, then angle at Q.','The side is sandwiched between the two angles: <b>ASA</b>.']}
+],
+qs3:[
+ {s:'Which shortcut proves ΔABC ≅ ΔDEF, or is there not enough information?',given:'AB ≅ DE, BC ≅ EF, ∠C ≅ ∠F',
+  fig:{label:'Two triangles with sides AB, BC and angle C marked',w:365,h:180,tris:[{p:{A:[25,150],B:[75,35],C:[150,150]},ticks:[['AB',1],['BC',2]],arcs:[['C',1]]},{p:{D:[215,150],E:[265,35],F:[335,150]},ticks:[['DE',1],['EF',2]],arcs:[['F',1]]}]},
+  c:['SAS','ASA','AAS','Not enough information (SSA)'],a:3,h:'Is ∠C between AB and BC? Which letter do AB and BC share?',
+  st:['Count: 2 sides + 1 angle → SAS or SSA.','AB and BC share B, so the included angle would be ∠B.','The given angle is ∠C, which is <b>not</b> between AB and BC.','Two sides + a non-included angle = <b>SSA</b>, which never proves congruence. Not enough information.']},
+ {s:'All three pairs of corresponding angles are congruent and no sides are marked. What can you conclude?',c:['Congruent by AAA','Congruent by ASA','Not enough to prove congruence','Congruent by AAS'],a:2,h:'Can a small triangle and a big triangle have the same angles?',
+  st:['Count: 3 angles, 0 sides.','Equal angles guarantee the same <b>shape</b>, not the same <b>size</b> (a photo and its poster).','AAA is not a congruence shortcut, so there is <b>not enough</b> information.']},
+ {s:'Given: ∠A ≅ ∠D, AB ≅ DE, AC ≅ DF. Which shortcut?',fig:{label:'Two triangles with angle A, sides AB and AC marked',w:365,h:180,tris:[{p:{A:[25,150],B:[80,35],C:[150,150]},ticks:[['AB',1],['AC',2]],arcs:[['A',1]]},{p:{D:[215,150],E:[270,35],F:[335,150]},ticks:[['DE',1],['DF',2]],arcs:[['D',1]]}]},
+  c:['SSS','SAS','SSA (not enough)','ASA'],a:1,h:'Which letter do AB and AC share?',
+  st:['Count: 2 sides + 1 angle.','AB and AC share A, so the included angle is ∠A.','The given angle is ∠A: it is sandwiched. That is <b>SAS</b>.']},
+ {s:'ΔABD and ΔCBD share side BD. You know AB ≅ CB and AD ≅ CD. Which shortcut proves ΔABD ≅ ΔCBD?',
+  fig:{label:'Kite ABCD split by diagonal BD',w:300,h:220,tris:[{p:{A:[40,110],B:[150,25],D:[150,195]},ticks:[['AB',1],['AD',2]],op:.9},{p:{C:[260,110],B:[150,25],D:[150,195]},ticks:[['CB',1],['CD',2]],fill:'#FFF6E0',op:.9,skip:['B','D']}],extra:['<line x1="150" y1="25" x2="150" y2="195" stroke="#C9A84C" stroke-width="4" stroke-dasharray="8 5"/>']},
+  c:['SAS','SSS','HL','Not enough information'],a:1,h:'There is a third pair of sides you get for free.',
+  st:['Given: AB ≅ CB and AD ≅ CD (2 pairs of sides).','Free fact: BD ≅ BD by the <b>Reflexive Property</b> (the shared side).','That is 3 pairs of sides: <b>SSS</b>.']},
+ {s:'AE and BD cross at C. AC ≅ EC and BC ≅ DC. Which shortcut proves ΔACB ≅ ΔECD?',
+  fig:{label:'Two triangles meeting at C with vertical angles',w:320,h:200,tris:[{p:{A:[30,30],B:[30,170],C:[160,100]},ticks:[['AC',1],['BC',2]],arcs:[['C',1]],skip:['C']},{p:{E:[290,170],D:[290,30],C:[160,100]},ticks:[['EC',1],['DC',2]],arcs:[['C',1]],skip:['C']}],extra:['<text x="153" y="138" font-size="17" font-family="Georgia" fill="#0A1F3D">C</text>']},
+  c:['SSS','ASA','SAS','AAS'],a:2,h:'∠ACB and ∠ECD are a free pair. What kind of angles are they?',
+  st:['Given: AC ≅ EC and BC ≅ DC.','Free fact: ∠ACB ≅ ∠ECD because they are <b>vertical angles</b>.','The angle at C is between the two given sides in each triangle, so it is <b>SAS</b>.']},
+ {s:'Given: ∠M ≅ ∠Q, ∠N ≅ ∠R, and MN ≅ QR. Which shortcut proves ΔMNO ≅ ΔQRS?',c:['AAS','ASA','SAS','SSA (not enough)'],a:1,h:'Do MN\'s endpoints match the two angles?',
+  st:['Angles at M and N; side MN.','MN\'s endpoints are exactly M and N, the two angle vertices.','Side between the two angles = <b>ASA</b>.']}
+],
+qs4:[
+ {s:'In right triangle PQR, the right angle is at Q. Which side is the hypotenuse?',c:['PQ','QR','PR','It depends on the lengths'],a:2,h:'The hypotenuse is across from the right angle.',
+  st:['The right angle is at Q.','The side across from Q is the one that does <b>not</b> use the letter Q.','That side is <b>PR</b>, the hypotenuse (always the longest side).']},
+ {s:'Two right triangles have congruent hypotenuses and one pair of congruent legs. Which shortcut?',c:['SAS','HL','SSA (not enough)','AAS'],a:1,h:'Right angle + Hypotenuse + Leg.',
+  st:['Check: right angles marked ✓, hypotenuses ✓, one pair of legs ✓.','All three HL requirements are met.','Congruent by <b>HL</b>.']},
+ {s:'Two right triangles have both pairs of legs congruent. Which shortcut?',c:['HL','SAS','SSS','Not enough information'],a:1,h:'Where is the right angle compared to the two legs?',
+  st:['The two legs meet at the right angle.','So the right angle is <b>included</b> between the two legs.','Two sides + included angle = <b>SAS</b> (no hypotenuse, so it is not HL).']},
+ {s:'Two right triangles have congruent hypotenuses and one pair of congruent acute angles. Which shortcut?',c:['HL','ASA','AAS','SAS'],a:2,h:'Count the angles: the right angles are a pair too.',
+  st:['Angles: the right angles (pair 1) and the acute angles (pair 2).','Side: the hypotenuse, which is across from the right angle, so it is <b>not</b> between the two angles.','Two angles + non-included side = <b>AAS</b>.']},
+ {s:'Two triangles have congruent "hypotenuses" and one congruent leg, but neither triangle has a right-angle mark. Can you use HL?',c:['Yes, HL works for any triangle','No, HL needs marked right angles; without them you only have two pairs of sides','Yes, if the hypotenuse is the longest side','No, you need AAA'],a:1,h:'What is the first requirement of HL?',
+  st:['HL requirement 1: both triangles must have a confirmed right angle.','No right-angle mark means you can\'t assume 90°.','Without the right angle, all you have is <b>two pairs of sides</b> and no angle at all, which is not enough. The right angle is what turns this SSA-type case into HL.']}
+],
+qs5:[
+ {s:'ΔMNO ≅ ΔQRS. Which side is congruent to NO?',c:['QR','RS','QS','NO'],a:1,h:'NO uses the 2nd and 3rd letters.',
+  st:['Match by position: M↔Q, N↔R, O↔S.','NO is letters 2 and 3 of the first triangle.','Letters 2 and 3 of ΔQRS: <b>RS</b>.']},
+ {s:'ΔDOG ≅ ΔCAT. Which angle is congruent to ∠G?',c:['∠C','∠A','∠T','∠D'],a:2,h:'G is the 3rd letter.',
+  st:['D↔C, O↔A, G↔T.','G is in 3rd position, so it matches the 3rd letter of CAT.','∠G ≅ <b>∠T</b>.']},
+ {s:'In a proof, which reason justifies AC ≅ AC when two triangles share side AC?',c:['Symmetric Property','Transitive Property','Reflexive Property','CPCTC'],a:2,h:'A segment compared with itself.',
+  st:['The same segment appears in both triangles.','Anything is congruent to itself: the <b>Reflexive Property</b>.']},
+ {s:'You want to prove ∠C ≅ ∠F. What is the correct order?',c:['Use CPCTC first, then prove the triangles congruent','Prove ΔABC ≅ ΔDEF (by SSS, SAS, ASA, AAS or HL), then use CPCTC','CPCTC proves the triangles congruent','You never need CPCTC'],a:1,h:'CPCTC = Corresponding Parts of Congruent Triangles…',
+  st:['CPCTC only applies to triangles that are <b>already</b> proven congruent.','So first prove ΔABC ≅ ΔDEF with a shortcut.','Then ∠C ≅ ∠F by <b>CPCTC</b>.']}
+],
+qs6:[
+ {s:'A triangle\'s angles are (x + 10)°, (2x)° and (3x − 10)°. What is the largest angle, in degrees?',num:80,h:'Add all three and set the sum equal to 180 to find x first.',
+  st:['(x + 10) + 2x + (3x − 10) = 180','6x = 180, so x = 30','Angles: 40°, 60°, and 3(30) − 10 = <b>80°</b> (largest). Check: 40 + 60 + 80 = 180 ✓']},
+ {s:'An exterior angle of a triangle measures 130°. One remote interior angle is 58°. What is the other remote interior angle, in degrees?',num:72,h:'Exterior angle = sum of the two remote interior angles.',
+  st:['130 = 58 + x','x = 130 − 58 = <b>72°</b>','Careful: 50° is the adjacent interior angle (180 − 130), not what is asked.']},
+ {s:'An exterior angle measures (4x + 6)°. Its two remote interior angles measure (2x + 10)° and (x + 20)°. What is x?',num:24,h:'Set the exterior angle equal to the sum of the remote interior angles.',
+  st:['4x + 6 = (2x + 10) + (x + 20)','4x + 6 = 3x + 30','x = <b>24</b>. Check: exterior = 102°, remote angles 58° + 44° = 102° ✓']}
+],
+qs7:[
+ {s:'Classify the triangle with vertices A(0, 0), B(4, 0), C(0, 3).',c:['Right scalene','Right isosceles','Acute scalene','Obtuse isosceles'],a:0,h:'AB is horizontal and AC is vertical.',
+  st:['AB is horizontal (length 4) and AC is vertical (length 3), so ∠A = 90°.','BC = √(4² + 3²) = √25 = 5.','Sides 3, 4, 5 are all different: <b>right scalene</b>.']},
+ {s:'Classify the triangle with vertices P(1, 1), Q(5, 1), R(3, 4).',c:['Right isosceles','Acute isosceles','Right scalene','Obtuse scalene'],a:1,h:'Find PR and QR with the Distance Formula. Then check the slopes of PR and QR.',
+  st:['PQ = 4. PR = √((3−1)² + (4−1)²) = √13. QR = √((3−5)² + (4−1)²) = √13.','PR = QR, so it is <b>isosceles</b>.','Right angle? PQ is horizontal and neither PR nor QR is vertical. Slopes of PR and QR are 3/2 and −3/2; their product is −9/4, not −1, so they are not negative reciprocals. No right angle.','Acute or obtuse? Check the longest side PQ = 4: 4² = 16 &lt; (√13)² + (√13)² = 26, so the largest angle is acute, and so are the others: <b>acute isosceles</b>.']}
+],
+qsx:[
+ {s:'Given: ∠R ≅ ∠U, ∠S ≅ ∠V, and RT ≅ UW. Which shortcut proves ΔRST ≅ ΔUVW?',c:['ASA','AAS','SAS','SSA (not enough)'],a:1,h:'Is RT between ∠R and ∠S?',st:['The side between ∠R and ∠S would be RS.','RT is not between them.','Two angles + non-included side = <b>AAS</b>.']},
+ {s:'Given: GH ≅ JK, HI ≅ KL, and ∠I ≅ ∠L. What can you conclude?',c:['Congruent by SAS','Congruent by SSS','Not enough information (SSA)','Congruent by HL'],a:2,h:'Which letter do GH and HI share?',st:['GH and HI share H, so the included angle would be ∠H.','The given angle is ∠I, not included.','That is <b>SSA</b>: not enough information.']},
+ {s:'Right triangles ΔABC and ΔDEF have right angles at C and F. AB ≅ DE and BC ≅ EF. Which shortcut?',c:['SAS','HL','AAS','SSS'],a:1,h:'Which sides are across from the right angles?',st:['The right angles are at C and F.','AB and DE are across from them, so they are the <b>hypotenuses</b>. BC and EF are <b>legs</b>.','Right angles + hypotenuses + one pair of legs = <b>HL</b>.']},
+ {s:'Right triangles ΔABC and ΔDEF have right angles at C and F. AC ≅ DF and BC ≅ EF. Which shortcut?',c:['HL','ASA','SAS','Not enough information'],a:2,h:'Are AC and BC legs or hypotenuses? Where do they meet?',st:['AC and BC both touch the right angle at C, so they are the two <b>legs</b> (no hypotenuse is given).','The legs meet at the right angle, so ∠C is <b>included</b> between them (same for ∠F).','Two sides + included angle = <b>SAS</b>.']},
+ {s:'In right triangle KLM, the right angle is at M. Which side is the hypotenuse?',c:['KM','LM','KL','KLM'],a:2,h:'Find the side that does not use the right-angle letter.',st:['Right angle at M.','The side across from M does not use the letter M: <b>KL</b>.']},
+ {s:'ΔABC ≅ ΔXYZ. Which side is congruent to AC?',c:['XY','YZ','XZ','AB'],a:2,h:'AC uses the 1st and 3rd letters.',st:['A↔X, B↔Y, C↔Z.','AC = letters 1 and 3 → <b>XZ</b>.']},
+ {s:'After proving ΔPQR ≅ ΔSTU by ASA, which reason lets you conclude PR ≅ SU?',c:['ASA','Reflexive Property','CPCTC','Vertical Angles Theorem'],a:2,h:'The triangles are already proven congruent.',st:['ASA proved the triangles congruent.','Matching parts of congruent triangles are congruent: <b>CPCTC</b>.']},
+ {s:'A triangle\'s angles measure (2x)°, (3x)° and (4x)°. What is the smallest angle, in degrees?',num:40,h:'2x + 3x + 4x = 180.',st:['9x = 180, so x = 20.','Angles 40°, 60°, 80°; smallest = <b>40°</b>.']},
+ {s:'An exterior angle of a triangle measures 115°. One remote interior angle is 47°. What is the other remote interior angle, in degrees?',num:68,h:'Exterior = sum of the two remote interior angles.',st:['115 = 47 + x','x = <b>68°</b>.']},
+ {s:'Classify the triangle with vertices D(−1, 2), E(3, 2), F(1, 6).',c:['Right isosceles','Acute isosceles','Right scalene','Equilateral'],a:1,h:'Find DF and EF, then check the slopes of DF and EF.',st:['DE = 4. DF = √(2² + 4²) = √20. EF = √((−2)² + 4²) = √20.','DF = EF → isosceles. DE ≠ √20, so not equilateral.','Slopes of DF and EF are 2 and −2; their product is −4, not −1 (not negative reciprocals), and DE is horizontal while neither other side is vertical. No right angle.','Acute? (√20)² = 20 &lt; 4² + (√20)² = 36 and 4² = 16 &lt; 20 + 20 = 40, so every angle is acute: <b>acute isosceles</b>.']}
+]};
+
+var total=0,doneN=0,x={n:0,ok:0,first:0,miss:[]};
+Object.keys(Q).forEach(function(k){total+=Q[k].length;});
+function prog(){document.getElementById('fill').style.width=(doneN/total*100)+'%';document.getElementById('plabel').textContent=doneN+' of '+total+' questions done';}
+function esc(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML;}
+function steps(q){return '<ol>'+q.st.map(function(s){return '<li>'+s+'</li>'}).join('')+'</ol>';}
+var n=0;
+Object.keys(Q).forEach(function(box){
+  var host=document.getElementById(box), isX=box==='qsx';
+  Q[box].forEach(function(q,qi){
+    n++; var el=document.createElement('div'); el.className='q';
+    var head=isX?('Exit Check · Question '+(qi+1)+' of 10'):('Question '+n);
+    var h='<div class="qn">'+head+'</div>'+(q.given?'<div class="given"><b>Given:</b> '+esc(q.given)+'</div>':'')+(q.fig?'<div class="figs">'+fig(q.fig)+'</div>':'')+'<div class="stem">'+esc(q.s)+'</div>';
+    if(q.num!=null) h+='<div class="numrow"><input type="text" inputmode="decimal" aria-label="Your answer" placeholder="Type a number"><button type="button" class="btn">Check</button></div>';
+    else{ /* fixed shuffle so correct answers are spread across A-D (same order every visit) */
+      var ord=q.c.map(function(_,i){return i;}),seed=n*7919+13;for(var z=ord.length-1;z>0;z--){seed=(seed*1103515245+12345)%2147483648;var r=seed%(z+1),tmp=ord[z];ord[z]=ord[r];ord[r]=tmp;}
+      var nc=ord.map(function(i){return q.c[i];});q.a=ord.indexOf(q.a);q.c=nc;
+      h+='<div class="opts">'+q.c.map(function(c,i){return '<button type="button" class="opt" data-i="'+i+'">'+String.fromCharCode(65+i)+'. '+esc(c)+'</button>'}).join('')+'</div>';}
+    h+='<div class="fb" aria-live="polite"></div>'; el.innerHTML=h; host.appendChild(el);
+    var tries=0,over=false,fb=el.querySelector('.fb'),picks=[];
+    function finish(ok){over=true;doneN++;prog();
+      fb.className='fb '+(ok?'good':'bad');
+      var ans=q.num!=null?String(q.num):String.fromCharCode(65+q.a)+'. '+q.c[q.a];
+      fb.innerHTML='<div class="head">'+(ok?(tries===1?'Correct on the first try!':'Correct on the second try.'):'Not this time. The answer is '+esc(ans)+'.')+'</div><b>Step by step:</b>'+steps(q);
+      if(q.num==null){[].forEach.call(el.querySelectorAll('.opt'),function(b){b.disabled=true;if(+b.dataset.i===q.a)b.classList.add('good');});}
+      else{el.querySelector('input').disabled=true;el.querySelector('.numrow .btn').disabled=true;}
+      if(isX){x.n++;if(ok)x.ok++;if(ok&&tries===1)x.first++;if(!(ok&&tries===1))x.miss.push('Q'+(qi+1)+': '+q.s+' | his answers: '+picks.join(', ')+' | correct: '+ans+(ok?' (right on 2nd try)':''));if(x.n===10)report();}
+    }
+    function attempt(ok,label){if(over)return;tries++;picks.push(label);
+      if(ok){finish(true);return;}
+      if(tries>=2){finish(false);return;}
+      fb.className='fb hint';fb.innerHTML='<div class="head">Not yet. One more try.</div>Hint: '+esc(q.h);}
+    if(q.num!=null){var inp=el.querySelector('input'),b=el.querySelector('.numrow .btn');
+      var go=function(){var v=inp.value.trim().replace(/[°\s]/g,'').replace(/[−–]/g,'-');if(!v){fb.className='fb hint';fb.innerHTML='<div class="head">Type a number first.</div>';return;}
+        if(isNaN(parseFloat(v))||!/^-?\d+(\.\d+)?$/.test(v)){fb.className='fb hint';fb.innerHTML='<div class="head">Type just the number, like 72.</div>This did not use a try.';return;}
+        attempt(Math.abs(parseFloat(v)-q.num)<1e-9,v);};
+      b.onclick=go;inp.onkeydown=function(e){if(e.key==='Enter')go();};}
+    else{[].forEach.call(el.querySelectorAll('.opt'),function(bt){bt.onclick=function(){if(over||bt.classList.contains('bad'))return;var ok=+bt.dataset.i===q.a;if(!ok)bt.classList.add('bad');attempt(ok,String.fromCharCode(65+(+bt.dataset.i)));};});}
+  });
+});
+prog();
+var d=new Date();document.getElementById('sdate').value=(d.getMonth()+1)+'/'+d.getDate()+'/'+d.getFullYear();
+
+var sent=false;
+function report(){
+  var r=document.getElementById('result');r.style.display='block';
+  document.getElementById('xscore').textContent=x.ok+'/10';
+  document.getElementById('xmsg').textContent=x.ok>=8?'Strong work. You fixed the Chapter 4 shortcuts.':'Good effort. Look at the step-by-step answers above for the ones you missed; we will go over them together.';
+  r.scrollIntoView({behavior:'smooth',block:'center'});send();
+}
+function send(){
+  var st=document.getElementById('xsend'),rb=document.getElementById('resend');rb.style.display='none';
+  var name=(document.getElementById('sname').value||'').trim()||'(name not entered)';
+  st.textContent='Sending your results to your tutor…';
+  fetch('https://formspree.io/f/myezragk',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},
+    body:JSON.stringify({program:'KCE Geometry',student:name,date:document.getElementById('sdate').value,module:'geometry-chapter-4-reteach-payton',lesson:'Chapter 4 Reteach (Payton): 4.4, 4.6 and Review — Exit Check',
+      score:x.ok*10,mastered:x.ok>=8?'yes':'no',rawScore:x.ok+' / 10',first_try:x.first+' / 10',missed_questions:x.miss.length?x.miss.join('\n'):'None — every question right on the first try.'})})
+  .then(function(res){if(!res.ok)throw 0;st.textContent='Your results were sent to your tutor.';sent=true;})
+  .catch(function(){st.textContent='Your results did not send. Check the internet connection and press the button.';rb.style.display='inline-block';});
+}
+document.getElementById('resend').onclick=send;
+})();
+</script>
+</body>
+</html>
